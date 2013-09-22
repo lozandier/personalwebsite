@@ -1,0 +1,2 @@
+class IdentityGuidelinesController < ApplicationController
+end

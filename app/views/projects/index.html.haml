@@ -1,0 +1,8 @@
+%h1= "I have #{pluralize(@projects.size, 'project')}"
+
+- @projects.each do |project| 
+  %div.project 
+    =image_tag project.cover.url
+    %h2= link_to project.title, project_path(project.id)
+
+    

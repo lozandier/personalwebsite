@@ -1,0 +1,17 @@
+@import compass
+@import foundation
+@import 'breakpoint'
+
+$pair: 456px 794px 
+
+
+
+.crownMe 
+  background: black 
+  color: red 
+  +grid-column($columns: 6)
+  +breakpoint($pair)
+    background: green
+  font-size: ms(2)
+
+
