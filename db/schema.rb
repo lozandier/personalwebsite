@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921132750) do
+ActiveRecord::Schema.define(version: 20130922141117) do
 
   create_table "attachments", force: true do |t|
     t.string   "attachment_file_name"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20130921132750) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.text     "medium"
-    t.text     "state"
+    t.string   "state",              default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"

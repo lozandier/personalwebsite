@@ -1,17 +1,18 @@
 @import compass
 @import foundation
+@import 'modular-scale'
 @import 'breakpoint'
 
 $pair: 456px 794px 
 
 
-
+img 
+  filter: blur(18px)
+  max-height: 500px
 .crownMe 
   background: black 
   color: red 
   +grid-column($columns: 6)
   +breakpoint($pair)
     background: green
-  font-size: ms(2)
-
 

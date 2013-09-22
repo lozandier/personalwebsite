@@ -1,13 +1,15 @@
 class ProjectsController < ApplicationController
+  #special parameter
+
   respond_to :json, :html 
-  #before_action :get_project, only: [:create ]
+  before_action :get_project, only: [:edit, :update ]
   
   def index
     @projects = ProjectDecorator.decorate_projects(Project.all)
   end
 
   def show
-    @project = ProjectDecorator.new( Project.find(params[:id]) )
+    @project = ProjectDecorator.new( get_project )
   end
 
   def new 
@@ -15,12 +17,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    
     @project = Project.new(project_params)
-    if @project.save
+    #@approve_project = params[:approve_project] 
+    if @project.save 
       redirect_to projects_path, notice: "Project successfully created"
     else
       render :new 
     end
+
   end
 
   def edit
@@ -28,7 +33,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
-
+    if @project.update(project_params)
+      redirect_to project_path, notice: "Project Successfullly Updated" 
+    else
+      render :edit 
+    end 
   end
 
   def destroy
@@ -39,6 +48,11 @@ class ProjectsController < ApplicationController
   private 
 
   def project_params
-    params.require(:project).permit(:title, :medium, :state, :cover, :description) 
+    params.require(:project).permit(:title, :medium, :state, :cover, :description, :approve_project, :unapprove_project) 
   end
+
+  def get_project
+    @project = Project.friendly.find(params[:id])
+  end
+
 end

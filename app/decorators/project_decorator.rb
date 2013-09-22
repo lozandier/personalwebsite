@@ -24,8 +24,8 @@ class ProjectDecorator
     project.respond_to?(method) || super 
   end
 
-  def to_params
-    project
+  def is_decorated? 
+    kind_of?(ProjectDecorator) 
   end
 
 end

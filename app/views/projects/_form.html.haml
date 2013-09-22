@@ -1,0 +1,33 @@
+= form_for(@project) do |f| 
+  - if @project.errors.any? 
+    %section
+      %h2= "There's #{ pluralize(@project.errors.count, 'error') }"
+      %p The errors are the following 
+      %ul 
+        - @project.errors.full_messages.each do |message|
+          %li= message
+
+  %div 
+    = f.label :title 
+    = f.text_field :title 
+  %div 
+    = f.label :description
+    = f.text_area :description 
+
+  %div 
+    = f.label :cover
+    = f.file_field :cover 
+
+  %div 
+    = f.label :medium 
+    = f.select :medium, Project::MEDIUM_TYPES
+
+  %div 
+    - if @project.state.blank? || @project.state == 'pending' 
+      = f.label "Release Now?"
+      = f.check_box :approve_project
+    - elsif @project.state == 'approved'
+      = f.label "Unapprove Project?"
+      = f.check_box :unapprove_project
+  %div 
+    = f.submit

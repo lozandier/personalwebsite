@@ -1,0 +1,10 @@
+
+%div{ style: "background: black" }
+  = image_tag(@project.cover.url)
+%h1= @project.title
+%h2= @project.medium
+%p= @project.description
+%b= @project.state
+
+%div 
+  = link_to 'Edit Project', edit_project_path(@project.project)
