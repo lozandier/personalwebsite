@@ -1,0 +1,40 @@
+
+%div.persona_initial_box
+  .background_image
+    = image_tag(@persona.background_image.url)
+  .mask
+  .row
+    .large-4.columns.avatar
+      = image_tag(@persona.avatar.url)
+
+    .large-8.columns
+      %h2= @persona.full_name
+      %hr
+      %p= @persona.byline
+      %p.meta_information
+        %strong Age:   
+        = " #{@persona.age} years old "
+      %p.meta_information
+        %strong Occupation: 
+        = @persona.occupation
+      %div
+        = link_to 'Edit Persona', edit_project_persona_path(@project, @persona)
+        = link_to 'Add Influencer', new_project_persona_influencer_path(@project, @persona)
+    
+%div 
+  .row 
+    .large-8.columns
+      %h2 Description
+      %hr
+      %p= @persona.description
+    .large-4.columns.persona_meta_data
+      %section
+        %h2 Influencers
+        %hr
+      %section
+        %h2 Interests 
+        %hr
+        .progress
+          %span{style: 'width: 40% ; background: black'}
+
+    

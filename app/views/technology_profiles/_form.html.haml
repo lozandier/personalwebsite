@@ -1,0 +1,15 @@
+.row 
+  .large-12.columns 
+    = form_for([@project, @technology_profile]) do |f|
+      .row 
+        .large-6.columns 
+          = f.label :technology 
+          = collection_select( :technology_profile, :technology_id, Technology.all, :id, :name ) 
+
+        .large-6.columns 
+          = f.label :percentage_of_project
+          = f.number_field :percentage_of_project, max: 100, min: 0 
+
+      .row 
+        .large-12.colums
+          = f.submit

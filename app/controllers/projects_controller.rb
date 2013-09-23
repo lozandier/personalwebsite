@@ -1,15 +1,20 @@
 class ProjectsController < ApplicationController
-  #special parameter
 
+  #special parameter
   respond_to :json, :html 
   before_action :get_project, only: [:edit, :update ]
   
   def index
     @projects = ProjectDecorator.decorate_projects(Project.all)
+    respond_with @projects
   end
 
   def show
     @project = ProjectDecorator.new( get_project )
+    respond_to do |format| 
+      format.html { respond_with @project }
+      format.json { respond_with @project.project }
+    end
   end
 
   def new 

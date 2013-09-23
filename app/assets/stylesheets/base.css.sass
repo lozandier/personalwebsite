@@ -7,8 +7,50 @@ $pair: 456px 794px
 
 
 img 
-  filter: blur(18px)
-  max-height: 500px
+  //filter: blur(18px)
+  max-width: 100%
+
+.persona_initial_box
+  max-height: 650px
+  overflow: hidden
+  position: relative
+  padding: .5em
+  background-color: black
+  z-index: -1
+  h2
+    color: #fcfcfc
+
+  p
+    color: lighten(gray, 40%)
+    &.meta_information
+      display: inline-block
+      &:first-child::after 
+        content: '//'
+.avatar 
+  img
+    display: block
+    border-radius: 50%
+    height: 250px
+    width: 250px
+    z-index: 20000
+    margin: 0 auto
+    text-align: center
+    filter: drop-shadow(0px 5px 5px rgba(#222, .4))
+
+
+.mask, .background_image
+  filter: blur(22px)
+  background-color: rgba(black, .5)
+  position: absolute 
+  top: 0 
+  left: 0 
+  right: 0 
+  bottom: 0
+  z-index: -1
+  width: 105%
+  height: 105%
+  img
+    display: block
 .crownMe 
   background: black 
   color: red 
@@ -16,3 +58,14 @@ img
   +breakpoint($pair)
     background: green
 
+.color 
+  min-height: 50px 
+  min-height: 5vh 
+
+//.persona_number_field 
+  +grid-column($columns: 9, $float: left, $collapse: true )
+
+.postFix
+  +prefix-postfix-base 
+  +postfix($bg: white, $is-button: true )
+  +grid-column($columns: 3, $float: left, $collapse: true )

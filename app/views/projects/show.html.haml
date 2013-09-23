@@ -8,3 +8,20 @@
 
 %div 
   = link_to 'Edit Project', edit_project_path(@project.project)
+
+  = link_to 'New Technology Profile', new_project_technology_profile_path(@project.project)
+
+  = link_to 'New Personas', new_project_persona_path(@project.project)
+
+
+.row 
+  %h2 
+    Personas
+    - @project.personas.each do |persona|
+      .row
+        .large-3.small-4.columns
+          = image_tag(persona.avatar.url)
+        .large-9.small-8.columns 
+          = link_to persona.full_name, project_persona_path(@project.project, persona)
+
+

@@ -1,0 +1,8 @@
+.row 
+  - @technologies.each do |technology| 
+    .large-6.columns
+      .row 
+        .color.large-6-columns{style: "background-color: #{technology.color}"}
+
+        .large-6-columns
+          %h1= technology.name  

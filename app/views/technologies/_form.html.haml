@@ -1,0 +1,21 @@
+.row 
+  .large-12.columns 
+    = form_for(@technology) do |f| 
+      .row
+        .large-6.columns
+          = f.label :color 
+          = f.color_field :color
+
+        .large-6.columns 
+          = f.label :name 
+          = f.text_field :name
+
+      .row 
+        .large-12.columns 
+          = f.submit
+
+
+
+
+
+

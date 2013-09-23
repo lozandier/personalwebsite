@@ -3,6 +3,10 @@ class ProjectDecorator
 
   include ActionView::Helpers 
 
+  def active_model_serializer
+    ProjectSerializer
+  end
+
   def initialize(project)
     @project = project 
   end
@@ -27,5 +31,8 @@ class ProjectDecorator
   def is_decorated? 
     kind_of?(ProjectDecorator) 
   end
+
+  
+
 
 end

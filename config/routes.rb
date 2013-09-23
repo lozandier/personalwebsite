@@ -1,12 +1,16 @@
 Personal::Application.routes.draw do
+  resources :technologies, only: [:index, :update, :edit, :create, :new, :destroy]
   root 'projects#index'
 
   resources :projects do 
     resources :identity_guidelines
-    resources :photos
-    resources :personas
+    resources :photos, only: [:show, :new, :edit, :update, :destroy, :create]
+    resources :personas do 
+      resources :influencers
+    end 
     resources :clients 
-    resources :goals 
+    resources :goals
+    resources :technology_profiles, only: [:new, :edit, :update, :destroy, :create] 
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
