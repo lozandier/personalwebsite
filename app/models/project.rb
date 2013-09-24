@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   has_attached_file :cover
 
   # validations 
-  MEDIUM_TYPES = ["Website", "Interactive Document", "Graphic Design"]
+  MEDIUM_TYPES = ["Website", "Interactive Document", "Graphic Design", "iPhone App"]
   
   validates :title, :description, presence: true 
   validates_attachment :cover, content_type: { content_type: ["image/jpeg", "image/png", "image/webp"] }

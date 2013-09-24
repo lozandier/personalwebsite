@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
 
   #special parameter
   respond_to :json, :html 
+
+  #special action
   before_action :get_project, only: [:edit, :update ]
   
   def index

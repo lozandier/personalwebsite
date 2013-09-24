@@ -1,0 +1,23 @@
+.row
+  .large-12
+    = form_for([@project, @persona, @influencer]) do |f| 
+      fail
+      .row
+        .large-12.columns
+          = f.label :name 
+          = f.text_field :name 
+
+
+      .row
+        .large-12.columns
+          = f.label :percentage
+          .row.collapse
+            .large-9.columns  
+              = f.number_field :percentage, min: 0, max: 100  
+            .large-3.columns
+              %span.postfix %  
+
+      .row 
+        .large-12.columns
+          = f.submit 
+

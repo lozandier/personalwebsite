@@ -76,6 +76,7 @@ group :development do
   gem 'guard-livereload'
   gem 'rb-fchange', require: false 
   gem 'rb-inotify', require: false 
+  gem 'redcarpet'
   #gem 'pry'
   #gem 'win32console'
   #gem 'pry-rails'

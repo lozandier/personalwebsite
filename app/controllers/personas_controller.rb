@@ -4,7 +4,7 @@ class PersonasController < ApplicationController
   before_action :get_existing_persona, only: [:edit, :update, :show, :destroy]
 
   def show
-    
+    respond_with @persona
   end
 
   def new 

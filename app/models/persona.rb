@@ -18,8 +18,11 @@ class Persona < ActiveRecord::Base
   validates :age, numericality: { greater_than: 0, integer: true }
   validates :description, length: { minimum: 50 }
   validates :byline, length: { maximum: 140 }
+
+  #associations
   belongs_to :project
   has_many :influencers 
+  has_many :interests 
 
   # state_machine 
   state_machine :state, initial: :pending do 

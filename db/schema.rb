@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923093136) do
+ActiveRecord::Schema.define(version: 20130923200144) do
 
   create_table "attachments", force: true do |t|
     t.string   "attachment_file_name"
@@ -53,13 +53,12 @@ ActiveRecord::Schema.define(version: 20130923093136) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "goals", force: true do |t|
-    t.integer  "project_id"
     t.string   "copy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "goalable_id"
+    t.string   "goalable_type"
   end
-
-  add_index "goals", ["project_id"], name: "index_goals_on_project_id"
 
   create_table "identity_guidelines", force: true do |t|
     t.string   "brand_image_file_name"
@@ -89,6 +88,16 @@ ActiveRecord::Schema.define(version: 20130923093136) do
   end
 
   add_index "influencers", ["persona_id"], name: "index_influencers_on_persona_id"
+
+  create_table "interests", force: true do |t|
+    t.integer  "persona_id"
+    t.string   "name"
+    t.integer  "value",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "interests", ["persona_id"], name: "index_interests_on_persona_id"
 
   create_table "personas", force: true do |t|
     t.string   "avatar_file_name"

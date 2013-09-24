@@ -1,4 +1,6 @@
 Personal::Application.routes.draw do
+  resources :interests
+
   resources :technologies, only: [:index, :update, :edit, :create, :new, :destroy]
   root 'projects#index'
 
@@ -7,9 +9,11 @@ Personal::Application.routes.draw do
     resources :photos, only: [:show, :new, :edit, :update, :destroy, :create]
     resources :personas do 
       resources :influencers
+      resources :goals, only: [:new, :create, :edit, :update]
+      resources :interests, only: [:new, :create, :edit, :update, :destroy]
     end 
     resources :clients 
-    resources :goals
+    resources :goals, only: [:new, :create, :edit, :update]
     resources :technology_profiles, only: [:new, :edit, :update, :destroy, :create] 
   end
 

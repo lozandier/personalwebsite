@@ -1,0 +1,15 @@
+= form_for([@project, @persona, @interest]) do |f| 
+  .row
+    .large-6.columns
+      = f.label :name
+      = f.text_field :name 
+    .large-6.columns
+      = f.label :value 
+      .row.collapse 
+        .large-9.columns
+          = f.number_field :value, min: 0, max: 5
+        .large-3.columns
+          %span.postfix out of 5
+    .large-6.columns
+      = f.submit
+  
