@@ -4,6 +4,7 @@ class Persona < ActiveRecord::Base
   attr_accessor :approve_persona, :unapprove_persona, :full_name
 
   #special configuration, properties, and actions 
+  CREATIVE_COMMON_ATTRIBUTIONS = %w(None Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
   has_attached_file :avatar  
   has_attached_file :background_image
   extend FriendlyId 

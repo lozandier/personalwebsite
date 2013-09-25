@@ -1,0 +1,7 @@
+.row 
+  %article.influencer.large.12.columns
+    .datum.progress
+      %span.meter{style: "background-color: ##{SecureRandom.hex(3)}; width: #{number_to_percentage(influencer.percentage)}"}
+      %span.influencer= influencer.name
+
+

@@ -33,14 +33,17 @@
 
       %h2 Goals 
       %hr
-      = render 'shared/goal_list'
-    .large-4.columns.persona_meta_data
+      %ul.large-12.columns
+        = render 'shared/goal_list'
+    %aside.large-4.columns.persona_meta_data
       %section
         %h2 Influencers
         %hr
+        = render @persona.influencers
       %section
         %h2 Interests 
         %hr
+        = render @persona.interests 
         
 
     
