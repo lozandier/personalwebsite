@@ -39,6 +39,20 @@
         .large-12.columns
           = f.label :description
           = f.text_area :description
+      
+      .row 
+        .large-12.columns
+          = f.label 'For which project?'
+          = collection_select(:persona, :project_id, Project.all, :id, :title)
+
+      .row
+        .large-4.columns
+          = f.label :creative_commons_license #'Creative Commons License'
+          = f.select :creative_commons_license, Persona::CREATIVE_COMMONS_ATTRIBUTION_LICENSES
+
+        .large-8.columns
+          = f.label :creative_commons_attribution
+          = f.text_field :creative_commons_attribution_link
 
       .row 
         .large-12.columns
@@ -50,10 +64,7 @@
           = f.label :background_image 
           = f.file_field :background_image
 
-      .row 
-        .large-12.columns
-          = f.label 'For which project?'
-          = collection_select(:persona, :project_id, Project.all, :id, :title)
+      
       
       .row 
         .large-12.columns

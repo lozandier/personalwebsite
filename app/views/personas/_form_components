@@ -1,0 +1,69 @@
+.row
+  .large-6.columns
+    = f.label :first_name 
+    = f.text_field :first_name
+
+  .large-6.columns
+    = f.label :last_name 
+    = f.text_field :last_name 
+
+.row 
+  .large-9.columns 
+    = f.label :occupation
+    = f.text_field :occupation
+
+  .large-3.columns
+    = f.label :age 
+    .row.collapse
+      .large-9.columns 
+        = f.number_field :age, min: 0, max: 99, class: 'persona_number_field'
+      .large-3.columns
+        %span.postfix years old
+
+.row 
+  .large-12.columns 
+    = f.label :byline 
+    = f.text_field :byline 
+
+.row
+  .large-12.columns
+    = f.label :description
+    = f.text_area :description
+
+.row 
+  .large-12.columns
+    = f.label 'For which project?'
+    = collection_select(:persona, :project_id, Project.all, :id, :title)
+
+.row
+  .large-4.columns
+    = f.label :creative_commons_license #'Creative Commons License'
+    = f.select :creative_commons_license, Personas::CREATIVE_COMMONS_ATTRIBUTION_LICENSES
+
+  .large-8.columns
+    = f.label :creative_commons_attribution
+    = f.text_field :creative_commons_attribution_link
+
+.row 
+  .large-12.columns
+    = f.label :avatar 
+    = f.file_field :avatar
+
+.row 
+  .large-12.columns 
+    = f.label :background_image 
+    = f.file_field :background_image
+
+
+
+.row 
+  .large-12.columns
+    - if @persona.state.blank? || @persona.state == 'pending' 
+      = f.label "Release Persona Now?"
+      = f.check_box :approve_persona
+    - elsif @persona.state == 'approved'
+      = f.label "Unapprove Persona?"
+      = f.check_box :unapprove_persona
+.row 
+  .large-12.columns 
+    = f.submit

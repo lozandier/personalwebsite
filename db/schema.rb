@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924124452) do
+ActiveRecord::Schema.define(version: 20130925212226) do
 
   create_table "attachments", force: true do |t|
     t.integer  "project_id"
@@ -122,6 +122,9 @@ ActiveRecord::Schema.define(version: 20130924124452) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "creative_commons_license",          default: "None"
+    t.string   "creative_commons_attribution"
+    t.string   "creative_commons_attribution_link"
   end
 
   add_index "personas", ["project_id"], name: "index_personas_on_project_id"

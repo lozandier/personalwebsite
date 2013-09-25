@@ -4,7 +4,7 @@ class Persona < ActiveRecord::Base
   attr_accessor :approve_persona, :unapprove_persona, :full_name
 
   #special configuration, properties, and actions 
-  CREATIVE_COMMON_ATTRIBUTIONS = %w(None Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
+  CREATIVE_COMMONS_ATTRIBUTION_LICENSES = %w(None Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
   has_attached_file :avatar  
   has_attached_file :background_image
   extend FriendlyId 
@@ -12,13 +12,15 @@ class Persona < ActiveRecord::Base
 
   # call backs 
   before_save :perform_state_change
-
+  include NameConcern
   # validations 
   validates :first_name, :last_name, presence: true 
   validates_attachment :avatar, content_type: { content_type: ["image/jpeg", "image/webp", "image/png"] }, size: { less_than: 5.megabyte }
   validates :age, numericality: { greater_than: 0, integer: true }
   validates :description, length: { minimum: 50 }
   validates :byline, length: { maximum: 140 }
+  validates :project, presence: true 
+  validates_with CreativeCommonsValidator
 
   #associations
   belongs_to :project
@@ -50,4 +52,6 @@ class Persona < ActiveRecord::Base
     self.state = 'pending' if unapprove_persona == '1'
   end
 
+
 end
+

@@ -19,12 +19,9 @@ class PersonaDecorator
     "#{age} years old"
   end
 
-  def lkl
-    
-  end
 
   def description
-    "#{persons}".html_safe
+    "#{persona.description}".html_safe
   end
 
 
