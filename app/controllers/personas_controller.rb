@@ -1,6 +1,6 @@
 class PersonasController < ApplicationController
   respond_to :json, :html
-  before_action :get_project
+  before_action :get_project, except: [:new, :edit]
   before_action :get_existing_persona, only: [:edit, :update, :show, :destroy]
 
   def show
@@ -8,13 +8,18 @@ class PersonasController < ApplicationController
   end
 
   def new 
-    @persona = @project.personas.new   
+    if params[:project_id]
+      get_project
+      @persona = @project.personas.new
+    else     
+      @persona = Persona.new
+    end   
   end
 
   def create 
     @persona = @project.personas.new(persona_params)
     if @persona.save 
-      redirect_to project_path(@project), notice: 'New Project'
+      redirect_to project_path(@project), notice: 'New Persona Succesfully Saved'
     else
       render :new 
     end
@@ -45,14 +50,23 @@ class PersonasController < ApplicationController
   private 
 
   def get_project 
-    @project = Project.friendly.find(params[:project_id])
+    if params[:project_id] #if this was called in the context of an existing project... 
+      @project = Project.friendly.find(params[:project_id])
+    else 
+      @project = Project.friendly.find(params[:persona][:project_id])
+    end
   end
 
   def get_existing_persona 
-    @persona = @project.personas.friendly.find(params[:id])
+    if params[:project_id]
+      get_project
+      @persona = @project.personas.friendly.find(params[:id])
+    else 
+      @persona = Persona.friendly.find(params[:id])
+    end
   end
 
   def persona_params
-    params.require(:persona).permit(:avatar, :background_image, :first_name, :last_name, :age, :occupation, :byline, :description, :state, :approve_persona, :unapprove_persona, :full_name)
+    params.require(:persona).permit(:avatar, :background_image, :first_name, :last_name, :age, :occupation, :byline, :description, :state, :approve_persona, :unapprove_persona, :full_name, :project_id)
   end
 end

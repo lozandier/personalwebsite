@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923200144) do
+ActiveRecord::Schema.define(version: 20130924124452) do
 
   create_table "attachments", force: true do |t|
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
   end
 
   add_index "attachments", ["project_id"], name: "index_attachments_on_project_id"

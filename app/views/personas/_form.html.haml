@@ -1,6 +1,6 @@
 .row 
   .large-12.columns 
-    = form_for([@project, @persona]) do |f|
+    = form_for([@persona]) do |f|
       - if @persona.errors.any? 
         %section.row 
           %h2= "There's #{ pluralize(@persona.errors.count, 'error') }"
@@ -45,9 +45,15 @@
           = f.label :avatar 
           = f.file_field :avatar
 
+      .row 
         .large-12.columns 
           = f.label :background_image 
           = f.file_field :background_image
+
+      .row 
+        .large-12.columns
+          = f.label 'For which project?'
+          = collection_select(:persona, :project_id, Project.all, :id, :title)
       
       .row 
         .large-12.columns
@@ -57,7 +63,6 @@
           - elsif @persona.state == 'approved'
             = f.label "Unapprove Persona?"
             = f.check_box :unapprove_persona
-
       .row 
         .large-12.columns 
           = f.submit

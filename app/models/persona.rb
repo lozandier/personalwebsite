@@ -7,7 +7,7 @@ class Persona < ActiveRecord::Base
   has_attached_file :avatar  
   has_attached_file :background_image
   extend FriendlyId 
-  friendly_id :full_name, use: [:slugged, :history]
+  friendly_id :slug_candidates, use: [:slugged, :history]
 
   # call backs 
   before_save :perform_state_change
@@ -23,6 +23,7 @@ class Persona < ActiveRecord::Base
   belongs_to :project
   has_many :influencers 
   has_many :interests 
+  has_many :goals, as: :goalable
 
   # state_machine 
   state_machine :state, initial: :pending do 

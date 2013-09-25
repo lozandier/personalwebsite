@@ -28,4 +28,11 @@ Personal::Application.configure do
   config.assets.debug = true
 
   #config.middleware.use Rack::LiveReload
+=begin 
+  console do 
+    require 'pry'
+    config console = Pry 
+  end
+=end
+
 end

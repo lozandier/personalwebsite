@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-
+  include WorkStates
   #virtual attributes 
   attr_accessor :approve_project, :unapprove_project
 
@@ -33,11 +33,11 @@ class Project < ActiveRecord::Base
   has_many :personas
   has_many :identity_guidelines
   has_many :stages
-  has_many :goals
+  has_many :goals, as: :goalable
+  has_many :attachments
   #has_many :testimonials
   has_many :technologies, through: :technology_profiles 
   has_many :technology_profiles 
-
   # State Machine 
   state_machine :state, initial: :pending do 
 
@@ -51,7 +51,6 @@ class Project < ActiveRecord::Base
       transition any => :pending
     end
   end
-
   def valid_technology_percentages? 
     technology_profiles.sum( :percentage_of_project) <= 100
   end
@@ -60,5 +59,6 @@ class Project < ActiveRecord::Base
     self.state = 'approved' if approve_project == '1' 
     self.state = 'pending' if unapprove_project == '1'
   end
+
 
 end

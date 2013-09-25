@@ -21,7 +21,7 @@
         = link_to 'Edit Persona', edit_project_persona_path(@project, @persona)
         = link_to 'Add Influencer', new_project_persona_influencer_path(@project, @persona)
         = link_to 'Add Interest', new_project_persona_interest_path(@project, @persona)
-        = link_to 'Add Goal', new_project_persona_goal_path(@project, @persona)
+        = link_to 'Add Goal', new_persona_goal_path(@persona)
     
 %div 
   .row 
@@ -30,6 +30,10 @@
       %hr
       :markdown
         #{@persona.description}
+
+      %h2 Goals 
+      %hr
+      = render 'shared/goal_list'
     .large-4.columns.persona_meta_data
       %section
         %h2 Influencers
@@ -37,7 +41,6 @@
       %section
         %h2 Interests 
         %hr
-        .progress
-          %span{style: 'width: 40% ; background: black'}
+        
 
     
