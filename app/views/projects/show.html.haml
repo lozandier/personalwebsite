@@ -1,32 +1,45 @@
 
 %div{ style: "background: black" }
   = image_tag(@project.cover.url)
-%h1= @project.title
-%h2= @project.medium
-%p= @project.description
-%b= @project.state
+  %div 
+    = link_to 'Edit Project', edit_project_path(@project.project)
 
-%div 
-  = link_to 'Edit Project', edit_project_path(@project.project)
+    = link_to 'New Technology Profile', new_project_technology_profile_path(@project.project)
 
-  = link_to 'New Technology Profile', new_project_technology_profile_path(@project.project)
+    = link_to 'New Personas', new_project_persona_path(@project.project)
 
-  = link_to 'New Personas', new_project_persona_path(@project.project)
+    = link_to 'New Attachment', new_project_attachment_path(@project.project)
 
-  = link_to 'New Attachment', new_project_attachment_path(@project.project)
-
-  = link_to 'Add Goals', new_project_goal_path(@project.project)
-
-
+    = link_to 'Add Goals', new_project_goal_path(@project.project)
+    %h1= @project.title
+    %h2= @project.medium
 .row 
-  .large-12.columns
-    %h2 
-      Personas
-      - @project.personas.each do |persona|
-        .row
-          .large-3.small-4.columns
-            = image_tag(persona.avatar.url)
-          .large-9.small-8.columns 
-            = link_to persona.full_name, project_persona_path(@project.project, persona)
+  .large-8.columns
+    %h2 Description 
+    %hr 
+    %p= @project.description
+
+    %h2 Goals 
+    %hr
+
+      - if @project.goals.any? 
+        = render 'shared/goal_list', object: @project 
+      - else 
+        = "This Project doesn't have goals, or it wasn't applicable for this particular project to have goals."
+
+
+  .large-4.columns.complmentnary_information 
+    %section.personas
+      %h2 
+        Personas
+      %hr
+        - if @project.personas.any? #@project.personas.each do |persona|
+          = render @personas
+    %section.attachments
+      %h2 Attachments 
+      %hr
+      - if @project.personas.any?
+        = render @project.attachments
+
 
 

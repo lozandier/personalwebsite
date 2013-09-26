@@ -13,6 +13,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = ProjectDecorator.new( get_project )
+    @personas = @project.personas
+    @attachments = @project.attachments 
+    @goals = @project.goals 
     respond_to do |format| 
       format.html { respond_with @project }
       format.json { respond_with @project.project }

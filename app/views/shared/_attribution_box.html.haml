@@ -1,0 +1,9 @@
+- if object.creative_commons_license != 'None' || object.creative_commons_license.blank? 
+  - # 9/25/13: Bad practice, after Stack to Deep Problem is Fixed, will refactor immediately. 
+  %article.large-12.columns.cc_attribution
+    %figure.large-4.columns.cc_attribution_badge{ class: "#{object.cc_class}" }
+      = "#{object.cc_class}"
+
+    %span.large-8.columns.cc_attribution_explanation
+      %a{href: "#{object.creative_commons_attribution_link}"}= object.creative_commons_attribution 
+

@@ -8,7 +8,7 @@
       = image_tag(@persona.avatar.url)
 
     .large-8.columns
-      %h2= @persona.full_name
+      %h1= @persona.full_name
       %hr
       %p= @persona.byline
       %p.meta_information
@@ -22,10 +22,11 @@
         = link_to 'Add Influencer', new_project_persona_influencer_path(@project, @persona)
         = link_to 'Add Interest', new_project_persona_interest_path(@project, @persona)
         = link_to 'Add Goal', new_persona_goal_path(@persona)
+        = render 'shared/attribution_box', object: @persona
     
 %div 
   .row 
-    .large-8.columns
+    %article.large-8.columns
       %h2 Description
       %hr
       :markdown
@@ -33,7 +34,7 @@
 
       %h2 Goals 
       %hr
-      = render 'shared/goal_list'
+      = render 'shared/goal_list', object: @persona || "This persona had no goals or it wasn't applicable or this particular persona. "
     %aside.large-4.columns.persona_meta_data
       %section
         %h2 Influencers
