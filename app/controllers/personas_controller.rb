@@ -3,6 +3,10 @@ class PersonasController < ApplicationController
   before_action :get_project, except: [:new, :edit]
   before_action :get_existing_persona, only: [:edit, :update, :show, :destroy]
 
+  def index
+    @personas = @project.personas
+  end
+
   def show
     respond_with @persona
   end
@@ -54,6 +58,9 @@ class PersonasController < ApplicationController
       @project = Project.friendly.find(params[:project_id])
     else 
       @project = Project.friendly.find(params[:persona][:project_id])
+    # else
+    #   @persona = Persona.friendly.find(params[:persona][:id])
+    #   @project = Project.friendly.find(@persona.project.id) 
     end
   end
 
@@ -67,6 +74,6 @@ class PersonasController < ApplicationController
   end
 
   def persona_params
-    params.require(:persona).permit(:avatar, :background_image, :first_name, :last_name, :age, :occupation, :byline, :description, :state, :approve_persona, :unapprove_persona, :creative_commons_attribution, :creative_commons_attribution_link, :creative_commons_license)
+    params.require(:persona).permit(:avatar, :background_image, :first_name, :last_name, :age, :occupation, :byline, :description, :state, :approve_persona, :unapprove_persona, :creative_commons_attribution, :creative_commons_attribution_link, :creative_commons_license, :persona_id)
   end
 end

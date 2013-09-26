@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   respond_to :json, :html 
 
   #special action
-  before_action :get_project, only: [:edit, :update ]
+  before_action :get_project, only: [:edit, :update, :destroy ]
   
   def index
     @projects = ProjectDecorator.decorate_projects(Project.all)
@@ -51,7 +51,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    
+    @project.destroy
+    redirect_to projects_path, notice: "Project successfully deleted."
   end
 
 

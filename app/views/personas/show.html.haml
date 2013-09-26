@@ -36,10 +36,11 @@
       %hr
       = render 'shared/goal_list', object: @persona || "This persona had no goals or it wasn't applicable or this particular persona. "
     %aside.large-4.columns.persona_meta_data
-      %section
+      %section.influencers 
         %h2 Influencers
         %hr
-        = render @persona.influencers
+        .data{data: {"influencers-data" => "#{project_persona_path(@project, @persona)}"}}
+          = render @persona.influencers
       %section
         %h2 Interests 
         %hr

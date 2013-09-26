@@ -1,3 +1,6 @@
 %article.attachment
-  %figure.large-2.columns.file_icon{ class: "#{attachment.try(:file_icon_class)}"}
-  %span.large-8.columns{data: {description: "#{attachment.description}"} }= "#{attachment.name}"
+  - if attachment.try(:file_icon_class)
+    %figure.large-2.columns.file_icon{ class: "#{attachment.try(:file_icon_class)}"}
+    %h2.large-8.columns{href: "#{attachment.file.url}", data: {description: "#{attachment.description}"} }= "#{attachment.name}"
+
+  %h2.large-12.columns{  data: {description: "#{attachment.description}"} }= "#{attachment.name}"

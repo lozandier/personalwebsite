@@ -17,7 +17,8 @@
   .large-8.columns
     %h2 Description 
     %hr 
-    %p= @project.description
+    :markdown
+      #{@project.description}
 
     %h2 Goals 
     %hr

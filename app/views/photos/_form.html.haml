@@ -1,0 +1,11 @@
+= form_for([@project, @photo]) do |f|
+  .large-12.columns
+    = f.label :caption
+    = f.text_field :caption
+
+  .large-12.columns
+    = f.label :image 
+    = f.file_field :image
+
+  .large.12.columns
+    = f.submit

@@ -8,5 +8,6 @@ $.ajax '/projects/special-approved/personas/geri-yetz',
   contentType: 'json'
   success: (response)->
     console.log(response)
+    console.log(response.influencers)
     console.log(response.interests)
-i
+
