@@ -1,0 +1,7 @@
+.row 
+  %article.technology_profile.large.12.columns
+    .datum.progress
+      %span.meter{style: "background-color: ##{SecureRandom.hex(3)}; width: #{number_to_percentage(technology_profiles.percentage_of_project)}"}
+      %span.influencer= influencer.name
+- # could have abstracted this out to use two-three locals for the object, how to get its value, and its name, but it's okay. 
+

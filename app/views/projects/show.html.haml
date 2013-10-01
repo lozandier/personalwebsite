@@ -1,6 +1,6 @@
 
 %div{ style: "background: black" }
-  = image_tag(@project.cover.url)
+  = image_tag(@project.main_image.url)
   %div 
     = link_to 'Edit Project', edit_project_path(@project.project)
 
@@ -11,6 +11,8 @@
     = link_to 'New Attachment', new_project_attachment_path(@project.project)
 
     = link_to 'Add Goals', new_project_goal_path(@project.project)
+
+    = link_to 'Add Photos', new_project_photo_path(@project.project)
     %h1= @project.title
     %h2= @project.medium
 .row 
@@ -22,25 +24,50 @@
 
     %h2 Goals 
     %hr
-
-      - if @project.goals.any? 
+      - if @goals.any? 
         = render 'shared/goal_list', object: @project 
       - else 
         = "This Project doesn't have goals, or it wasn't applicable for this particular project to have goals."
 
 
-  .large-4.columns.complmentnary_information 
+  %aside.large-4.columns.complimentary_information{data: {"project-meta-data" => "#{project_path(@project.project)}"}} 
+    %section.technology_profiles 
+      %h2 
+        Knowledge Used
+      %figure.data
+        - if @technology_profiles.any? 
+          = render @technology_profiles 
+        - else
+          = "This project doesn't have a technology profile generated (yet)."
+      %figure.legend 
+        %h3 Legend 
+        .keys
+    %section.photos 
+      %h2 
+        Photos
+      %hr
+      %ul.large-block-grid-3.project_photos
+        - if @photos.any?
+          = render @photos
+        - else
+          = "This project doesn't have photos generated"
     %section.personas
       %h2 
         Personas
       %hr
-        - if @project.personas.any? #@project.personas.each do |persona|
+        - if @personas.any? #@project.personas.each do |persona|
           = render @personas
+        - elsif @project.experiment
+          = "This project being an experiment, personas aren't applicable."
+        - else 
+          = "This project doesn't have any personas associated with it, or it isn't appliable for this project to have Personas"
     %section.attachments
       %h2 Attachments 
       %hr
-      - if @project.personas.any?
+      - if @attachments.any?
         = render @project.attachments
+      - else 
+        = "The project doesn't have any attachments associated with it, or there wasn't any need for attachments for this project"
 
 
 

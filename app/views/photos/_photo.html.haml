@@ -1,0 +1,6 @@
+%li 
+  - if photo.caption?
+    = image_tag(photo.image.url, data: {"image-caption" => "#{photo.caption}"})
+  - else 
+    = image_tag(photo.image.url)
+

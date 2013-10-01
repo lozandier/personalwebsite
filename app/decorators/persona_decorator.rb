@@ -41,28 +41,32 @@ class PersonaDecorator
     content_tag(:div, "#{persona.creative_commons_attribution}")
   end
 
-  def class_box
-    content_tag :div, class: 'large-12.columns' do 
-      raw(
-        cc_class = case persona.creative_commons_license
-          when 'Attribution-ShareAlike'
-            'cc_sa'
-          when 'Attribution-NoDerivs'
-            'cc_nd'
-          when 'Attribution-NonCommercial'
-            'cc_nonc'
-          when 'Attribution-NonCommercial-NoDerivs'
-            'cc_nonc_nd'
-          when 'Attribution-NonCommercial-ShareAlike'
-            'cc_nonc_sa'
-          end
+  def class_box      
+      cc = "Attribution-ShareAlikeS"
 
-          content_tag :figure, class: "large-3-columns creative_commmons_attribution_badge #{cc_class}"
-          content_tag :a, class: 'creative_commons_explanation' do 
-            "#{persona.creative_commons_attribution}"
-          end
-      )
-    end
+      cc_class = case cc 
+      when "Attribution-ShareAlike"
+        "ShareAlike Man"
+      else
+        "Something else "
+      end
+       return content_tag :p, class: 'dragon', do 
+         "#{cc_class}"
+       end
+      # case cc_class.to_s
+      #   when 'Attribution-ShareAlike'
+      #     'cc_sa'
+      #   when 'Attribution-NoDerivs'
+      #     'cc_nd'
+      #   when 'Attribution-NonCommercial'
+      #     'cc_nonc'
+      #   when 'Attribution-NonCommercial-NoDerivs'
+      #     'cc_nonc_nd'
+      #   when 'Attribution-NonCommercial-ShareAlike'
+      #     'cc_nonc_sa'
+      #   else 
+      #     "Nope"
+      #   end
+
   end
-
 end

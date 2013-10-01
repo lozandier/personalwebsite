@@ -1,33 +1,64 @@
-= form_for(@project) do |f| 
-  - if @project.errors.any? 
-    %section
-      %h2= "There's #{ pluralize(@project.errors.count, 'error') }"
-      %p The errors are the following 
-      %ul 
-        - @project.errors.full_messages.each do |message|
-          %li= message
+= form_for(@project) do |f|
 
-  %div 
-    = f.label :title 
-    = f.text_field :title 
-  %div 
-    = f.label :description
-    = f.text_area :description 
+  .row 
+    - if @project.errors.any? 
+      %section
+        %h2= "There's #{ pluralize(@project.errors.count, 'error') }"
+        %p The errors are the following 
+        %ul 
+          - @project.errors.full_messages.each do |message|
+            %li= message
 
-  %div 
-    = f.label :cover
-    = f.file_field :cover 
+  .row
+    .large-12.columns
+      = f.label :title
+      = f.text_field :title
 
-  %div 
-    = f.label :medium 
-    = f.select :medium, Project::MEDIUM_TYPES
+  .row
+    .large-12.columns
+      = f.label :description 
+      = f.text_area :description
 
-  %div 
-    - if @project.state.blank? || @project.state == 'pending' 
-      = f.label "Release Now?"
-      = f.check_box :approve_project
-    - elsif @project.state == 'approved'
-      = f.label "Unapprove Project?"
-      = f.check_box :unapprove_project
-  %div 
-    = f.submit
+  .row 
+    .large-12.columns
+      = f.label :medium, class: 'large-12 columns' 
+      = f.select :medium, Project::MEDIUM_TYPES, class: 'large-12 columns'
+  .row 
+    .large-6.columns
+      = f.label :url 
+      = f.text_field :url 
+
+    .large-6.columns 
+      = f.label :missing_url_reason 
+      = f.text_field :missing_url_reason
+
+  .row 
+    
+    .large-12.columns 
+      = f.label :released_on 
+      = f.date_field :released_on
+
+    .large-6.columns 
+      = f.label :experiment 
+      = f.check_box :experiment
+  .row 
+    .large-6.columns
+      = f.label :main_image
+      = f.file_field :main_image
+ 
+  .row
+    .large-6.columns
+      = f.label :background_image
+      = f.file_field :background_image
+
+  .row 
+    .large-12.columns
+      - if @project.state.blank? || @project.state == 'pending' 
+        = f.label "Release Now?"
+        = f.check_box :approve_project
+      - elsif @project.state == 'approved'
+        = f.label "Unapprove Project?"
+        = f.check_box :unapprove_project
+  .row
+    .large-12.columns
+      = f.submit

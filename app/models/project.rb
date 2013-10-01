@@ -7,6 +7,7 @@ class Project < ActiveRecord::Base
   #business-level scopes 
   
   #default_scope { Project.approved }
+  default_scope { includes(:personas, :attachments, :goals, :photos, :technology_profiles).order(created_at: :desc) }
   scope :approved, -> {where(state: :approved).order(created_at: :desc)} 
   scope :recent, -> {where('created_at > ?', 1.month.ago )}
 
@@ -19,15 +20,20 @@ class Project < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :history]
 
   # Special initializers 
-  has_attached_file :cover
+  has_attached_file :main_image
+  has_attached_file :background_image
 
   # validations 
-  MEDIUM_TYPES = ["Website", "Interactive Document", "Graphic Design", "iPhone App"]
-  
-  validates :title, :description, presence: true 
-  validates_attachment :cover, content_type: { content_type: ["image/jpeg", "image/png", "image/webp"] }
+  MEDIUM_TYPES = ["Website", "Interactive Document", "Graphic Design", "iPhone App"] 
+  validates :title, :description, :released_on, presence: true 
   validates :medium, inclusion: { in: MEDIUM_TYPES }
-
+  validates :experiment, inclusion: { in: [true, false] }
+  validates :url, url: true, if: 'missing_url_reason.blank?'
+  validates_attachment :main_image, content_type: { content_type: ["image/jpeg", "image/png", "image/webp"] }
+  validates_attachment :background_image, content_type: { content_type: ["image/jpeg", "image/png", "image/webp"] }
+  validates_attachment_presence :main_image 
+  validates_with SourceValidator
+  
   # Associations 
   has_many :photos
   has_many :personas
@@ -38,6 +44,7 @@ class Project < ActiveRecord::Base
   #has_many :testimonials
   has_many :technologies, through: :technology_profiles 
   has_many :technology_profiles 
+
   # State Machine 
   state_machine :state, initial: :pending do 
 

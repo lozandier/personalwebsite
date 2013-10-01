@@ -17,7 +17,7 @@
       %p.meta_information
         %strong Occupation: 
         = @persona.occupation
-      %div
+      %div.admin_links 
         = link_to 'Edit Persona', edit_project_persona_path(@project, @persona)
         = link_to 'Add Influencer', new_project_persona_influencer_path(@project, @persona)
         = link_to 'Add Interest', new_project_persona_interest_path(@project, @persona)
@@ -35,16 +35,27 @@
       %h2 Goals 
       %hr
       = render 'shared/goal_list', object: @persona || "This persona had no goals or it wasn't applicable or this particular persona. "
-    %aside.large-4.columns.persona_meta_data
+    %aside.large-4.columns.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
       %section.influencers 
         %h2 Influencers
         %hr
-        .data{data: {"influencers-data" => "#{project_persona_path(@project, @persona)}"}}
-          = render @persona.influencers
-      %section
+        %figure.data
+          - if @influencers.any?
+            = render @influencers 
+          - else content_tag :p, "There is no data regarding influencers for this persona.</p>"
+
+        %figure.legend
+          %h3 Legend 
+          .keys 
+
+      %section.interests 
         %h2 Interests 
         %hr
-        = render @persona.interests 
+        %figure.data
+        - if @interests.any?
+          = render @persona.interests 
+        - else 
+          = content_tag :p, "There is no data regarding interests for this persona (yet)."
         
 
     

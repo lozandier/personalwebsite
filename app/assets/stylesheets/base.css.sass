@@ -3,8 +3,12 @@
 @import 'modular-scale'
 @import 'breakpoint'
 
+$subtle-shadow: drop-shadow(0 1px lighten(#000, 70%))
+
 $pair: 456px 794px 
 
+*, *:before, *:after 
+  box-sizing: border-box
 
 img 
   //filter: blur(18px)
@@ -75,4 +79,67 @@ img
   +postfix($bg: white, $is-button: true )
   +grid-column($columns: 3, $float: left, $collapse: true )
 
-.influencer
+// All pieces of data, whether prototyping for finalizing its form factor will have half the baseline applied to it. 
+
+.datum
+  +grid-row
+  margin-bottom: 1em
+
+.datum > span:nth-child(2), .progress > span:nth-child(2), %datum-label
+  display: inline-block
+  margin-top: .5em // half a leader 
+  margin-bottom: .5em // half a leader 
+
+.influencer, .technology_profile, %datum-container
+  margin-bottom: 2em 
+
+.interest 
+  margin-bottom: 1em 
+
+.legend
+  display: none 
+
+// Temporary Fix for Influencer data; maybe 
+
+a
+  &[href*= ".pdf"]
+    color: red
+    &::before
+      background: red 
+      width: 32px
+      height: 32px
+      display: inline-block
+      margin-right: .5em
+      content: ""
+
+.legend 
+  +grid-row()
+  text-align: center
+  padding-bottom: 1em
+  .key
+    +grid-column($columns: 6)
+    margin-top: 1em
+    margin-bottom: 1em
+
+    .colorblock
+      height: 22px 
+      filter: drop-shadow(0 1px lighten(#000, 70%))
+      border-radius: 2px 
+
+    span
+      font-size: .8em 
+      text-align: center 
+      @extend %datum-label //not working; investigate later
+
+.compimentary_information
+  section
+    +grid-row
+
+.data
+  +grid-row
+  
+  svg
+    display: block 
+    margin: 0 auto 1em
+    filter: $subtle-shadow
+    

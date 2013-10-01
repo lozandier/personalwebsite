@@ -2,17 +2,27 @@
   .large-12.columns 
     = form_for(@technology) do |f| 
       .row
-        .large-6.columns
+        .large-3.columns
           = f.label :color 
           = f.color_field :color
+
+        .large-3.columns
+          = f.label :years_of_experience
+          = f.number_field :years_of_experience
 
         .large-6.columns 
           = f.label :name 
           = f.text_field :name
 
+      .row
+        .large-12.columns
+          = f.label :personal_history 
+          = f.text_field :personal_history 
+
+
       .row 
         .large-12.columns 
-          = f.submit, controller: Persona
+          = f.submit
 
 
 

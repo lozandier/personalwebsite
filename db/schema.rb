@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130925212226) do
+ActiveRecord::Schema.define(version: 20130930202048) do
 
   create_table "attachments", force: true do |t|
     t.integer  "project_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.string   "slug"
   end
 
-  add_index "attachments", ["project_id"], name: "index_attachments_on_project_id"
+  add_index "attachments", ["project_id"], name: "index_attachments_on_project_id", using: :btree
 
   create_table "clients", force: true do |t|
     t.string   "avatar_file_name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "updated_at"
   end
 
-  add_index "clients", ["project_id"], name: "index_clients_on_project_id"
+  add_index "clients", ["project_id"], name: "index_clients_on_project_id", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "goals", force: true do |t|
     t.string   "copy"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "updated_at"
   end
 
-  add_index "identity_guidelines", ["project_id"], name: "index_identity_guidelines_on_project_id"
+  add_index "identity_guidelines", ["project_id"], name: "index_identity_guidelines_on_project_id", using: :btree
 
   create_table "influencers", force: true do |t|
     t.string   "name"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "updated_at"
   end
 
-  add_index "influencers", ["persona_id"], name: "index_influencers_on_persona_id"
+  add_index "influencers", ["persona_id"], name: "index_influencers_on_persona_id", using: :btree
 
   create_table "interests", force: true do |t|
     t.integer  "persona_id"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "updated_at"
   end
 
-  add_index "interests", ["persona_id"], name: "index_interests_on_persona_id"
+  add_index "interests", ["persona_id"], name: "index_interests_on_persona_id", using: :btree
 
   create_table "personas", force: true do |t|
     t.string   "avatar_file_name"
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.string   "creative_commons_attribution_link"
   end
 
-  add_index "personas", ["project_id"], name: "index_personas_on_project_id"
+  add_index "personas", ["project_id"], name: "index_personas_on_project_id", using: :btree
 
   create_table "photos", force: true do |t|
     t.string   "image_file_name"
@@ -140,20 +140,29 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "updated_at"
   end
 
-  add_index "photos", ["project_id"], name: "index_photos_on_project_id"
+  add_index "photos", ["project_id"], name: "index_photos_on_project_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
     t.text     "medium"
-    t.string   "state",              default: "pending"
+    t.string   "state",                         default: "pending"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "background_image_file_name"
+    t.string   "background_image_content_type"
+    t.integer  "background_image_file_size"
+    t.datetime "background_image_updated_at"
+    t.boolean  "experiment"
+    t.date     "released_on"
+    t.string   "url"
+    t.string   "missing_url_reason"
+    t.string   "main_image_file_name"
+    t.string   "main_image_content_type"
+    t.integer  "main_image_file_size"
+    t.datetime "main_image_updated_at"
+    t.integer  "lock_version",                  default: 0
   end
 
   create_table "technologies", force: true do |t|
@@ -161,6 +170,8 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "personal_history"
+    t.integer  "years_of_experience"
   end
 
   create_table "technology_profiles", force: true do |t|
@@ -169,8 +180,8 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.integer "percentage_of_project"
   end
 
-  add_index "technology_profiles", ["project_id"], name: "index_technology_profiles_on_project_id"
-  add_index "technology_profiles", ["technology_id"], name: "index_technology_profiles_on_technology_id"
+  add_index "technology_profiles", ["project_id"], name: "index_technology_profiles_on_project_id", using: :btree
+  add_index "technology_profiles", ["technology_id"], name: "index_technology_profiles_on_technology_id", using: :btree
 
   create_table "testimonals", force: true do |t|
     t.text     "statement"
@@ -179,6 +190,6 @@ ActiveRecord::Schema.define(version: 20130925212226) do
     t.datetime "updated_at"
   end
 
-  add_index "testimonals", ["client_id"], name: "index_testimonals_on_client_id"
+  add_index "testimonals", ["client_id"], name: "index_testimonals_on_client_id", using: :btree
 
 end

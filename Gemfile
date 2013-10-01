@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -67,9 +67,10 @@ group :test, :development do
   gem 'rspec-rails'
 end
 
-gem 'friendly_id', '5.0.0.beta4'
+gem 'friendly_id', github: 'norman/friendly_id'
 
 group :development do 
+  gem 'bullet'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'

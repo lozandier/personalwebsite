@@ -1,0 +1,6 @@
+.large-6.columns
+  %article.technology.row.collapse{style: "border: 1px solid gray"}
+    .color.large-6-columns{style: "background-color: #{technology.color}; overflow:hidden;"}
+    .large-6-columns
+      %h1= technology.name  
+      = link_to 'Edit', edit_technology_path(technology) 

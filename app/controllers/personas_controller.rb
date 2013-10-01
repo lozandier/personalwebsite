@@ -8,6 +8,9 @@ class PersonasController < ApplicationController
   end
 
   def show
+    @interests = @persona.interests 
+    @influencers = @persona.influencers 
+    @goals = @persona.goals 
     respond_with @persona
   end
 
@@ -67,9 +70,9 @@ class PersonasController < ApplicationController
   def get_existing_persona 
     if params[:project_id]
       get_project
-      @persona = @project.personas.friendly.find(params[:id])
+      @persona = @project.personas.includes(:influencers, :interests, :goals).friendly.find(params[:id])
     else 
-      @persona = Persona.friendly.find(params[:id])
+      @persona = Persona.includes(:influencers, :interests, :goals).friendly.find(params[:id])
     end
   end
 

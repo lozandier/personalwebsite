@@ -1,5 +1,5 @@
-.row 
-  %article.interest.large.12.columns
-    .datum.progress
-      %span.meter{style: "background-color: #222; width: #{(interest.value.to_f/5)*100.00}%"}
-      %span.interest= interest.name
+%div.interest
+  .datum.progress
+    %span.meter{style: "background-color: #222; width: #{(interest.value.to_f/5)*100.00}%"}
+  %span.interest_label= interest.name
+

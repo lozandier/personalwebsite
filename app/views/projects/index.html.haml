@@ -2,7 +2,7 @@
 
 - @projects.each do |project| 
   %div.project 
-    =image_tag project.cover.url
+    =image_tag project.main_image.url
     %h2= link_to project.title, project_path(project.project)
   %div.project
     

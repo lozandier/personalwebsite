@@ -1,6 +1,7 @@
-class ProjectDecorator 
+class ProjectDecorator < ActionView::PartialRenderer 
 
   include ActionView::Helpers 
+  
 
   attr_reader :project 
 
@@ -34,8 +35,8 @@ class ProjectDecorator
     kind_of?(ProjectDecorator) 
   end
 
-  def display_goals
-    if project.goals.any? 
+  def display_goals(goals)
+    if goals.any?  
       render 'shared/goal_list', object: project
     else 
       content_tag(:strong, "This Project doesn't have goals, or it wasn't applicable for this particular project to have goals.", class: 'empty_content')

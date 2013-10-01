@@ -1,5 +1,5 @@
 class Persona < ActiveRecord::Base
-
+  default_scope includes(:interests, :influencers).order(:first_name)
   #virtual attributes 
   attr_accessor :approve_persona, :unapprove_persona, :full_name
 

@@ -16,7 +16,9 @@ class ProjectsController < ApplicationController
     @personas = @project.personas
     @attachments = @project.attachments 
     @goals = @project.goals 
-    respond_to do |format| 
+    @photos = @project.photos
+    @technology_profiles = @project.technology_profiles
+    respond_to do | format | 
       format.html { respond_with @project }
       format.json { respond_with @project.project }
     end
@@ -44,10 +46,14 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to project_path, notice: "Project Successfullly Updated" 
+      redirect_to project_path, notice: "Project Successfullly Updated"
+
     else
       render :edit 
     end 
+    rescue ActiveRecord::StaleObjectError
+      flash[:alert] = "Project was updated somewhere else"
+      redirect_to [:edit, @project] 
   end
 
   def destroy
@@ -59,11 +65,11 @@ class ProjectsController < ApplicationController
   private 
 
   def project_params
-    params.require(:project).permit(:title, :medium, :state, :cover, :description, :approve_project, :unapprove_project) 
+    params.require(:project).permit(:title, :medium, :state, :main_image, :background_image, :description, :url, :missing_url_reason, :experiment, :released_on, :approve_project, :unapprove_project, :lock_version) 
   end
 
   def get_project
-    @project = Project.friendly.find(params[:id])
+    @project = Project.includes(:personas, :attachments, :goals, :photos, :technology_profiles).friendly.find(params[:id])
   end
 
 end

@@ -41,7 +41,7 @@ class TechnologiesController < ApplicationController
   private 
 
   def technology_params 
-    params.require(:technology).permit(:name, :color)
+    params.require(:technology).permit(:name, :color, :personal_history, :years_of_experience)
   end
 
   def get_technology
