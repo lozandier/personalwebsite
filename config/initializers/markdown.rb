@@ -13,7 +13,7 @@ module Haml::Filters::Markdown
   private
  
   def markdown
-    @markdown ||= Redcarpet::Markdown.new Redcarpet::Render::HTML, {
+    @markdown ||= Redcarpet::Markdown.new CustomRender, {
       autolink:         true,
       fenced_code:      true,
       generate_toc:     true,

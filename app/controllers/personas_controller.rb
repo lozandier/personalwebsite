@@ -1,10 +1,11 @@
 class PersonasController < ApplicationController
+
   respond_to :json, :html
   before_action :get_project, except: [:new, :edit]
   before_action :get_existing_persona, only: [:edit, :update, :show, :destroy]
 
   def index
-    @personas = @project.personas
+    @personas = @project.personas.decorate
   end
 
   def show
@@ -70,9 +71,9 @@ class PersonasController < ApplicationController
   def get_existing_persona 
     if params[:project_id]
       get_project
-      @persona = @project.personas.includes(:influencers, :interests, :goals).friendly.find(params[:id])
+      @persona = @project.personas.includes(:influencers, :interests, :goals).friendly.find(params[:id]).decorate
     else 
-      @persona = Persona.includes(:influencers, :interests, :goals).friendly.find(params[:id])
+      @persona = Persona.includes(:influencers, :interests, :goals).friendly.find(params[:id]).decorate
     end
   end
 

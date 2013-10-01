@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   before_action :get_project, only: [:edit, :update, :destroy ]
   
   def index
-    @projects = ProjectDecorator.decorate_projects(Project.all)
+    @projects = Project.all.decorate
     respond_with @projects
   end
 
