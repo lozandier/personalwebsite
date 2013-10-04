@@ -1,5 +1,6 @@
 Personal::Application.routes.draw do
 
+  devise_for :admins
   concern :goalable do
     resources :goals, only: [:new, :create, :edit, :update]
   end

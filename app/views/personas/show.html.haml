@@ -13,36 +13,35 @@
       %p= @persona.byline
       %p.meta_information
         %strong Age:   
-        = " #{@persona.age} years old "
+        = @persona.age
       %p.meta_information
         %strong Occupation: 
         = @persona.occupation
+      = @persona.display_attribution 
       %div.admin_links 
         = link_to 'Edit Persona', edit_project_persona_path(@project, @persona)
         = link_to 'Add Influencer', new_project_persona_influencer_path(@project, @persona)
         = link_to 'Add Interest', new_project_persona_interest_path(@project, @persona)
         = link_to 'Add Goal', new_persona_goal_path(@persona)
-        = render 'shared/attribution_box', object: @persona
-    
+        
+        
 %div 
   .row 
     %article.large-8.columns
       %h2 Description
       %hr
-      :markdown
-        #{@persona.description}
+      = @persona.description 
 
       %h2 Goals 
       %hr
-      = render 'shared/goal_list', object: @persona || "This persona had no goals or it wasn't applicable or this particular persona. "
+      = @goals 
+      
     %aside.large-4.columns.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
       %section.influencers 
         %h2 Influencers
         %hr
         %figure.data
-          - if @influencers.any?
-            = render @influencers 
-          - else content_tag :p, "There is no data regarding influencers for this persona.</p>"
+          = @persona.display_associated_collection(@influencers)
 
         %figure.legend
           %h3 Legend 
@@ -52,10 +51,7 @@
         %h2 Interests 
         %hr
         %figure.data
-        - if @interests.any?
-          = render @persona.interests 
-        - else 
-          = content_tag :p, "There is no data regarding interests for this persona (yet)."
+          = @persona.display_associated_collection(@interests)
         
 
     

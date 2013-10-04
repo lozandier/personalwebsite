@@ -3,6 +3,8 @@ class CustomRender < Redcarpet::Render::HTML
 
   def block_code(code, language)
     Pygments.highlight(code, lexer: language)
+    Pygments.css(:style => "monokai")
+
   end
 end
 
@@ -16,6 +18,7 @@ def markdown
     no_intraemphasis: true,
     strikethrough:    true,
     tables:           true,
+    disable_indented_code_blocks: true, 
     superscript:      true
   }
 end

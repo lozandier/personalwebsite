@@ -1,6 +1,7 @@
 @import compass
 @import foundation
 @import 'modular-scale'
+@import 'toolkit'
 @import 'breakpoint'
 
 $subtle-shadow: drop-shadow(0 1px lighten(#000, 70%))
@@ -19,7 +20,11 @@ img
   overflow: hidden
   position: relative
   padding: .5em
-  background-color: black
+  background-color: radial-gradient(ellipse farthest-side at center, rgba(#000, 0), rgba(darken(#222, 50%), 1) )
+  box-shadow: inset 0 0 60px rgba(#000, .95)
+  .no-cssgradients & 
+    background-color: black
+
   z-index: -1
   h2
     color: #fcfcfc
@@ -100,17 +105,48 @@ img
   display: none 
 
 // Temporary Fix for Influencer data; maybe 
+$file-formats: png pdf jpg iso css rb jpg eps yml zip png ppt psd py ott mov mp3 mp4 mpg php sql bmp flv pdf html exe gif avi rar wav txt aac c cpp dmg docx doc h tiff ai 
+$file_icons: 'file_icons'
 
-a
-  &[href*= ".pdf"]
-    color: red
-    &::before
-      background: red 
-      width: 32px
-      height: 32px
-      display: inline-block
-      margin-right: .5em
-      content: ""
+ 
++sprite-map-generator($file_icons)
+
+.attachment
+  h2
+    font-size: 1em 
+    line-height: 64px 
+  a
+    @each $file-format in $file-formats 
+      &[href*= ".#{$file-format}"]
+        
+        +grid-column($columns: 8, $collapse: true )
+        &::before 
+          +svg-background($file_icons, $file-format, $with-dimensions: false)
+          +grid-column($columns: 4, $collapse: true )
+          min-height: 64px
+          height: 100
+          display: inline-block
+          //margin-right: .5em
+          content: " "
+          // background-image: image-url("file_icons/#{$file-format}.png")
+          background-size: 100% 100% 
+          // background-repeat: no-repeat
+    
+$cc_attribution_icons: (
+  cc-by: "by",
+  cc-by-sa: "by-sa",
+  cc-by-nd: "by-nd",
+  cc-by-nc: "by-nc",
+  cc-by-nc-nd: "by-nc-nd",
+  cc-by-nc-sa: "by-nc-sa" 
+) 
++sprite-map-generator($cc_attribution_icons)
+
+.cc_attribution
+  .cc_attribution_badge
+  @each $pair in $map 
+    .#{key}
+      +svg-background($cc_attribution_icons, $value)
 
 .legend 
   +grid-row()

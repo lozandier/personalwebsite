@@ -5,9 +5,27 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 # Use postgreSQL as the database for Active Record
+
+# platform :jruby do 
+#   gem "activerecord-jdbc-adapter"
+#   gem "jdbc-postgres"
+#   gem "therubyrhino"
+#   gem "therubyrhino_jar" 
+#   #gem "jruby-openssl"
+#   gem "jruby-win32ole"
+#   gem "kramdown-man"
+
+# end
+
 gem 'pg'
 
-gem 'yajl-ruby'
+platform :ruby do 
+  
+  
+
+
+end 
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -35,33 +53,41 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'devise'
+
+#gem 'bcrypt-ruby', :require=> 'bcrypt'
+
 gem 'haml'
 
 gem 'paperclip'
 
 gem 'aws-sdk'
 
-gem 'thin'
+gem 'puma'
 
 gem 'state_machine'
 
-gem "draper", github: "drapergem/draper"
+gem "draper",  github: "drapergem/draper"
 
-gem "compass-rails", "~> 2.0.alpha.0"
+gem "compass", github: "chriseppstein/compass"
+
+gem "compass-rails", github: "Compass/compass-rails"
 
 gem "autoprefixer-rails" 
 
 gem 'modular-scale'
 
+gem 'toolkit'
+
+gem 'redcarpet'
 gem 'pygments.rb'
+gem 'yajl-ruby'
 
 
 gem 'breakpoint'
 
 gem 'breakpoint-slicer'
-
-
-
 
 
 gem 'zurb-foundation', '~> 4.0.0'
@@ -72,6 +98,10 @@ gem 'high_voltage'
 
 gem 'awesome_print'
 
+#gem 'eventmachine', '1.0.1'
+
+
+
 group :test, :development do
   gem 'rspec-rails'
 end
@@ -80,6 +110,8 @@ gem 'friendly_id', github: 'norman/friendly_id'
 
 group :development do 
   gem 'bullet'
+  #gem 'pry'
+  #gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
@@ -87,10 +119,7 @@ group :development do
   gem 'guard-livereload'
   gem 'rb-fchange', require: false 
   gem 'rb-inotify', require: false 
-  gem 'redcarpet'
-  #gem 'pry'
-  #gem 'win32console'
-  #gem 'pry-rails'
+ 
 end
 
 group :test do
@@ -100,7 +129,6 @@ end
 
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

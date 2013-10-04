@@ -35,26 +35,76 @@ class PersonaDecorator < Draper::Decorator
 
   def description
     # Feels so good to have proper typography here 
-    markdown.render(persona.description)
+    markdown.render(persona.description).html_safe
   end
 
+  #TODO: Will abstract this for future, inevitable attributes to keep me DRY
+  def display_associated_collection(collection)
+    empty_message = 
+    # If they're equal and it can be read, it's valid; can wrap this into a if class with the latter, but nah.
+      if influencers == collection #&& read_attribute(collection)
+        'There is no data regarding influencers for this persona'
+      elsif interests == collection #&& read_attribute(collection)
+        'There is no data regarding interests for this persona (yet).'
+      end
+      if collection.any?
+        return render collection 
+      else
+        #fail
+        content_tag(:p, empty_message)
+        "#{empty_message}"
+      end
+
+  end
+
+  def goals 
+    if object.goals.any?
+      render object.goals #partial: 'shared/list_goals', collection: object.goals, as: :goal
+    else
+      "This persona had no goals or it wasn't applicable or this particular persona. "
+    end
+  end
+
+  def display_goals(goal_collection)
+    if goal_collection.any?
+      render goal_collection #partial: 'shared/list_goals', collection: object.goals, as: :goal
+    else
+      "This persona had no goals or it wasn't applicable or this particular persona. "
+    end
+  end
   
 
-  def class_box      
-    cc_class = case creative_commons_license
-      when 'Attribution-ShareAlike'
-        'cc_sa'
-      when 'Attribution-NoDerivs'
-        'cc_nd'
-      when 'Attribution-NonCommercial'
-        'cc_nonc'
-      when 'Attribution-NonCommercial-NoDerivs'
-        'cc_nonc_nd'
-      when 'Attribution-NonCommercial-ShareAlike'
-        'cc_nonc_sa'
-      else 
-        "Nope"
-      end
-    return cc_class
+  def display_attribution      
+    if creative_commons_license.downcase != 'none' 
+      cc_class = case creative_commons_license
+        #note: using the conventions of the actual files 
+        when 'Attribution'
+          'cc-by'
+        when 'Attribution-ShareAlike'
+          'cc-by-sa'
+        when 'Attribution-NoDerivs'
+          'cc-by-nd'
+        when 'Attribution-NonCommercial'
+          'cc-by-nc'
+        when 'Attribution-NonCommercial-NoDerivs'
+          'cc-by-nc-nd'
+        when 'Attribution-NonCommercial-ShareAlike'
+          'cc-by-nc-sa'
+        else 
+          "Nope"
+        end
+      a = []
+      content_tag :article, class: "large-12 columns cc_attribution" do 
+        
+        a << (content_tag :figure, class: "large-4 columns cc_attribution_badge #{cc_class}" do 
+          "YEAH"
+        end )
+
+        a << (content_tag :a, href: "#{creative_commons_attribution_link}", class: 'large-8 columns cc_attribution_explanation' do
+          markdown.render(creative_commons_attribution).html_safe 
+        end)
+        a.join.html_safe 
+     end
+    end
   end
 end

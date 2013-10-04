@@ -52,13 +52,6 @@ class ProjectDecorator < Draper::Decorator
     end
   end
 
-  def test_method_state
-    "#{state}"
-  end
-
-  def test_method_state2
-    "#{project.state}"
-  end
 
   def display_personas
     if personas.any?
@@ -78,7 +71,26 @@ class ProjectDecorator < Draper::Decorator
 
   end
 
-  
+  # Needed to be dry, with the above collections most likely to have special code, I've seperated fom the function below 
+
+  def display_associated_collection(collection)
+    empty_message = 
+    # If they're equal and it can be read, it's valid; can wrap this into a if class with the latter, but nah.
+      if technology_profiles  == collection #&& read_attribute(collection)
+        "This project doesn't have a technology profile generated (yet)."
+      elsif photos == collection #&& read_attribute(collection)
+        'No screenshots of this project is available.'
+      end
+
+      if collection.any?
+        return render collection 
+      else
+        #fail
+        content_tag(:p, empty_message)
+        "#{empty_message}"
+      end
+
+  end
 
 
 end

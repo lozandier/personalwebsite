@@ -27,6 +27,18 @@ Personal::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.action_mailer.raise_delivery_errors = true
+
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.gmail.com',
+    :domain         => 'mail.google.com',
+    :port           => 587,
+    :user_name      => 'foo@gmail.com',
+    :password       => '******',
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
   #config.middleware.use Rack::LiveReload
 =begin 
   console do 
