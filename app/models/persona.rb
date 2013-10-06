@@ -4,7 +4,7 @@ class Persona < ActiveRecord::Base
   attr_accessor :approve_persona, :unapprove_persona, :full_name
 
   #special configuration, properties, and actions 
-  CREATIVE_COMMONS_ATTRIBUTION_LICENSES = %w(None Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
+  CREATIVE_COMMONS_ATTRIBUTION_LICENSES = %w(None Attribution Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
   has_attached_file :avatar  
   has_attached_file :background_image
   extend FriendlyId 
@@ -53,24 +53,7 @@ class Persona < ActiveRecord::Base
     self.state = 'pending' if unapprove_persona == '1'
   end
 
-  # 9/25/13: Due to 'Stack to Deep', this view-only definition will be defined here instead
-  # of being inside PersonaDecorator; will be removed immediately and shouldn't be too
-  # relied on 
-
-  def cc_class
-    case creative_commons_license
-      when 'Attribution-ShareAlike'
-        'cc_sa'
-      when 'Attribution-NoDerivs'
-        'cc_nd'
-      when 'Attribution-NonCommercial'
-        'cc_nonc'
-      when 'Attribution-NonCommercial-NoDerivs'
-        'cc_nonc_nd'
-      when 'Attribution-NonCommercial-ShareAlike'
-        'cc_nonc_sa'
-      end
-  end 
+  
 
 end
 

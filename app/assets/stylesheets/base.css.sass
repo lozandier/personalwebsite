@@ -131,27 +131,41 @@ $file_icons: 'file_icons'
           // background-image: image-url("file_icons/#{$file-format}.png")
           background-size: 100% 100% 
           // background-repeat: no-repeat
-    
-$cc_attribution_icons: (
-  cc-by: "by",
-  cc-by-sa: "by-sa",
-  cc-by-nd: "by-nd",
-  cc-by-nc: "by-nc",
-  cc-by-nc-nd: "by-nc-nd",
-  cc-by-nc-sa: "by-nc-sa" 
-) 
+// Won't work with the version of Sass being used by 
+// $cc_attribution_icons_map: (
+//   cc-by: "by"
+//   cc-by-sa: "by-sa"
+//   cc-by-nd: "by-nd"
+//   cc-by-nc: "by-nc"
+//   cc-by-nc-nd: "by-nc-nd"
+//   cc-by-nc-sa: "by-nc-sa" 
+// ) 
+// +sprite-map-generator($cc_attribution_icons)
+
+// .cc_attribution
+//   .cc_attribution_badge
+//   @each $pair in $map 
+//     .#{key}
+//       +svg-background($cc_attribution_icons, $value)
+
+$cc_attribution_icons: "creative_commons"
 +sprite-map-generator($cc_attribution_icons)
+$cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "cc-by-nc" "by-nc","cc-by-nc-nd" "by-nc-nd","cc-by-nc-sa" "by-nc-sa" 
 
 .cc_attribution
   .cc_attribution_badge
-  @each $pair in $map 
-    .#{key}
-      +svg-background($cc_attribution_icons, $value)
+    @each $cc_attribution in $cc_attribution_icons_map
+      &.#{nth($cc_attribution, 1)}
+        +svg-background($cc_attribution_icons, nth($cc_attribution, 2)) 
+
+
+
 
 .legend 
   +grid-row()
   text-align: center
   padding-bottom: 1em
+  
   .key
     +grid-column($columns: 6)
     margin-top: 1em

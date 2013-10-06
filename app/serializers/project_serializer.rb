@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :main_image 
+  attributes :id, :main_image, :medium
   has_many :technology_profiles 
   has_many :personas 
   #has_many :testimonials <TO:DO> 
