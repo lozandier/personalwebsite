@@ -1,0 +1,6 @@
+%li
+  %article.persona
+    = image_tag(persona.avatar.url)
+    %header 
+      %h2= link_to persona.full_name, project_persona_path(persona.project, persona), itemprop: "relatedLink"
+      %p= persona.byline 

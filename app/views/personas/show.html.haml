@@ -1,34 +1,46 @@
+%meta{itemProp: "isPartOf", content:"Personas"}
+%div{ itemscope: true, itemType:"http://schema.org/CreativeWork"}
+  %meta{itemProp: "audience", content: "UX Enthuasiasts"}
+  %meta{itemProp: "accountablePerson creator author", content: "Kevin Lozandier"}
+  %section.persona_spotlight_box
 
-%div.persona_initial_box
-  .background_image
-    = image_tag(@persona.background_image.url)
-  .mask
-  .row
-    .large-4.columns.avatar
-      = image_tag(@persona.avatar.url)
+    .background_image{style: "background-image: url('#{@persona.background_image.url}')"} 
+      =#%img{src: "http://lorempixel.com/1000/500/abstract"}
+    .mask 
+  
+    
+    %div.row
+      .avatar{itemscope: true, itemtype: "http://schema.org/Photograph"}
+        %img{src: "#{@persona.avatar.url}", itemProp: " primaryImageOfPage image url"}
+        = @persona.copyright_meta
+  
 
-    .large-8.columns
-      %h1= @persona.full_name
-      %hr
-      %p= @persona.byline
-      %p.meta_information
-        %strong Age:   
-        = @persona.age
-      %p.meta_information
-        %strong Occupation: 
-        = @persona.occupation
-      = @persona.display_attribution 
-      %div.admin_links 
-        = link_to 'Edit Persona', edit_project_persona_path(@project, @persona)
-        = link_to 'Add Influencer', new_project_persona_influencer_path(@project, @persona)
-        = link_to 'Add Interest', new_project_persona_interest_path(@project, @persona)
-        = link_to 'Add Goal', new_persona_goal_path(@persona)
+
+      %header
+        %h1{itemprop: " name headline about"}= @persona.full_name 
+        %hr
+        %p{itemprop: "alternativeHeadline description"}= @persona.byline  
+        
+        - #TODO Refactor to decorator for V1.1 
+        %div.meta_information_panel
+          %span.meta_information
+            %strong Age 
+            = @persona.age 
+          // 
+          %span.meta_information
+            %strong Occupation 
+            = @persona.occupation
+        = @persona.display_attribution
+        = @persona.admin_links
+
+
         
         
-%div 
+%main 
   .row 
-    %article.large-8.columns
-      %h2 Description
+    %section.primary_information 
+      %meta{ itemprop: "mainContentOfPage", content: "true"}
+      %h2 Biography
       %hr
       = @persona.description 
 
@@ -36,7 +48,7 @@
       %hr
       = @goals 
       
-    %aside.large-4.columns.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
+    %aside.complimentary_information.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
       %section.influencers 
         %h2 Influencers
         %hr

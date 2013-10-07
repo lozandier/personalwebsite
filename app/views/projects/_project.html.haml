@@ -1,7 +1,6 @@
 %article.project
   = image_tag(project.main_image.url)
   %header
-    %h2 
-      = project.title 
+    %h2= link_to project.title, project_path(project) 
     %p 
       = project.display_byline

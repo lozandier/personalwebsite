@@ -72,6 +72,15 @@ class PersonaDecorator < Draper::Decorator
       "This persona had no goals or it wasn't applicable or this particular persona. "
     end
   end
+
+  def copyright_meta
+    if creative_commons_license.downcase != 'none'
+        a = []
+        a << (tag :meta, itemprop: "copyrightHolder accountablePerson creator", content: "#{creative_commons_attribution}") 
+        a <<  (tag :meta, itemprop: "educationalUse", content: "prototyping")
+        a.join.html_safe
+    end
+  end
   
 
   def display_attribution      
@@ -94,10 +103,9 @@ class PersonaDecorator < Draper::Decorator
           "Nope"
         end
       a = []
-      content_tag :article, class: "large-12 columns cc_attribution" do 
+      content_tag :article, class: "cc_attribution" do 
         
-        a << (content_tag :figure, class: "large-4 columns cc_attribution_badge #{cc_class}" do 
-          "YEAH"
+        a << (content_tag :figure, class: "cc_attribution_badge #{cc_class}" do 
         end )
 
         a << (content_tag :a, href: "#{creative_commons_attribution_link}", class: 'large-8 columns cc_attribution_explanation' do
@@ -107,4 +115,16 @@ class PersonaDecorator < Draper::Decorator
      end
     end
   end
+
+
+  def admin_links 
+    content_tag :div, class: 'admin_links ' do 
+      link_to 'Edit Persona', edit_project_persona_path(persona.project, persona)
+      link_to 'Add Influencer', new_project_persona_influencer_path(persona.project, persona)
+      link_to 'Add Interest', new_project_persona_interest_path(persona.project, persona)
+      link_to 'Add Goal', new_persona_goal_path(persona)
+    end
+  end
+
+
 end
