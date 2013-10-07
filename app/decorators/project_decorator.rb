@@ -71,6 +71,12 @@ class ProjectDecorator < Draper::Decorator
 
   end
 
+  def display_byline
+    if byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline)
+  end
+
+
+
   # Needed to be dry, with the above collections most likely to have special code, I've seperated fom the function below 
 
   def display_associated_collection(collection)

@@ -21,7 +21,7 @@
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag
 
-%body
+%body{itemscope: true,  itemtype: "http://schema.org/WebPage"}
   %nav.top-bar
     %ul.title-area 
       %li.name
@@ -34,17 +34,28 @@
     %section.top-bar-section
       %ul.left
         %li.divider
-        %li.has-dropdown
-          %a{href: "#"} Main Item 3 
+        %li
+          %a{href: "#"} Home 
+        %li 
+          %a{href: '#'} About Me 
+
+        %li
+          = link_to 'Projects', projects_path  
 
       %ul.right
         %li.has-dropdown
-          %a{href: "#"} Too Much
+          %a{href: "#"} Admin Page 
           %ul.dropdown
             %li 
-              %label Hi There
-            %li.has-dropdown
-              %a{href: "#"} Main Item 3
-  = yield
+              %label Technology
+            %li
+              = link_to 'Add Technology', new_technology_path  
 
+            %li
+              %label Project 
+            %li  
+              = link_to 'Add Project', new_project_path 
+
+  = yield
   = javascript_include_tag "application"
+

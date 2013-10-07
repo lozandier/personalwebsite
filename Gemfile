@@ -83,8 +83,10 @@ gem 'toolkit'
 
 gem 'redcarpet'
 gem 'pygments.rb'
+
 gem 'yajl-ruby'
 
+gem 'kaminari'
 
 gem 'breakpoint'
 
@@ -99,7 +101,7 @@ gem 'high_voltage'
 
 gem 'awesome_print'
 
-#gem 'eventmachine', '1.0.1'
+#gem 'eventmachine', '1.0.1' WINDOWS ISSUE >I
 
 
 

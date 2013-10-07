@@ -1,0 +1,206 @@
+@import 'foundation'
+@import 'toolkit'
+@import 'breakpoint' 
+@import 'breakpoint-slicer' 
+@import 'modular-scale'
+@import 'special_mixins_and_variables'
+$backup_font_stack: Helvetica, Arial, sans-serif
+$base-font-size: 16px
+$base-line-height: 26.018px
+//$relative-font-sizing: true 
+$font-unit: 1em
++establish-baseline
+
++ms-list-output(0, 5, 16px 1000px, golden())
+
+
+
+*, *:before, *:after 
+  box-sizing: border-box
+
+img 
+  max-width: 100%
+  height: auto 
+
+body 
+  font-style: normal
+  font-weight: 400
+  font-family: nimbus-sans, "Helvetica", "Arial", sans-serif
+
+main
+  perspective: 1060
+  perspective-origin: 50% 50%
+  overflow: visible !important
+
++from(2) 
+  h1 
+    font-family: 'NimbusSansNovusW01-Heav 885942', $backup_font_stack    // line-height: 1.4864864711608219em
+    // font-size: 2.25em
+    font-size: ms(5, 16px 1000px, golden()) 
+    color: #333333
+    // margin-bottom: 0.6944444444444444em
+
+
+  p 
+    font-family: 'NimbusSansNovusW01-Regu', $backup_font_stack
+    font-size: ms(0, 18px 1000px, golden())
+    +trailer(1)
+    // line-height: 1.626em
+    // font-size: 1em
+    // margin-bottom: 1.626em
+
+
+  h2 
+    font-family: 'NimbusSansNovusW01-DBol 885995', $backup_font_stack
+    // font-size: 1.875em
+    font-size: ms(4, 16px 1000px, golden())
+
+
+  h3
+    font-size: ms(3, 16px  1000px, golden())
+
+  h4
+    font-size: ms(2, 16px 1000px, golden())
+
+  h5
+    font-size: ms(1, 16px 1000px, golden())
+
+  h6
+    font-size: ms(0, 16px 1000px, golden())
+
+p.subtitle 
+  color: #A4ADA7
+  // line-height: 1.525390625em
+  // font-size: 1em
+  // font-family: 'NimbusSansNovusW01-Medi 885924'
+  // margin-bottom: 1.526em
+
+strong, b
+  font-family: "NimbusSansNovusW01-DBol 885995", nimbus-sans, Helvetica, sans-serif
+  font-weight: bold 
+
+
+
+
+.headliner
+  +grid-row
+  transform-style: preserve-3d
+
+  
+  //overflow: visible !important // overflow bugs out preserve-3D behavior; took me a long, long time to figure this out
+  
+  & > h1, & > h2, p, h1, h2
+    text-align: center
+
+  h1
+    +adjust-font-size-to(ms(7, 16px 1000px, golden()))
+    +leader(.5)
+
+  h2 
+    padding-left: 1em 
+    padding-right: 1em
+    +trailer(1)
+    color: desaturate(#8AA689, 11)
+
+  & > section, & > .headline_item
+    +grid-column($columns: 4) 
+    text-align: center
+    transition: 2s ease 
+
+  $subtle-test: lighten(#000, 70%)
+
+  &.skillset
+    
+    // .headline_item
+    //   &:first-of-type .headline_item_figure         
+    //     +rotateYAndReset(-50deg)
+    //     border: 1px solid $subtle-test 
+    //     backface-visibility: none 
+    //   &:last-of-type .headline_item_figure 
+    //     +rotateYAndReset(50deg)
+    //     backface-visibility: none 
+    //   &:nth-of-type(2) .headline_item_figure 
+    //     backface-visibility: none 
+
+.headline_item 
+  h2
+
+    +adjust-font-size-to( ms(1, 16px 1000px, golden()) )
+    color: $primary-color  
+    text-align: center
+    +trailer(1, ms(1, 16px 1000px, golden()))
+    +leader(1, ms(1, 16px 1000px, golden()))
+  ul
+    hanging-punctuation: first
+    list-style: none 
+
+    li 
+      text-align: center
+
+.headline_item_figure 
+  font-size: 10em
+  color: $primary-color
+  border-radius: 50%
+  width: 250px
+  height: 250px
+  margin: 0 auto
+  background-color: rgba(desaturate(#8AA689, 11), .2)
+  box-shadow: inset 0px 2px 4px 1px shade( rgba(desaturate(#8AA689, 11), .1), 20%), 0px 1px 1px -2px rgba(#000, .8)
+  filter: drop-shadow(0px -4px rgba(#000, .8))
+  padding: .2em
+  //remember to replace all gray calls with green gray you picked out.
+  //filter: $subtle-shadow
+  transition: 1s ease-out
+  
+  transform-style: preserve-3d
+  
+  span 
+    display: block
+    height: 100%
+    line-height: 220px
+
+
+.technologies
+  +grid-row() 
+
+  h2.subhead
+    +grid-column($columns: 12)
+    text-align: center
+    color: gray
+
+
+
+.technology
+  +grid-row()
+  //+grid-column($columns: 12, $collapse: true)
+  border: 1px solid desaturate(#8AA689, 11) //lighten(gray, 20%)
+  border-radius: 2px
+  box-shadow: 0 2px 4px -2px rgba(#000, .4)
+
+  .technology_logo
+    +grid-column($columns: 4)
+    border-radius: .1em
+    margin-top: 1em
+    margin-bottom: 1em
+    border-radius: 3px
+    margin-right: .5em
+    
+    img 
+      width: 100%
+      border: 1px solid desaturate(#8AA689, 11)//lighten(gray, 40%)
+
+
+  .color_alias 
+    border: none 
+    width: 100%
+    height: 22px
+    background-color: $primary-color
+    content: " "
+    box-shadow: inset 0 3px 0 rgba(#000, .2)
+
+@keyframes pulsing-subtle-shadow
+  from 
+    filter: drop-shadow(0px 2px 2px rgba(#000, .8 ))
+
+
+

@@ -36,7 +36,7 @@ class Project < ActiveRecord::Base
   
   # Associations 
   has_many :photos
-  has_many :personas
+  has_many :personas, counter_cache: true 
   has_many :identity_guidelines
   has_many :stages
   has_many :goals, as: :goalable

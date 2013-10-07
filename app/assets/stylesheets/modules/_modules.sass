@@ -1,0 +1,312 @@
+%spotlight_box
+  @extend %spotlight_box_layout
+  max-height: 650px
+  overflow: hidden
+  position: relative
+  padding: .5em
+  background-color: black
+  z-index: 0
+
+  h1
+    color: #fcfcfc
+
+  p
+    color: lighten(gray, 40%)
+
+  & > header
+  .experiment
+    color: #fcfcfc
+    background-color: #906c6f
+    background-image: radial-gradient(circle at center, rgba(#000, 0), rgba(#000, .1) 95% )
+    text-align: center
+    border-radius: 4px
+    text-shadow: 0px 2px rgba(#222, .6)
+    
+
+
+%spotlight_box_mask
+  @extend %spotlight_box_mask_layout
+  filter: blur(22px)
+  background-color: rgba(black, .5)
+  box-shadow: inset 0px 0px 40px rgba(#000, .6)
+
+.spotlight_box_background_image, .background_image
+  @extend %spotlight_box_mask
+  background-size: cover 
+
+.spotlight_box_mask, .mask
+  @extend %spotlight_box_mask 
+  z-index: -1 
+
+.avatar
+  @extend %avatar_layout 
+  
+
+  img
+    border-radius: 50%
+    filter: drop-shadow(0px 5px 5px rgba(#222, .4))
+    animation: pulsing-subtle-shadow 60s ease 0s infinite reverse
+
+
+.persona_spotlight_box, .project_spotlight_box, .client_spotlight_box, .personal_spotlight_box, .headline_box
+  @extend %spotlight_box 
+
+.headline_box 
+  padding: 0 
+  +from(2)
+    max-height: 318px
+  
+  .mask 
+    background: radial-gradient(circle at top, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 46%), radial-gradient(circle at top, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 46%)
+    background-size: 4px 4px, 4px 4px 
+    background-position: 0px 0px, 2px 2px
+    background-color: none 
+    box-shadow: none 
+    z-index: 2 
+    filter: none  
+  img
+    z-index: 0
+    width: 100%
+
+
+.persona 
+  h2, .persona_header, header
+    +adjust-font-size-to( ms(1, 16px 1000px, golden() ) )
+  p
+    display: none 
+    $just-about-right: .8 * 16px
+    +adjust-font-size-to($just-about-right)
+    +adjust-leading-to(.8, $just-about-right )
+
+    +breakpoint($persona_byline_reveal_breakpoint)
+      display: block
+    
+    +breakpoint($persona_ui_font_change_breakpoint)
+      +adjust-font-size-to(($just-about-right))
+      +adjust-leading-to(.8, ($just-about-right))
+
+    +breakpoint($persona_ui_font_visiblity_for_large_screens_breakpoint)
+      display: none 
+
+.project.thumbnail, .project.thumbnail 
+  @extend .avatar
+
+.project.coming_soon
+  opacity: .3
+// Temporary Fix for Influencer data; maybe 
+$file-formats: png pdf jpg iso css rb jpg eps yml zip png ppt psd py ott mov mp3 mp4 mpg php sql bmp flv pdf html exe gif avi rar wav txt aac c cpp dmg docx doc h tiff ai 
+$file_icons: 'file_icons'
+
+ 
++sprite-map-generator($file_icons)
+
+// Gridception; Prepare to have your mind blown :) 
+.attachment
+  +grid-row($behavior: nest)
+  +trailer(1)
+  
+  +from(2)
+    border-bottom: none 
+
+  h2
+    text-align: center
+    text-align: left
+
+    .svg & 
+      line-height: 128px
+    +from(2)
+      +adjust-font-size-to( ms(1, 16px 1000px, golden() ) )
+      line-height: 64px 
+      text-align: left 
+      text-align: center 
+      white-space: nowrap 
+      text-overflow: ellipsis
+      .svg &
+        line-height: 128px
+        text-align: left
+  
+  a
+    @each $file-format in $file-formats 
+      &[href*= ".#{$file-format}"]
+        +grid-column($columns: 12, $collapse: true )
+        
+        &::before 
+          +svg-background($file_icons, $file-format, $with-dimensions: false)
+          min-height: 64px         
+          display: inline-block
+          background-size: 100% 100%
+          +grid-column($columns: 12)
+          .svg &
+            height: 128px
+            +grid-column($columns: 2, $collapse: true )
+          content: " "
+          +from(2)
+            margin: 0 
+            padding: 0
+            height: 64px
+            +grid-column($columns: 12, $collapse: true )
+            .svg &
+              +grid-column($columns: 4, $collapse: true)
+              height: 128px
+              margin-right: .5em
+
+$cc_attribution_icons: "creative_commons"
++sprite-map-generator($cc_attribution_icons)
+$cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "cc-by-nc" "by-nc","cc-by-nc-nd" "by-nc-nd","cc-by-nc-sa" "by-nc-sa" 
+
+.cc_attribution
+  .cc_attribution_badge
+    @each $cc_attribution in $cc_attribution_icons_map
+      &.#{nth($cc_attribution, 1)}
+        +svg-background($cc_attribution_icons, nth($cc_attribution, 2), $with-dimensions: false) 
+        max-width: 403px
+        min-height: 50px
+      
+.postFix
+  +prefix-postfix-base 
+  +postfix($bg: white, $is-button: true )
+  +grid-column($columns: 3, $float: left, $collapse: true )
+  
+// All pieces of data, whether prototyping for finalizing its form factor will have half the baseline applied to it. 
+
+.datum
+  +grid-row
+  margin-bottom: 1em
+
+.datum > span:nth-child(2), .progress > span:nth-child(2), %datum-label
+  display: inline-block
+  margin-top: .5em // half a leader 
+  margin-bottom: .5em // half a leader 
+
+.influencer, .technology_profile, %datum-container
+  margin-bottom: 2em 
+
+.interest 
+  margin-bottom: 1em 
+
+.legend
+  display: none 
+
+.legend 
+  +grid-row()
+  text-align: center
+  padding-bottom: 1em
+  
+  .key
+    +grid-column($columns: 6)
+    margin-top: 1em
+    margin-bottom: 1em
+
+    .colorblock
+      height: 22px 
+      filter: drop-shadow(0 1px lighten(#000, 70%))
+      border-radius: 2px 
+
+    span
+      font-size: .8em 
+      text-align: center 
+      @extend %datum-label //not working; investigate later
+
+.compimentary_information
+  section
+    +grid-row
+
+.data
+  +grid-row
+  
+  svg
+    display: block 
+    margin: 0 auto 1em
+    filter: $subtle-shadow
+
+// Clients: TODO 
+.client
+  @extend .persona //It'll essentially inherit all of the .persona styling declerations
+
+//related_project 
+.related_project 
+  @extend .persona 
+
+.education_history
+  @extend .persona
+//Headliner 
+
+
+.headliner
+
+  & > h1, & > h2, p, h1, h2
+    text-align: center
+
+  h1
+    +adjust-font-size-to( ms(2, 16px 100px, golden()) ) //2.625em
+    font-size: 5.7vw 
+    min-height: 1em
+    +from(2)
+      +adjust-font-size-to(ms(7, 16px 1000px, golden()))
+      +leader(.5)
+
+  & > h2 
+    padding-left: 1em 
+    padding-right: 1em
+    +trailer(1)
+    color: desaturate(#8AA689, 11)
+    +to(1) // The inverse of my breakpoint
+      font-family: 'NimbusSansNovusW01-Regu', $backup_font_stack
+      font-size: 0.873em
+      color: #222 
+      font-style: normal 
+      font-weight: normal
+
+  & > section, & > .headline_item
+    text-align: center
+    transition: 2s ease 
+
+  $subtle-test: lighten(#000, 70%)
+
+.headline_item 
+  h2
+    font-family: 'NimbusSansNovusW01-Regu', $backup_font_stack
+    font-style: normal 
+    font-weight: normal
+    color: $primary-color  
+    text-align: center
+    +adjust-font-size-to( ms(1, 16px 1000px, golden()) )
+    +trailer(1, ms(1, 16px 1000px, golden()))
+    +leader(1, ms(1, 16px 1000px, golden()))
+  ul
+    hanging-punctuation: first
+    list-style: none 
+
+    li 
+      text-align: center
+
+.headline_item_figure 
+  font-size: 10em
+  color: $primary-color
+  border-radius: 50%
+  width: 250px
+  height: 250px
+  margin: 0 auto
+  background-color: rgba(desaturate(#8AA689, 11), .2)
+  box-shadow: inset 0px 2px 4px 1px shade( rgba(desaturate(#8AA689, 11), .1), 20%), 0px 1px 1px -2px rgba(#000, .8)
+  filter: drop-shadow(0px -4px rgba(#000, .8))
+  padding: .2em
+  //remember to replace all gray calls with green gray you picked out.
+  //filter: $subtle-shadow
+  transition: 1s ease-out
+  
+  transform-style: preserve-3d
+  
+  span 
+    display: block
+    height: 100%
+    line-height: 220px
+
+
+.technology
+  border-radius: 2px
+
+  .technology_log
+    border-radius: 4px
+
+  

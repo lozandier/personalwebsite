@@ -1,0 +1,283 @@
+
+
+/*! Modular Related Layous
+%primary_information, .primary_information 
+  +grid-column($columns: 12)
+  +from(2)
+    +grid-column($columns: 8)
+
+%complimentary_information, .complimentary_information
+  +grid-column($columns: 12)
+  +from(2)
+    +grid-column($columns: 4)
+
+img 
+  max-width: 100%
+
+
+%spotlight_box_layout
+  & > header, header
+    +grid-column($columns: 12)
+
+    +breakpoint($centered_persona_header_breakpoint)
+      +grid-column($columns: 10, $center: true)
+
+    +from(2)
+      +grid-column($columns: 8)
+
+  .meta_information_panel, .meta_information_box 
+    p, .meta_information
+      display: inline-block
+      color: #fcfcfc
+      &:first-child::after 
+        content: '//'
+    +trailer(1)
+
+  .cc_attribution
+    +leader(1)
+    +grid-row($behavior:collapse)
+  
+  .cc_attribution_badge
+    +grid-column($columns:4, $collapse: true)
+    +from(2)
+      +grid-column($columns: 2, $collapse: true)
+
+  .cc_attribution_explanation
+    +grid-column($columns: 8)
+    +adjust-leading-to(2)      
+    +from(2)
+      +grid-column($columns: 10)
+
+  .admin_links
+    +grid-column($columns: 12)
+    margin-top: 0 
+
+  .experiment
+    display: block
+    +trailer(1)
+    padding: .5em
+    
+    +from(2)
+      +grid-column($columns: 2, $last-column: true )
+
+
+
+%spotlight_box_mask_layout
+  filter: blur(22px)
+  background-color: rgba(black, .5)
+  position: absolute 
+  top: 0 
+  left: 0 
+  right: 0 
+  bottom: 0
+  z-index: -1
+  width: 105%
+  height: 105%
+
+  img
+    display: block
+    //height: 100%
+    width: 100%
+    object-fill: cover
+
+%avatar_layout 
+  +trailer(1)
+  +leader(1)
+  +grid-column($columns: 12)
+  +from(2)
+    +grid-column($columns: 4) 
+  
+  
+  // Exception of seperation of concerns 
+
+  img
+    display: block
+    border-radius: 50%
+    height: 250px
+    width: 250px
+    z-index: 20000
+    margin: 0 auto
+    text-align: center
+
+
+
+
+// Photos 
+/*
+  If I REALLY want to be SEO Savvy, I can add a hidden figcaption. 
+$block-grid-point: emCalc(825px)
+
+.block_of_photos 
+  +block-grid($per-row: 3, $spacing: $block-grid-default-spacing, $base-style: true )
+  &.even-out // if # of photos % 3 != 0 
+    +block-grid($per-row: 2, $spacing: $block-grid-default-spacing, $base-style: true )
+  &.edge-case
+    +block-grid($per-row: 1, $spacing: $block-grid-default-spacing, $base-style: true )
+    text-align: center
+    li
+      margin: 0 auto 
+  @media screen and (max-width: $block-grid-point)
+    +block-grid($per-row: 2, $base-style: false)
+
+
+// Personas 
+.persona
+  +grid-row($behavior: "nest")
+  +trailer(1)
+   
+  & > h2, .persona_header, & > header 
+    +leader(0)
+    +grid-column($columns: 8)
+    +adjust-font-size-to( ms(1, 16px 1000px, golden() ) )
+    
+    +from(2)
+      +grid-column($columns:8)
+  h2
+    +leader(0, ms(1, 16px 1000px, golden() ))
+    
+  .persona_thumbnail, img
+    +grid-column($columns: 4)
+
+    +from(2) 
+      +grid-column($columns:4)
+
+// Headline_box 
+
+%usual_image_styling
+  //min-width: 90%
+  display: block
+  margin: 0 auto
+
+.headline_box
+  width: 100%
+  transform-style: preserve-3d
+  background: linear-gradient(to bottom, #000, #222)
+
+  img 
+    @extend %usual_image_styling
+  
+.headliner
+  +grid-row
+  transform-style: preserve-3d
+
+  & > section, & > .headline_item
+    +grid-column($columns: 12)
+    +trailer(2)
+    //$a: emCalc(876px)
+    //+breakpoint( ) 
+    +from(2)
+      +grid-column($columns: 4) 
+  img 
+    @extend %usual_image_styling  
+
+  &.benefits .headline_item 
+    +from(2)
+      +grid-column($columns: 4, $collapse: false)
+
+
+// Technologies Page 
+.technologies
+  +grid-row() 
+
+  h2.subhead
+    +grid-column($columns: 12)
+    text-align: center
+    color: gray
+
+.skillset_block
+  +block-grid($per-row: 1)
+  +breakpoint($split_technology_boxes_breakpoint)
+    +block-grid($per-row: 2,  $base-style: false )
+
+.technology
+  +grid-row($behavior: collapse)
+  position: relative
+
+  .technology_logo
+    +grid-column($columns: 4)
+    overflow: hidden
+    filter: $subtle-shadow
+
+  section
+    +grid-column($columns: 7) // TODO: Oddbug with 8; Investigate after launch
+
+    img 
+      width: 100%
+      //border: 1px solid desaturate(#8AA689, 11)//lighten(gray, 40%)
+      height: 100%
+
+  .color_alias 
+    border: none 
+    width: 100%
+    height: 22px
+    background-color: $primary-color
+    background-image: linear-gradient(to bottom, rgba(#222, .2), rgba(#FFF, .0))
+    content: " "
+    box-shadow: inset 0 4px -1px rgba(#000, .2)
+    +grid-column($columns: 12)
+    //position: absolute  
+    // bottom: 0 
+    // left: 0 
+    // right: 0
+
+.list_of_projects_wrapper 
+  +grid-row($behavior: collapse)
+  // Just want to see what happens 
+
+  .project
+    +grid-column($columns: 12, $collapse: true)
+    +trailer(1)
+
+    +from(2)
+      height: 15em //6.25em, 15.125em   
+
+    header 
+      +breakpoint($switch_project_view_breakpoint)
+        +grid-column($columns: 8)
+
+      h2
+        +adjust-font-size-to( ms(1, 16px 1000px, golden() ) )
+
+    img
+      //width: 100%
+      display: block
+      +grid-column($columns: 12, $collapse: true)
+      +breakpoint($switch_project_view_breakpoint)
+        +grid-column($columns: 4)
+
+
+    +from(2) // edge case 
+      +grid-column($columns: 4, $collapse: false)
+      padding-left: 0em !important
+      display: block
+  
+    // // #Edge case, not worth changing entire mediaquery
+    
+    // @media screen and (width: emCalc(877px))
+    //   +grid-column($columns: 12, $collapse: false)
+    //   padding-left: 0em !important
+    //   display: block
+  
+.list_of_personas_wrapper
+  +grid-column($columns: 12, $collapse: true)
+  +block-grid($per-row: 1)
+  +from(2)
+    +block-grid($per-row: 3)
+  .persona 
+    // +grid-column($columns: 12, $collapse: true)
+    // +from(2)
+    //   +grid-column($columns: 12)
+    +trailer(0)
+    & > header 
+      +leader(0)
+      +grid-column($columns: 8)
+      +adjust-font-size-to( ms(1, 16px 1000px, golden() ) )
+      
+      +from(2)
+        +grid-column($columns: 12)
+    img 
+      +grid-column($columns: 4)
+      +from(2)
+        +grid-column($columns: 12)
+
+ 

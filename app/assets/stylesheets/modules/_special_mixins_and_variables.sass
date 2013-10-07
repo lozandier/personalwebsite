@@ -1,0 +1,33 @@
+
+// Project Specific Functions and Mixins 
+
+// *** Variables *** 
+
+// Major Breakpints 
+$slicer-breakpoints: emCalc(0px) emCalc(876px) // Major Breakpoints 
+
+
+// Minor Breakpoints 
+
+$switch_project_view_breakpoint: emCalc(500px) emCalc(877px)
+
+$centered_persona_header_breakpoint: emCalc(515px) emCalc(876px) // Minor Breakpoint 1: For Persona Header  
+$persona_byline_reveal_breakpoint: emCalc(484px)//emCalc(1333px) // Minor Breakpoint 2
+$persona_ui_font_change_breakpoint: max-width emCalc(613px)
+$persona_ui_font_visiblity_for_large_screens_breakpoint: emCalc(876px) emCalc(1415px)
+
+$split_technology_boxes_breakpoint: emCalc(1048px)
+
+$subtle-shadow: drop-shadow(0 1px lighten(#000, 70%))
+
+// *** Mixins *** 
+
+= rotateYAndReset($deg: 30deg)
+  transform: rotateY($deg)
+  &:hover
+    transform: rotateY(0)
+
+@keyframes pulsing-subtle-shadow
+  from 
+    filter: drop-shadow(0 1px lighten(#000, 60%) )
+

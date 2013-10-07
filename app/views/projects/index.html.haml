@@ -1,9 +1,44 @@
-%h1= "I have #{pluralize(@projects.size, 'project')}"
+%section.headline_box
+  .mask
+  %img{src: "http://lorempixel.com/1000/500/abstract"}
+  
+%main
+  .row 
+    %section.primary_information 
+      %h2 Projects 
+      %hr
+      %p
+        :markdown
+          Throughout the calendar year, in-between my universites duties that are now behind me, I've worked on a variety of projects. From websites to native web applications, I've been busy. The following projects I've done in the past that I can publicly disclose. 
 
-- @projects.each do |project| 
-  %div.project 
-    =image_tag project.main_image.url
-    %h2= link_to project.title, project_path(project.project)
-  %div.project
-    
-    
+          **Note: I'm temporarily displaced; will update this project with more work I can publically disclose after I have time to aquire them.** 
+
+      .list_of_projects_wrapper.masonry-container
+        %article.project
+          %img{src: "http://placehold.it/250x141&text=Project"}
+          %header  
+            %h2 Project Title
+            %p Ne minima libero?
+
+        = render @projects 
+
+    %aside.complimentary_information 
+
+      %section.related_projects   
+        %h2 Basic Stats  
+        %hr
+        %article.related_project
+          %img{src:"http://placehold.it/500/500&text=Persona1"}
+          %header.persona_header
+            %h2 
+              %a 
+                Project 1 
+            %p  A designer moving on the next big thing, one day at a time. She means business. For real
+
+        %article.persona
+          %img{src:"http://placehold.it/500/500&text=Persona1"}
+          %header.persona_header
+            %h2 
+              %a 
+                Projects 
+            %p  A designer moving on the next big thing, one day at a time. She means business. For real
