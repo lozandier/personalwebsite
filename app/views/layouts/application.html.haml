@@ -16,7 +16,7 @@
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
   %title= content_for?(:title) ? yield(:title) : "Untitled"
-
+  %script{src:"http://typecast.com/project_css/kevin-lozandier/904004576bf99.js" } 
   = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
   = csrf_meta_tag

@@ -48,7 +48,7 @@ class ProjectDecorator < Draper::Decorator
     if goals.any?  
       render 'shared/goal_list', object: goals
     else 
-      content_tag(:strong, "This Project doesn't have goals, or it wasn't applicable for this particular project to have goals.", class: 'empty_content')
+      content_tag(:p, "This Project doesn't have goals, or it wasn't applicable for this particular project to have goals.", class: 'empty_content')
     end
   end
 
@@ -56,8 +56,10 @@ class ProjectDecorator < Draper::Decorator
   def display_personas
     if personas.any?
       render personas
+    elsif experiment 
+      "This project being an experiment, personas weren't neceessarily applicable"
     else
-      content_tag :strong, "This project currently doesn't have personas associated with it.", class: "empty_content"
+      content_tag :p, "This project currently doesn't have personas associated with it.", class: "empty_content"
     end
 
   end
@@ -66,16 +68,13 @@ class ProjectDecorator < Draper::Decorator
     if attachments.any?
       render attachments
     else
-      content_tag :strong, "This project currently doesn't have personas associated with it.", class: "empty_content"
+      content_tag :p, "This project currently doesn't have personas associated with it.", class: "empty_content"
     end
-
   end
 
   def display_byline
-    if byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline)
+    byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline)  
   end
-
-
 
   # Needed to be dry, with the above collections most likely to have special code, I've seperated fom the function below 
 
@@ -85,7 +84,7 @@ class ProjectDecorator < Draper::Decorator
       if technology_profiles  == collection #&& read_attribute(collection)
         "This project doesn't have a technology profile generated (yet)."
       elsif photos == collection #&& read_attribute(collection)
-        'No screenshots of this project is available.'
+        'No photos regarding this project are  available.'
       end
 
       if collection.any?
@@ -97,6 +96,42 @@ class ProjectDecorator < Draper::Decorator
       end
 
   end
+
+
+  def admin_links
+    content_tag :div, class: 'admin_links ' do 
+      concat link_to 'Edit Project', edit_project_path(project)
+      
+      concat link_to 'New Technology Profile', new_project_technology_profile_path(project)
+
+      concat link_to 'New Personas', new_project_persona_path(project)
+
+      concat link_to 'New Attachment', new_project_attachment_path(project)
+
+      concat link_to 'Add Goals', new_project_goal_path(project)
+
+      concat link_to 'Add Photos', new_project_photo_path(project)
+    end
+  end
+
+
+  def released_since
+    time_ago_in_words(released_on)
+  end
+
+  def display_experiment_badge  
+      content_tag(:div, 'Experiment', class: 'experiment' ) unless experiment == false 
+  end
+
+  def display_project_link
+    if url.blank? 
+      content_tag :p, missing_url_reason
+    else
+      link_to 'Project can be found here', url
+    end
+  end
+
+
 
 
 end

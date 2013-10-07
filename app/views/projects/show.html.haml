@@ -1,67 +1,80 @@
+%div{ itemscope: true, itemType:"http://schema.org/CreativeWork"}
+  %meta{itemProp: "audience", content: "UX Enthuasiasts"}
+  %meta{itemProp: "accountablePerson creator author", content: "Kevin Lozandier"}
+  %section.project_spotlight_box
 
-%div{ style: "background: black" }
-  = image_tag(@project.main_image.url)
-  %div 
-    = link_to 'Edit Project', edit_project_path(@project.project)
+    .background_image{style: "background-image:url(#{@project.background_image.url})"} 
 
-    = link_to 'New Technology Profile', new_project_technology_profile_path(@project.project)
+    .mask 
+  
+    
+    %div.row
+      .avatar
+        %img{ itemprop: "primaryImageOfPage", src: "#{@project.main_image.url}"}
 
-    = link_to 'New Personas', new_project_persona_path(@project.project)
+      %header
+        %h1{itemprop: "name headline about"}= @project.title
+        %hr
+        %p{itemprop: "alternativeHeadline description"}= @project.description  
 
-    = link_to 'New Attachment', new_project_attachment_path(@project.project)
+        %div.meta_information_panel
+          %span.meta_information
+            %strong Medium  
+            = @project.medium
+          
+          %span.meta_information
+            %strong Released: 
+            = @project.released_since
 
-    = link_to 'Add Goals', new_project_goal_path(@project.project)
+        = @project.display_experiment_badge
 
-    = link_to 'Add Photos', new_project_photo_path(@project.project)
-    %h1= @project.title
-    %h2= @project.medium
-.row 
-  .large-8.columns
-    %h2 Description 
-    %hr 
-    :markdown
-      #{@project.description}
+        = @project.admin_links
 
-    %h2 Goals 
-    %hr
-      @project.display_goals
+        
+%main 
+  .row 
+    %section.primary_information
+      %meta{ itemprop: "mainContentOfPage", content: "true"} 
+      %h2 About Project 
+      %hr 
+      :markdown
+        #{@project.description}
 
-
-  %aside.large-4.columns.complimentary_information{data: {"project-meta-data" => "#{project_path(@project.project)}"}} 
-    %section.technology_profiles 
-      %h2 
-        Knowledge Used
-      %figure.data
-        @project.display_associated_collection(@technology_profiles)
-      %figure.legend 
-        %h3 Legend 
-        .keys
-    %section.photos 
-      %h2 
-        Photos
+      %h2 Goals 
       %hr
-      %ul.large-block-grid-3.project_photos
-        - if @photos.any?
-          = render @photos
-        - else
-          = "This project doesn't have photos generated"
-    %section.personas
-      %h2 
-        Personas
-      %hr
-        - if @personas.any? #@project.personas.each do |persona|
-          = render @personas
-        - elsif @project.experiment
-          = "This project being an experiment, personas aren't applicable."
-        - else 
-          = "This project doesn't have any personas associated with it, or it isn't appliable for this project to have Personas"
-    %section.attachments
-      %h2 Attachments 
-      %hr
-      - if @attachments.any?
-        = render @project.attachments
-      - else 
-        = "The project doesn't have any attachments associated with it, or there wasn't any need for attachments for this project"
+        = @project.display_goals
+
+
+    %aside.complimentary_information{data: {"project-meta-data" => "#{project_path(@project.project)}"}} 
+      %section.technology_profiles 
+        %h2 
+          Knowledge Used
+        %figure.data
+          @project.display_associated_collection(@technology_profiles)
+        %figure.legend 
+          %h3 Legend 
+          .keys
+      %section.photos 
+        %h2 
+          Photos
+        %hr
+        %ul.large-block-grid-3.project_photos
+          =@project.display_associated_collection(@photos)
+
+      %section.personas
+        %h2 
+          Personas
+        %hr
+          = @project.display_personas
+      %section.attachments
+        %h2 Attachments 
+        %hr
+        = @project.display_attachments
+      %section.link_to_project 
+        %h2 
+          Link to Project
+        %hr 
+        = @project.display_project_link
 
 
 
