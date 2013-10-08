@@ -49,7 +49,7 @@ class InterestsController < ApplicationController
     @persona = Persona.friendly.find(params[:persona_id])
   end
 
-  def get_existing_persona 
+  def get_existing_interest
     @interest = @persona.interests.find(params[:id])
   end
 

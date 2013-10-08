@@ -1,0 +1,99 @@
+
+%div{itemscope: true, itemtype: "http://schema.org/Person"}
+  %section.personal_spotlight_box
+    - ab = 'background_banners/my_workspace.jpg'
+    .background_image{style: "background-image: url('#{ asset_path(ab)}')"} 
+      =#%img{src: "http://lorempixel.com/1000/500/abstract"}
+    .mask 
+  
+    
+    %div.row
+      .avatar{itemscope: true, itemtype: "http://schema.org/Photograph"}
+        = image_tag 'profile_image.jpg', alt: "Yours truly, Kevin Lozandier.", itemprop: 'image url primaryImageOfPage'
+
+      %header
+        %h1{itemprop: "name givenName"} Kevin Lozandier 
+        %hr
+        %p 
+          A recent grad hoping to start life after college with a bang as a 
+          %span{ itemprop: "jobTitle makesOffer"} web designer and web developer
+
+        %div.meta_information_panel
+          %span.meta_information
+            %strong Current Location:
+
+            %span{itemprop: "address" }Los Angeles, California
+          // 
+          %span.meta_information
+            %strong Avariable for Freelance Work:
+
+            No; I'm hoping to intern at a web firm this Fall (no start-ups).
+        
+
+
+  %main
+    .row 
+      %section.primary_information 
+        %h2 Biography 
+        %hr
+        %p
+          :markdown
+
+            Hello, my name is Kevin Lozandier. I'm a web developer that was born in the U.S. Virgin Islands, lived most of my life in Denver, CO; and recently graduated from the University of Southern California in Los Angeles, CA.
+ 
+            I love helping people realize their dreams on the internet through code, savvy business and marketing skills; and good 'ol common sense.
+
+            Introduced to front-end development in fifth grade through Denver Public School's Gifted and Talent Program, I've been a web enthusiast practically ever since.  
+
+            
+        %h2 Goals 
+        %hr 
+        %ul.goals_list
+          :markdown
+            - Cut down on non-disclosure-agreement protected work. The benefits they provided me while in College are no longer necessary.
+            - Invest in a Macbook Pro (or be rewarded with one to use as I please) to make more use of my IOS skills  
+            - Release an app on the Windows, Android, and iPhone store simultaneously as a HTML5, CSS3, & Javascript app. 
+            - Work my butt off to afford a Mac Pro <s>so I live out my Darth Vader fantasies</s> 
+            - Be the Sass badass I've always wanted to be, finding reasons to finally my knowledge of Sass to the fullest.  
+            - Open myself to the community more, make effective use of my **Ghost** account (being a backer). 
+            - Get Adobe Certified in the next few months (InDesign, Illustrator, Photoshop)
+
+      %aside.complimentary_information 
+        %section.personal_influencers
+          %h2 What Influences Me
+          %hr
+          %figure.data
+          %figure.legend 
+            %h3 
+              Legend
+            .keys 
+
+        %section.education 
+          %h2 Traditional Education 
+          %hr
+          %article.education_history
+            = link_to image_tag('university_icons/usc_shield.svg'), "http://usc.edu"
+            %header.persona_header
+              %h2{itemprop: "affiliation alumniOf"}
+                %a= link_to "University of Southern California", "http://usc.edu"
+
+              %p  USC Lloyd Greif Center of Entreprenurship Hunt Family Award Winner (Multi-disciplinary excellence) 
+          
+          %article.education_history 
+            = link_to image_tag('university_icons/msu_seal.svg'), "http://msu.edu" 
+            %header 
+              %h2{ itemprop: "affiliation alumniOf"}
+                %a= link_to "Michigan State University", "http://msu.edu" 
+              
+
+              %p  Honors College Student  
+
+          %article.education_history 
+            = link_to image_tag('university_icons/cu_seal.png'), "http://cu.edu" 
+            %header 
+              %h2{itemprop: "affiliation alumniOf"}
+                %a= link_to "University of Colorado", "http://cu.edu" 
+              
+              %p  CU-Succeed Early Opportunity Scholar
+
+

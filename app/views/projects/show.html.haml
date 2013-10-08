@@ -27,8 +27,8 @@
             = @project.released_since
 
         = @project.display_experiment_badge
-
-        = @project.admin_links
+        - if admin_signed_in? 
+          = @project.admin_links
 
         
 %main 
@@ -49,11 +49,12 @@
       %section.technology_profiles 
         %h2 
           Knowledge Used
+        %hr
         %figure.data
-          @project.display_associated_collection(@technology_profiles)
+          =@project.display_associated_collection(@technology_profiles)
         %figure.legend 
           %h3 Legend 
-          .keys
+          .keys{class: "#{@project.class_for_object_amount(@technology_profiles)}"}
       %section.photos 
         %h2 
           Photos

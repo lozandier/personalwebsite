@@ -19,6 +19,7 @@
   %script{src:"http://typecast.com/project_css/kevin-lozandier/904004576bf99.js" } 
   = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
+
   = csrf_meta_tag
 
 %body{itemscope: true,  itemtype: "http://schema.org/WebPage"}
@@ -26,8 +27,7 @@
     %ul.title-area 
       %li.name
         %h1
-          %a{href: "#"} 
-            Top Bar title 
+          = link_to "Kevin Lozandier", root_path  
       %li.toggle-topbar.menu-icon 
         %a 
           %span Menu
@@ -35,27 +35,40 @@
       %ul.left
         %li.divider
         %li
-          %a{href: "#"} Home 
+          = link_to 'Home', root_path
         %li 
-          %a{href: '#'} About Me 
+          = link_to 'About Me', page_path('about_me')
+        
+        %li 
+          = link_to 'Skills', technologies_path
 
         %li
           = link_to 'Projects', projects_path  
 
       %ul.right
-        %li.has-dropdown
-          %a{href: "#"} Admin Page 
-          %ul.dropdown
-            %li 
-              %label Technology
-            %li
-              = link_to 'Add Technology', new_technology_path  
+        - if admin_signed_in? 
+          %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
+          %li.has-dropdown
+            %a{href: "#"} Admin Page 
+            %ul.dropdown
+              %li 
+                %label Technology
+              %li
+                = link_to 'Add Technology', new_technology_path  
 
-            %li
-              %label Project 
-            %li  
-              = link_to 'Add Project', new_project_path 
-
+              %li
+                %label Project 
+              %li  
+                = link_to 'Add Project', new_project_path 
+        - else 
+          %li= link_to 'Sign in', new_admin_session_path
+  
+  - if flash.any?
+    %p.notice= notice 
+    %p.alert= alert 
   = yield
+  = javascript_include_tag 'jquery'
+  = javascript_include_tag 'jquery_ujs'
+  = javascript_include_tag params[:controller]
   = javascript_include_tag "application"
 

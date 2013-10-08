@@ -1,5 +1,5 @@
 %article.project
-  = image_tag(project.main_image.url)
+  = image_tag(project.background_image.url(:showcased))
   %header
     %h2= link_to project.title, project_path(project) 
     %p 

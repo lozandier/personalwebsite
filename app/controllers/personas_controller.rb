@@ -1,4 +1,5 @@
 class PersonasController < ApplicationController
+  before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
 
   respond_to :json, :html
   before_action :get_project, except: [:new, :edit]

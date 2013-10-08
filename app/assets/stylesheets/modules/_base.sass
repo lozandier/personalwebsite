@@ -25,6 +25,9 @@ body
   font-style: normal
   font-weight: 400
   font-family: nimbus-sans, "Helvetica", "Arial", sans-serif
+  background-color: #eef2ee 
+  //background-color: #e5ebe5
+  //background-color: #e2e9e2
 
 meta
   display: none 
@@ -176,21 +179,22 @@ strong, b
 .technology
   +grid-row()
   //+grid-column($columns: 12, $collapse: true)
-  border: 1px solid desaturate(#8AA689, 11) //lighten(gray, 20%)
+  border: 1px solid lighten(desaturate(#8AA689, 11), 20%) //lighten(gray, 20%)
   border-radius: 2px
   box-shadow: 0 2px 4px -2px rgba(#000, .4)
 
-  .technology_logo
+  .technology_logo, & > img, & > figure 
     +grid-column($columns: 4)
-    border-radius: .1em
+    border-radius: .1875em
     margin-top: 1em
     margin-bottom: 1em
-    border-radius: 3px
     margin-right: .5em
+    filter: $subtle-shadow
+    box-shadow: 0px 10px 0px 1px solid lighten(desaturate(#8AA689, 11), 20%)
     
     img 
       width: 100%
-      border: 1px solid desaturate(#8AA689, 11)//lighten(gray, 40%)
+
 
 
   .color_alias 
@@ -206,4 +210,23 @@ strong, b
     filter: drop-shadow(0px 2px 2px rgba(#000, .8 ))
 
 
+.admin_links 
+  display: inline-block 
+  padding: 1em
+  margin: .5em
+  a 
+    margin-right: .5em
+  +from(2)
+    +grid-column($columns: 2)
 
+// Goals 
+
+.goals_list 
+  li 
+    +trailer(.5)
+
+// Top Bar 
+
+.name h1
+  text-transform: uppercase 
+  color: #eef2ee 

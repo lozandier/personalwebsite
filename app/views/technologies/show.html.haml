@@ -1,0 +1,53 @@
+%section.project_spotlight_box
+
+  .background_image{style: "background: rgba(201, 0, 109)"} 
+    =#%img{src: "http://lorempixel.com/1000/500/abstract"}
+  .mask 
+
+  
+  %div.row
+    .avatar
+      = image_tag @technology.image.url(:thumbnail)
+
+    %header
+      %h1= @technology.name 
+      %hr{style: "border-color: #{@technology.color}"}
+      %p= @technology.byline  
+
+      %div.meta_information_panel
+        %span.meta_information
+          %strong{style: "color: #{@technology.color}"} Years of Experience:   
+          = @technology.years_of_experience   
+
+      %admin_links 
+        = link_to 'Edit Technology', edit_technology_path(@technology)
+        
+        = link_to 'Destroy Technology', technology_path(@technoogy), method: :delete, data: { confirm: "Are you sure?"}
+%main
+  .row 
+    %section.primary_information 
+      %h2= "About my experiences with #{@technology.name}"
+      %hr
+      %p= @technology.history 
+          
+    %aside.complimentary_information 
+
+      %section.related_projects   
+        %h2 Related Projects 
+        %hr
+        = render partial: 'projects/related_project', collection: @related_projects, as: :project
+        %article.related_project
+          %img{src:"http://placehold.it/500/500&text=Persona1"}
+          %header.persona_header
+            %h2 
+              %a 
+                Project 1 
+            %p  A designer moving on the next big thing, one day at a time. She means business. For real
+
+        %article.persona
+          %img{src:"http://placehold.it/500/500&text=Persona1"}
+          %header.persona_header
+            %h2 
+              %a 
+                Projects 
+            %p  A designer moving on the next big thing, one day at a time. She means business. For real

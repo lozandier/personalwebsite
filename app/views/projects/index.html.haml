@@ -1,6 +1,5 @@
-%section.headline_box
+%section.headline_box.projects_page
   .mask
-  %img{src: "http://lorempixel.com/1000/500/abstract"}
   
 %main
   .row 
@@ -24,21 +23,7 @@
 
     %aside.complimentary_information 
 
-      %section.related_projects   
+      %section.related_skills  
         %h2 Skills Most Showcased  
         %hr
-        %article.related_project
-          %img{src:"http://placehold.it/500/500&text=Persona1"}
-          %header.persona_header
-            %h2 
-              %a 
-                Project 1 
-            %p  A designer moving on the next big thing, one day at a time. She means business. For real
-
-        %article.persona
-          %img{src:"http://placehold.it/500/500&text=Persona1"}
-          %header.persona_header
-            %h2 
-              %a 
-                Projects 
-            %p  A designer moving on the next big thing, one day at a time. She means business. For real
+        = render partial: 'technologies/technology_showcased', collection: @most_showcased_skills, as: :technology 

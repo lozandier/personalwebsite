@@ -1,0 +1,7 @@
+%article.related_project
+
+  = image_tag(project.main_image.url(:thumbnail))
+  %header
+    %h2= link_to project.title, project_path(project) 
+    %p 
+      = project.display_byline

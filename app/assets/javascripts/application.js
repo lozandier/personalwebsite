@@ -10,13 +10,12 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require_tree .
+// //= require nprogress
+// //= require imagesloaded
+// $(document).foundation();
 
-$(document).foundation();
 
 $(document).on('page:fetch',   function() { NProgress.start(); });
 $(document).on('page:change',  function() { NProgress.done(); });

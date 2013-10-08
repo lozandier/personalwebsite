@@ -1,7 +1,7 @@
 .row
   .large-12
     = form_for([@project, @persona, @influencer]) do |f| 
-      fail
+      = content_tag(:b, "Now you have #{100.0 -@persona.influencers.sum(:percentage)}% left to use for new influencers.")
       .row
         .large-12.columns
           = f.label :name 

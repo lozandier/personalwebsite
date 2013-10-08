@@ -1,4 +1,4 @@
-class PersonaDecorator < Draper::Decorator 
+class PersonaDecorator < ApplicationDecorator  
   include Draper::LazyHelpers 
   decorates_finders
   delegate_all
@@ -57,14 +57,6 @@ class PersonaDecorator < Draper::Decorator
 
   end
 
-  def goals 
-    if object.goals.any?
-      render object.goals #partial: 'shared/list_goals', collection: object.goals, as: :goal
-    else
-      "This persona had no goals or it wasn't applicable or this particular persona. "
-    end
-  end
-
   def display_goals(goal_collection)
     if goal_collection.any?
       render goal_collection #partial: 'shared/list_goals', collection: object.goals, as: :goal
@@ -119,10 +111,11 @@ class PersonaDecorator < Draper::Decorator
 
   def admin_links 
     content_tag :div, class: 'admin_links ' do 
-      link_to 'Edit Persona', edit_project_persona_path(persona.project, persona)
-      link_to 'Add Influencer', new_project_persona_influencer_path(persona.project, persona)
-      link_to 'Add Interest', new_project_persona_interest_path(persona.project, persona)
-      link_to 'Add Goal', new_persona_goal_path(persona)
+      concat link_to 'Edit Persona', edit_project_persona_path(persona.project, persona)
+      concat link_to 'Add Influencer', new_project_persona_influencer_path(persona.project, persona)
+      concat link_to 'Add Interest', new_project_persona_interest_path(persona.project, persona)
+      concat link_to 'Add Goal', new_persona_goal_path(persona)
+      concat link_to 'Delete Persona', project_persona_path(persona.project, persona), method: :delete, data: { confirm: "Are you sure "}
     end
   end
 

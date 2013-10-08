@@ -1,0 +1,25 @@
+.headline_box.home_page 
+  -# Class used to have the image set; again used to give a definite size. Update: Removed
+  .mask
+
+%main
+  %section.headliner.skillset 
+    %div 
+    %h1{ data: {"typer-targets" => "My name is Kevin Lozandier., I make modern web applications., , I love learning new things., I am a rapid prototyper., I value Lean UX., I believe in designing mobile-first."}}
+    %h2 
+      Hello there. I'm a web designer and web developer infatuated with HTML5, Sass, Rails, CoffeeScript, jQuery, and continuously getting better about such things. A recent USC Grad. A Treehouse scholar.
+
+
+  %section.headliner.benefits 
+    %section.headline_item 
+      %figure 
+        = link_to image_tag('benefits/workspace.jpg'), projects_path 
+        %h2= link_to 'A maker of a variety of things.', projects_path    
+    %section.headline_item 
+      %figure.benefit2
+        = link_to image_tag('benefits/web_dev_and_web_designer.png'), technologies_path    
+        %h2= link_to 'A web designer & web developer', technologies_path  
+    %section.headline_item 
+      %figure 
+        =  link_to image_tag('benefits/ready_for_the_real_world.jpg'), page_path('about_me')
+        %h2=  link_to "A recent grad ready for real work.", page_path('about_me')

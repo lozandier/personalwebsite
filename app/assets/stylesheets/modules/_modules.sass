@@ -14,6 +14,7 @@
     color: lighten(gray, 40%)
 
   & > header
+  
   .experiment
     color: #fcfcfc
     background-color: #906c6f
@@ -48,14 +49,51 @@
     animation: pulsing-subtle-shadow 60s ease 0s infinite reverse
 
 
-.persona_spotlight_box, .project_spotlight_box, .client_spotlight_box, .personal_spotlight_box, .headline_box
+// $banners: 'background_banners'
+// +sprite-map-generator($banners, 'retina')
+
+
+.persona_spotlight_box, .project_spotlight_box, .client_spotlight_box, .personal_spotlight_box, .technology_spotlight_box, .headline_box
   @extend %spotlight_box 
 
 .headline_box 
   padding: 0 
+  
   +from(2)
     max-height: 318px
+
+  $background_banners:  home_page home_page_banner, projects_page creative_work_banner, skills_page web_dev_web_design_banner
+  // FML; Data Maps doesn't work with Rails at the moment even with Sass 3.3 bleeding-edge added 
+  @each $background_set in $background_banners
+    
+    &.#{nth($background_set, 1) }
+      background-image: image-url("background_banners/#{nth($background_set, 2)}.jpg") 
+      background-size: cover  
+      min-height: 318px
+      
+      +breakpoint($hidpi)
+        background-image: image-url("background_banners/#{nth($background_set, 2)}.jpg")
   
+  // &.home_page 
+  //   //+retina-background($banners, 'home_page_banner') Too big as a .png :/ 
+  //   background-image: image-url('background_banners/home_page_banner.jpg') 
+  //   background-size: cover  
+  //   min-height: 318px
+  //   +breakpoint($hidpi)
+  //     background-image: image-url('background_banners/home_page_banner@2x.jpg')
+
+
+  // &.skills_page 
+  // // If I do this one more time, I'm doing a nth_child loop 
+  // &.projects_page
+  //   background-image: image-url('background_banners/creative_work_banner.jpg') 
+  //   background-size: cover  
+  //   min-height: 318px
+  //   +breakpoint($hidpi)
+  //     background-image: image-url('background_banners/creative_work_banner@2x.jpg') 
+      
+
+
   .mask 
     background: radial-gradient(circle at top, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 46%), radial-gradient(circle at top, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 46%)
     background-size: 4px 4px, 4px 4px 
@@ -64,6 +102,7 @@
     box-shadow: none 
     z-index: 2 
     filter: none  
+  
   img
     z-index: 0
     width: 100%
@@ -114,6 +153,7 @@ $file_icons: 'file_icons'
 
     .svg & 
       line-height: 128px
+    
     +from(2)
       +adjust-font-size-to( ms(1, 16px 1000px, golden() ) )
       line-height: 64px 
@@ -121,12 +161,14 @@ $file_icons: 'file_icons'
       text-align: center 
       white-space: nowrap 
       text-overflow: ellipsis
+      
       .svg &
         line-height: 128px
         text-align: left
   
   a
     @each $file-format in $file-formats 
+      
       &[href*= ".#{$file-format}"]
         +grid-column($columns: 12, $collapse: true )
         
@@ -140,11 +182,13 @@ $file_icons: 'file_icons'
             height: 128px
             +grid-column($columns: 2, $collapse: true )
           content: " "
+          
           +from(2)
             margin: 0 
             padding: 0
             height: 64px
             +grid-column($columns: 12, $collapse: true )
+            
             .svg &
               +grid-column($columns: 4, $collapse: true)
               height: 128px
@@ -191,7 +235,8 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
   +grid-row()
   text-align: center
   padding-bottom: 1em
-  
+
+  // ignoring putting .keys here for now
   .key
     +grid-column($columns: 6)
     margin-top: 1em
@@ -206,6 +251,11 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
       font-size: .8em 
       text-align: center 
       @extend %datum-label //not working; investigate later
+  
+  .keys.sparse, .keys.odd
+    .key 
+      +grid-column($columns: 12)
+
 
 .compimentary_information
   section
@@ -229,6 +279,13 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
 
 .education_history
   @extend .persona
+
+.technology_showcased
+  @extend .persona
+  figure img 
+    width: 100%
+    padding: 0
+    filter: $subtle-shadow  
 //Headliner 
 
 
@@ -241,6 +298,7 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
     +adjust-font-size-to( ms(2, 16px 100px, golden()) ) //2.625em
     font-size: 5.7vw 
     min-height: 1em
+    
     +from(2)
       +adjust-font-size-to(ms(7, 16px 1000px, golden()))
       +leader(.5)
@@ -250,6 +308,7 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
     padding-right: 1em
     +trailer(1)
     color: desaturate(#8AA689, 11)
+    
     +to(1) // The inverse of my breakpoint
       font-family: 'NimbusSansNovusW01-Regu', $backup_font_stack
       font-size: 0.873em
@@ -273,12 +332,16 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
     +adjust-font-size-to( ms(1, 16px 1000px, golden()) )
     +trailer(1, ms(1, 16px 1000px, golden()))
     +leader(1, ms(1, 16px 1000px, golden()))
+  
   ul
     hanging-punctuation: first
     list-style: none 
 
     li 
       text-align: center
+
+$benefits: 'benefits'
+//+sprite-map-generator($benefits, 'retina')
 
 .headline_item_figure 
   font-size: 10em
@@ -302,11 +365,43 @@ $cc_attribution_icons_map: "cc-by" "by","cc-by-sa" "by-sa","cc-by-nd" "by-nd", "
     height: 100%
     line-height: 220px
 
+.benefit2
+  // +retina-background($benefits, 'web_dev_and_web_designer', $with-dimensions: false )
+  // background-size: cover 
+  object-fill: cover 
 
+
+
+// Technology
 .technology
   border-radius: 2px
+  background-color: #fcfcfc
 
   .technology_log
     border-radius: 4px
 
+.benefits
+  figure img 
+    border-radius: 2px // consider putitng in a variable
+    transition: all 1s ease-in-out
+    filter: drop-shadow(0px 2px 5px rgba(#000, .4)) blur(0px) grayscale(0)
+    &:hover 
+      transition: all 1s ease-in-out
+      filter: drop-shadow(0px 2px 6px rgba(#000, .6))  blur(4px)  grayscale(1)
+
+
   
+// //University logos 
+//TODO: Fix this later
+// $u_logos: 'university_icons'
+// +sprite-map-generator($u_logos)
+
+// .usc_shield, img.usc_shield, figure.usc_shield
+//   +sprite-map-generator($u_logos, 'usc_shield')
+
+
+.meta_information 
+  margin-right: 1em 
+
+  strong 
+    margin-right: .5em

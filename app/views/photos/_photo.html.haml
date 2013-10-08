@@ -1,6 +1,6 @@
 %li 
   - if photo.caption?
-    = image_tag(photo.image.url, data: {"image-caption" => "#{photo.caption}"})
+    =  link_to image_tag(photo.image.url, data: {"image-caption" => "#{photo.caption}" }), asset_url(photo.image.url), class: 'fresco', data: {"fresco-group" => photo.project.title }
   - else 
     = image_tag(photo.image.url)
 

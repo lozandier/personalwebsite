@@ -2,7 +2,7 @@ class Influencer < ActiveRecord::Base
   #validations 
   validates :name, :percentage, :persona, presence: true 
   validates :percentage, numericality: { less_than_or_equal_to: 100}
-
+  validates_with InfluencerValidator
   #associations 
   belongs_to :persona
 

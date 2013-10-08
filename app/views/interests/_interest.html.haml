@@ -1,5 +1,6 @@
 %div.interest
   .datum.progress
     %span.meter{style: "background-color: #222; width: #{(interest.value.to_f/5)*100.00}%"}
-  %span.interest_label= interest.name
+  %span.interest_label= interest.name 
+  = link_to 'Edit interest', edit_project_persona_interest_path(interest.persona.project, interest.persona, interest)
 

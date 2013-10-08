@@ -1,28 +1,37 @@
 .row 
-  .large-12.columns 
-    = form_for(@technology) do |f| 
-      .row
-        .large-3.columns
-          = f.label :color 
-          = f.color_field :color
+  = form_for(@technology) do |f| 
+    .row
+      .large-3.columns
+        = f.label :color 
+        = f.color_field :color
 
-        .large-3.columns
-          = f.label :years_of_experience
-          = f.number_field :years_of_experience
+      .large-3.columns
+        = f.label :years_of_experience
+        = f.number_field :years_of_experience
 
-        .large-6.columns 
-          = f.label :name 
-          = f.text_field :name
+      .large-6.columns 
+        = f.label :name 
+        = f.text_field :name
+    
+    .row 
+      .large-12.columns 
+        = f.label :byline 
+        = f.text_field :byline 
 
-      .row
-        .large-12.columns
-          = f.label :personal_history 
-          = f.text_field :personal_history 
+    .row
+      .large-12.columns
+        = f.label :personal_history 
+        = f.text_area :personal_history 
+    
+    
+    .row
+      .large-12.columns
+        = f.label :image
+        = f.file_field :image
 
-
-      .row 
-        .large-12.columns 
-          = f.submit
+    .row 
+      .large-12.columns 
+        = f.submit
 
 
 

@@ -1,0 +1,9 @@
+.technology_showcased
+  %figure 
+    = image_tag technology.image.url(:thumbnail), class: 'technology_logo'
+  %header  
+    %h3= link_to technology.name, technology_path(technology)
+    %p= technology.byline
+
+
+ 

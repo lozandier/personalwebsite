@@ -4,13 +4,13 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = '101b491324da791026833db06b95265ce52cc57296c09fa41ea801de6c117056911b5d2987df2de4fb5f29afbb9579982533dbd978305170c0d870f1532e2726'
+  config.secret_key = '843a78c0b8cfac01e7a711f58b3cdd7213e71ae3a5b6c17bf0937edb67db3988dfd60b35a34bcd92b8eb65029a1b86dccf559df614c06250c8e72fd9511ec8ec'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'lozandier@gmail.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -98,7 +98,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'b37dd59f3efb04121fd85dcbed1c3bab1cf1c63bcaf403515b400365c3486052141a7ebe2f4fde7adf43eba667afca8c938227036f5ee4699da655cfbca54502'
+  # config.pepper = '6c971584017318ced1e9fc4a5959c4f2458ce6dd5ab93d5afb2cdc1987325a681bac4bca57afc1775a94be57185214651a3a0d90d7c414074f330b19592cbc87'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -208,7 +208,7 @@ Devise.setup do |config|
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
-  # config.default_scope = :user
+   config.default_scope = :admin
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.

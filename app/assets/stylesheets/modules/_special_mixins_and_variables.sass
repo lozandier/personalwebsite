@@ -16,7 +16,7 @@ $persona_byline_reveal_breakpoint: emCalc(484px)//emCalc(1333px) // Minor Breakp
 $persona_ui_font_change_breakpoint: max-width emCalc(613px)
 $persona_ui_font_visiblity_for_large_screens_breakpoint: emCalc(876px) emCalc(1415px)
 
-$split_technology_boxes_breakpoint: emCalc(1048px)
+$split_technology_boxes_breakpoint: emCalc(1048px) //1048
 
 $subtle-shadow: drop-shadow(0 1px lighten(#000, 70%))
 
@@ -30,4 +30,9 @@ $subtle-shadow: drop-shadow(0 1px lighten(#000, 70%))
 @keyframes pulsing-subtle-shadow
   from 
     filter: drop-shadow(0 1px lighten(#000, 60%) )
+
+// Either way I'm good 
+$retina: (-webkit-max-device-pixel-ratio: 1.5), (max--moz-device-pixel-ratio: 1.5), (-o-max-device-pixel-ratio: 3 / 2), (min-resolution: 1.5dppx), (min-resolution: 144dpi)
+$hidpi: min-resolution 1.5dppx
+
 

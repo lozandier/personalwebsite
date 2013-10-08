@@ -1,6 +1,8 @@
-.large-6.columns
-  %article.technology.row.collapse{style: "border: 1px solid gray"}
-    .color.large-6-columns{style: "background-color: #{technology.color}; overflow:hidden;"}
-    .large-6-columns
-      %h1= technology.name  
-      = link_to 'Edit', edit_technology_path(technology) 
+.technology
+  = image_tag technology.image.url(:thumbnail), class: 'technology_logo'
+  %header  
+    %h3{style: "color: #{technology.color}"}= link_to technology.name, technology_path(technology)
+    %p= technology.byline
+  %div.technology.color_alias{style: "background-color: #{technology.color}; overflow:hidden;"}
+
+ 

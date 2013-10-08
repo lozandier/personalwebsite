@@ -1,4 +1,4 @@
-class ProjectDecorator < Draper::Decorator 
+class ProjectDecorator < ApplicationDecorator  
   include Draper::LazyHelpers 
   decorates_finders
   delegate_all 
@@ -111,6 +111,8 @@ class ProjectDecorator < Draper::Decorator
       concat link_to 'Add Goals', new_project_goal_path(project)
 
       concat link_to 'Add Photos', new_project_photo_path(project)
+
+      concat link_to 'Delete Project', project_path(project), method: :delete, data: { confirm: "Are you sure you wnat to delete this project?" }
     end
   end
 

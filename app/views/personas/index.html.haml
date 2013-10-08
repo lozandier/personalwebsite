@@ -2,7 +2,8 @@
 %section.headline_box
 
   
-  %img{src: "http://lorempixel.com/1000/500/abstract"}
+  - if @project 
+    = image_tag @project.background_image.url  
   .mask 
 
   %div.row

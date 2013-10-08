@@ -2,7 +2,12 @@ class TechnologiesController < ApplicationController
   before_action :get_technology, only: [:edit, :update, :show, :destroy]
   
   def index 
-    @technologies = Technology.all 
+    @technologies = Technology.all.decorate
+  end
+
+  def show
+    @technology = TechnologyDecorator.new(@technology)
+    @related_projects = @technology.projects 
   end
 
   def new 
@@ -41,11 +46,11 @@ class TechnologiesController < ApplicationController
   private 
 
   def technology_params 
-    params.require(:technology).permit(:name, :color, :personal_history, :years_of_experience)
+    params.require(:technology).permit(:name, :color, :image, :byline,  :personal_history, :years_of_experience)
   end
 
   def get_technology
-    @technology = Technology.find(params[:id])
+    @technology = Technology.includes(:projects, :technology_profiles).friendly.find(params[:id])
   end
 
 end

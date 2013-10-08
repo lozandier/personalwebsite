@@ -29,8 +29,9 @@ img
     p, .meta_information
       display: inline-block
       color: #fcfcfc
+      
       &:first-child::after 
-        content: '//'
+        content: ' '
     +trailer(1)
 
   .cc_attribution
@@ -135,11 +136,13 @@ $block-grid-point: emCalc(825px)
   h2
     +leader(0, ms(1, 16px 1000px, golden() ))
     
-  .persona_thumbnail, img
+  .persona_thumbnail, img, .thumbnail, figure
     +grid-column($columns: 4)
 
     +from(2) 
       +grid-column($columns:4)
+
+   
 
 // Headline_box 
 
@@ -188,7 +191,8 @@ $block-grid-point: emCalc(825px)
   +block-grid($per-row: 1)
   +breakpoint($split_technology_boxes_breakpoint)
     +block-grid($per-row: 2,  $base-style: false )
-
+  & > li 
+    clear: none !important 
 .technology
   +grid-row($behavior: collapse)
   position: relative
@@ -198,8 +202,12 @@ $block-grid-point: emCalc(825px)
     overflow: hidden
     filter: $subtle-shadow
 
-  section
-    +grid-column($columns: 7) // TODO: Oddbug with 8; Investigate after launch
+  section, header 
+    +grid-column($columns: 7) // TODO: Oddbug with 8; Investigate after launch (V 1.0)
+  
+    h2 > a, h3 > a
+      color: inherit 
+     
 
     img 
       width: 100%

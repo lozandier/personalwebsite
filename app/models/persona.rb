@@ -1,12 +1,15 @@
 class Persona < ActiveRecord::Base
+  include BackgroundImageable 
   default_scope includes(:interests, :influencers).order(:first_name)
   #virtual attributes 
   attr_accessor :approve_persona, :unapprove_persona, :full_name
 
   #special configuration, properties, and actions 
   CREATIVE_COMMONS_ATTRIBUTION_LICENSES = %w(None Attribution Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
-  has_attached_file :avatar  
-  has_attached_file :background_image
+  has_attached_file :avatar, styles: {
+    thumbnail: "279x279#",
+    thumbnail_retina_ready: "558x558#"
+  }
   extend FriendlyId 
   friendly_id :slug_candidates, use: [:slugged, :history]
 
@@ -24,7 +27,7 @@ class Persona < ActiveRecord::Base
   validates_with CreativeCommonsValidator
 
   #associations
-  belongs_to :project
+  belongs_to :project, counter_cache: true 
   has_many :influencers 
   has_many :interests 
   has_many :goals, as: :goalable

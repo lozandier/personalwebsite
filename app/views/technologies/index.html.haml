@@ -1,3 +1,44 @@
-.row 
-  = render @technologies
+.headline_box.skills_page.technology_page
+  .mask
+
+%main
+  %section.headliner.skillset 
+    %div 
+      %h1{ data: {"typer-targets" => "I'm a Designer & Developer., A Recent Grad, A Preprocessor Junkie., A sound marketer, A Rubyist., I like to keep myself DRY., I like to keep learning., I design responsively, I think consumer-first "}}
+    %h2.headline_subheader
+      Utilizing skills from a variety of disciplines, I'm a problem solver.  
     
+    %section.headline_item
+      %div.headline_item_figure
+        %span{data: { icon: "c"}, aria: { hidden: "true" }}
+      %h2 Front-end Skills
+      %ul 
+        %li Sass, Compass, & HAML
+        %li CoffeeScript and Jasmine 
+        %li Angular.js and Backbone 
+        %li Familar with Chrome Dev Tools
+    
+    %section.headline_item
+      %div.headline_item_figure
+        %span{data: { icon: "b"}, aria: { hidden: "true" }} 
+      %h2 Back-end Skills 
+      %ul 
+        %li BDD & TDD Development  
+        %li MongoDB, PostgreSQL, and Wordpress
+        %li PHP, Rails 4, Basic Node.js, Wordpress
+    
+    %section.headline_item
+      %div.headline_item_figure
+        %span{data: { icon: "u"}, aria: { hidden: "true" }}
+      %h2 Other, complimentary skills
+      %ul 
+        %li Git verion control & Github.
+        %li Basic IOS Marketing.
+        %li Not afraid of the console.
+        %li Digital Marketing
+  
+  %section.technologies 
+    %h2.subhead The following skills I've featured on this site: 
+    %technology_container
+      %ul.skillset_block
+        = render partial: 'technologies/technology_in_list', collection: @technologies, as: :technology

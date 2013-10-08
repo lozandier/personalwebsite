@@ -46,7 +46,8 @@
 
       %h2 Goals 
       %hr
-      = @goals 
+      %ul.goals_list
+        = @persona.display_goals(@goals)
       
     %aside.complimentary_information.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
       %section.influencers 
@@ -57,7 +58,7 @@
 
         %figure.legend
           %h3 Legend 
-          .keys 
+          .keys{class: "#{@persona.class_for_object_amount(@influencers)}"}
 
       %section.interests 
         %h2 Interests 

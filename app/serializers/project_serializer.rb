@@ -7,5 +7,6 @@ class ProjectSerializer < ActiveModel::Serializer
 
   embed :ids, include: true 
 
+
   
 end
