@@ -33,6 +33,12 @@
         - if admin_signed_in? 
           = @project.admin_links
 
+%nav
+  %ul.bc 
+    %li 
+      = link_to 'Projects', projects_path 
+    %li.current 
+      = link_to @project.title, project_path(@project)
         
 %main 
   .row 

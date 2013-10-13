@@ -26,14 +26,25 @@ img
       +grid-column($columns: 8)
 
   .meta_information_panel, .meta_information_box 
-    p, .meta_information
-      display: inline-block
-      color: #fcfcfc
-      
-      &:first-child::after 
-        content: ' '
+
+  .meta_information, span.meta_information
+    display: inline-block
+    color: #fcfcfc
+    
+    &:first-child::after 
+      content: ' ' 
+
+    margin-right: 1em
+
     +trailer(1)
 
+    &:last-of-type, &:last-child, &:only-of-type, &:only-child 
+      +trailer(0)  // Not working, strange.
+
+    strong 
+      margin-right: .5em
+      color: #8AA689
+    
   .cc_attribution
     +leader(1)
     +grid-row($behavior:collapse)

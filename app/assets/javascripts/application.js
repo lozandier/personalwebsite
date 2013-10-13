@@ -11,9 +11,7 @@
 // about supported directives.
 //
 //= require foundation
-//= require turbolinks
 // //= require nprogress
-//= require imagesloaded
 // $(document).foundation();
 
 

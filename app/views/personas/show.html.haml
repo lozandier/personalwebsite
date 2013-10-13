@@ -33,8 +33,19 @@
         = @persona.display_attribution
         = @persona.admin_links
 
+%nav
+  %ul.bc 
+    %li 
+      = link_to 'Projects', projects_path 
+      
+    %li 
+      = link_to @project.title, project_path(@project)  
 
-        
+    %li
+      = link_to "Personas for #{@project.title}", project_personas_path(@project)   
+
+    %li.current 
+      = link_to "#{@persona.full_name}", project_persona_path(@project, @persona)   
         
 %main 
   .row 
