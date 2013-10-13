@@ -13,7 +13,7 @@
 //= require foundation
 //= require turbolinks
 // //= require nprogress
-// //= require imagesloaded
+//= require imagesloaded
 // $(document).foundation();
 
 

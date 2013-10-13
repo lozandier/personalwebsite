@@ -1,3 +1,6 @@
+= title "#{@project.title} #{@project.byline}" 
+= description @project.byline 
+
 %div{ itemscope: true, itemType:"http://schema.org/CreativeWork"}
   %meta{itemProp: "audience", content: "UX Enthuasiasts"}
   %meta{itemProp: "accountablePerson creator author", content: "Kevin Lozandier"}
@@ -53,7 +56,7 @@
         %figure.data
           =@project.display_associated_collection(@technology_profiles)
         %figure.legend 
-          %h3 Legend 
+          -#%h3 Legend 
           .keys{class: "#{@project.class_for_object_amount(@technology_profiles)}"}
       %section.photos 
         %h2 

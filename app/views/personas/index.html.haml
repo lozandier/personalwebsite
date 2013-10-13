@@ -1,4 +1,4 @@
-
+= title "#{@project.title}: Personas"  
 %section.headline_box
 
   
@@ -18,22 +18,25 @@
       %hr
       %p
         :markdown
-          Personas are an invaluable tool in the arsenal of a modern web designer, and I'm no different. The following are the personas for the @project project.  
+          Personas are invaluable tools for modern web designers to make use of, and I'm no different. 
 
-          **Note: I'm temporarily displaced; will update this project with more work I can publically disclose after I have time to aquire them. This includes URLs, Photos, Personas, and more.** 
+          Personas have helped me countless times diagnose problems more easily. 
 
-      .list_of_personas_wrapper
+          The following are the personas for the #{@project.title} project  
+
+         
+      %ul.list_of_personas_wrapper.masonry-container
         = render partial: 'personas/persona_inside_list', collection: @personas, as: :persona
     %aside.complimentary_information 
 
       %section.related_projects   
-        %h2 Persona-packed Personas  
+        %h2 Persona-packed Projects  
         %hr
         - # TODO: V1 1.1: Make a collection decorator for these loops 
         - if @persona_packed_projects.any? 
           = render @persona_packed_projects
         - else 
-          %p Huh... It seems Personas are sparse on the website at the moment to the extent there's no projects with more than 1 persona.
+          %p Huh... It seems Personas are sparse on the website at the moment to the extent there's no project with more than 1 persona.
 
           %p Probably a bug. Please visit some other time, and this should be fixed. :)  
 

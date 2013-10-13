@@ -50,8 +50,9 @@ img
       +grid-column($columns: 10)
 
   .admin_links
-    +grid-column($columns: 12)
+    +grid-column($columns: 12, $collapse: true)
     margin-top: 0 
+    padding: 0
 
   .experiment
     display: block
@@ -200,7 +201,6 @@ $block-grid-point: emCalc(825px)
   .technology_logo
     +grid-column($columns: 4)
     overflow: hidden
-    filter: $subtle-shadow
 
   section, header 
     +grid-column($columns: 7) // TODO: Oddbug with 8; Investigate after launch (V 1.0)

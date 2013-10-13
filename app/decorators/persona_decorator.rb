@@ -32,6 +32,12 @@ class PersonaDecorator < ApplicationDecorator
      "#{persona.age} years old"
   end
 
+  def image  
+    image_tag avatar.url(:thumbnail), alt: full_name, data: {interchange: "[#{avatar.url(:thumbnail_retina_ready)}, (only screen and (max-width: 500px))],[#{avatar.url(:thumbnail_retina_ready)}, (only screen and (max-width: 640px))]"}  
+  end
+
+  def image_avatar 
+  end
 
   def description
     # Feels so good to have proper typography here 

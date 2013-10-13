@@ -1,3 +1,7 @@
+= title "#{@technology.name}: #{@technology.byline}" 
+= description @technology.byline
+
+
 %section.project_spotlight_box
 
   .background_image{style: "background: rgba(201, 0, 109)"} 
@@ -19,10 +23,14 @@
           %strong{style: "color: #{@technology.color}"} Years of Experience:   
           = @technology.years_of_experience   
 
-      %admin_links 
-        = link_to 'Edit Technology', edit_technology_path(@technology)
-        
-        = link_to 'Destroy Technology', technology_path(@technoogy), method: :delete, data: { confirm: "Are you sure?"}
+      = @technology.admin_links
+%nav
+  %ul.bc 
+    %li 
+      = link_to 'Skills', technologies_path 
+    %li
+      = link_to @technology.name, technologies_path(@technology), class: 'current'
+
 %main
   .row 
     %section.primary_information 

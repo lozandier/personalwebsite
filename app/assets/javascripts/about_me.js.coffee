@@ -1,5 +1,8 @@
+#= require jquery
+#= require d3.v3.min 
+
 $pie_chart_height = 250
-$bart_shart_height =400
+$bar_chart_height =400
 #it's shared, so it's makes sense to not make a distinguish 
 $width = 250
 
@@ -8,10 +11,12 @@ $outerRadius = $width/2
 $innerRadius = $width/ 3.14 
 
 dataset =   [
-  { id: 1, name: "Money", percentage: 10 }
-  { id: 2, name: "Learning from established staff", percentage: 50}
-  { id: 3, name: "Culture", percentage: 20}
-  { id: 4, name: "Skill-building", percentage: 30 }
+  { id: 1, name: "Money", percentage: 5 }
+  { id: 2, name: "Working on new projects throughout the calendar year", percentage: 40}
+  { id: 4, name: "Opportunities to learn new skills", percentage: 15 }
+  { id: 5, name: "Opportunities to justify work with clients directly", percentage: 10}
+  { id: 6, name: "Cross-functional teamwork between developers and designers", percentage: 20 }
+  { id: 7, name: "A workflow that emphasizes mobile-first develment", percentage: 10}
 ]
 
 console.log "The data set is #{dataset}"
@@ -75,6 +80,6 @@ legend_keys = legend_keys_container.selectAll("div.key")
   individual_keys = d3.selectAll('.key')
   individual_keys.append('span')
     .text (d)->
-      "#{d.name} (#{d.percentage})"
+      "#{d.name} (#{d.percentage}%)"
 
   $('.legend').fadeIn('400')
