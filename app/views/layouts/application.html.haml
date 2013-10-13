@@ -15,10 +15,11 @@
   -# Set the viewport width to device width for mobile
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
-  %title= content_for?(:title) ? yield(:title) : "Untitled"
+  %title= content_for?(:title) ? yield(:title) : "My name is Kevin Lozander. I'm a web designer and a web developer. Above anything else, I'm a modern problem solver. "
   %script{src:"http://typecast.com/project_css/kevin-lozandier/904004576bf99.js" } 
   = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
+  =# javascript_include_tag 'filter_polyfill'
 
   = csrf_meta_tag
 
@@ -71,5 +72,6 @@
   = javascript_include_tag 'jquery_ujs'
   = javascript_include_tag 'turbolinks'
   = javascript_include_tag params[:controller]
-  = javascript_include_tag "application"
-
+  -# = javascript_include_tag "application"
+  -# = javascript_include_tag "/js/lib/cssParser" 
+  -# = javascript_include_tag "/js/lib/css-filters-polyfill"

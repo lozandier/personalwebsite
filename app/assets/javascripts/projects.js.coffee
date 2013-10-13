@@ -7,7 +7,7 @@
 #= require masonry
 #= require fresco
 console.log("Why you no  work?!!! #{d3}")
-$(document).on 'page:load',  -> 
+$ -> 
 
   $masonryActive = false 
 

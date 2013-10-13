@@ -95,7 +95,7 @@ gem 'breakpoint'
 gem 'breakpoint-slicer'
 
 
-gem 'zurb-foundation', '~> 4.0.0'
+gem 'zurb-foundation', '~> 4.3.0'
 
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 

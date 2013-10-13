@@ -14,15 +14,11 @@
   .row 
     %section.primary_information
       %meta{ itemprop: "mainContentOfPage", content: "true"} 
-      %h2 Personas 
+      %h2 Personas for #{@project.title if @project.presence}
       %hr
       %p
         :markdown
-          Personas are invaluable tools for modern web designers to make use of, and I'm no different. 
-
-          Personas have helped me countless times diagnose problems more easily. 
-
-          The following are the personas for the #{@project.title} project  
+          Personas are invaluable tools for modern web designers to make use of, and I'm no different.  Personas have helped me countless times diagnose problems more easily. The following are the personas for the #{@project.title} project  
 
          
       %ul.list_of_personas_wrapper.masonry-container
