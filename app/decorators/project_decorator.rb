@@ -2,10 +2,7 @@ class ProjectDecorator < ApplicationDecorator
   include Draper::LazyHelpers 
   decorates_finders
   delegate_all 
-
-   
-
-  decorates_associations :personas
+  decorates_associations :personas, :technologies, :photos
 
    
 
@@ -43,6 +40,20 @@ class ProjectDecorator < ApplicationDecorator
   # def is_decorated? 
   #   kind_of?(ProjectDecorator) 
   # end
+
+
+  def item_image  
+    link_to( image_tag(background_image.url(:showcased), data: {interchange: "[#{background_image.url(:showcased_retina_ready)}, (retina)]"}), project_path(project), itemprop: 'relatedLink', "data-no-turbolink" => true )
+  end
+
+
+  def related_item_image 
+     link_to( image_tag(main_image.url(:thumbnail), data: {interchange: "[#{main_image.url(:thumbnail_retina_ready)}, (retina)]"}), project_path(project), itemprop: 'relatedLink', "data-no-turbolink" => true )
+  end
+
+  def spotlight_image 
+    image_tag main_image.url(:thumbnail), data: {interchange: "[#{main_image.url(:thumbnail_retina_ready)}, (retina)]"}, itemprop: 'primaryImageOfPage image url'
+  end
 
   def display_goals
     if goals.any?  

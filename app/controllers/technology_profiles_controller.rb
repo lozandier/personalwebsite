@@ -31,7 +31,11 @@ class TechnologyProfilesController < ApplicationController
   end
 
   def destroy
-
+    if @technology_profile.destroy 
+      redirect_to @project 
+    else 
+      redirect_to @project, alert: "Unable to delete this technology profile."
+    end
   end
 
   private 

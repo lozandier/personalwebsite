@@ -1,6 +1,7 @@
 .technology
   %figure.technology_logo
-    = link_to image_tag(technology.image.url(:thumbnail)), technology_path(technology)
+    = technology.regular_image
+
   %header  
     %h3{style: "color: #{technology.color}"}= link_to technology.name, technology_path(technology)
     %p= technology.byline

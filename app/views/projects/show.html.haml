@@ -64,6 +64,10 @@
         %figure.legend 
           %h3 Legend 
           .keys{class: "#{@project.class_for_object_amount(@technology_profiles)}"}
+      -if admin_signed_in?
+        %section.edit_technology_profiles 
+          %h2 Edit Technology Profiles
+          = @project.display_associated_collection(@technology_profiles)
       %section.photos 
         %h2 
           Photos

@@ -2,5 +2,8 @@
   .datum.progress
     %span.meter{style: "background-color: ##{SecureRandom.hex(3)}; width: #{number_to_percentage(technology_profile.percentage_of_project)}"}
     %span.technology_profile_label= technology_profile.technology.name
+    - if admin_signed_in? 
+      = link_to 'Edit', edit_project_technology_profile_path(technology_profile.project, technology_profile)
+      = link_to 'Delete', project_technology_profile_path(technology_profile.project, technology_profile), method: :delete, data: { confirm: 'Are you sure' }
 - # could have abstracted this out to use two-three locals for the object, how to get its value, and its name, but it's okay. 
 

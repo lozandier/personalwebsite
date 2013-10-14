@@ -14,13 +14,16 @@
   %section.headliner.benefits 
     %section.headline_item 
       %figure 
-        = link_to image_tag('benefits/workspace.jpg'), projects_path 
+        = link_to image_tag('benefits/workspace.jpg', data: {interchange: "[#{image_url('benefits/workspace@2x.jpg')}, (retina)]"}), projects_path 
         %h2= link_to 'A maker of a variety of things.', projects_path    
+        %figcaption My Projects 
     %section.headline_item 
       %figure.benefit2
-        = link_to image_tag('benefits/web_dev_and_web_designer.png'), technologies_path    
+        = link_to image_tag('benefits/web_dev_and_web_designer.png', data: {interchange: "[#{image_url('benefits/web_dev_and_web_designer@2x.jpg')}, (retina)]"}), technologies_path    
         %h2= link_to 'A web designer & web developer', technologies_path  
+        %figcaption My Skills 
     %section.headline_item 
       %figure 
-        =  link_to image_tag('benefits/ready_for_the_real_world.jpg'), page_path('about_me')
+        =  link_to image_tag('benefits/ready_for_the_real_world.jpg', data: {interchange: "[#{image_url('benefits/ready_for_the_real_world@2x.jpg')}, (retina)]"}), page_path('about_me')
         %h2=  link_to "A recent grad ready for real work.", page_path('about_me')
+        %figcaption About Me 

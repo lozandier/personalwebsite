@@ -41,7 +41,7 @@ class Project < ActiveRecord::Base
   
   # Associations 
   has_many :photos, dependent: :destroy 
-  has_many :personas, counter_cache: true  
+  has_many :personas, counter_cache: true
   has_many :identity_guidelines
   has_many :stages
   has_many :goals, as: :goalable
@@ -71,6 +71,4 @@ class Project < ActiveRecord::Base
     self.state = 'approved' if approve_project == '1' 
     self.state = 'pending' if unapprove_project == '1'
   end
-
-
 end

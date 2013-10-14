@@ -12,6 +12,7 @@
 #= require imagesloaded
 #= require foundation
 #= require foundation.interchange
+#= require reenable_turbolinks
 #= require nprogress
 $(document).foundation()
 

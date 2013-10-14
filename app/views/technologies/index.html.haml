@@ -9,8 +9,9 @@
   %section.headliner.skillset 
     %div 
       %h1{ data: {"typer-targets" => "I'm a Designer & Developer., A Recent Grad, A Preprocessor Junkie., A sound marketer, A Rubyist., I like to keep myself DRY., I like to keep learning., I design responsively, I think consumer-first "}}
-    %h2.headline_subheader
-      Utilizing skills from a variety of disciplines, I'm a problem solver.  
+      :markdown 
+
+        <h2 class="headline_subheader  skillset_subheader"> Because of my broad skillset, I can be describe a variety of ways--a 'generalist', a 'technologist', a front-end developer, a designer that knows how to code, and so on. At the end of the day,  utilizing skills from a variety of disciplines, I'm a problem solver.</h2>   
     
     %section.headline_item
       %div.headline_item_figure
@@ -42,7 +43,6 @@
         %li Digital Marketing
   
   %section.tech_skills 
-    %h2.subhead The following skills I've featured on this site: 
     %technology_container
       %ul.skillset_block
         = render partial: 'technologies/technology_in_list', collection: @technologies, as: :technology

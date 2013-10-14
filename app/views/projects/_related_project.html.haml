@@ -1,6 +1,6 @@
 %article.related_project
 
-  = link_to(image_tag(project.main_image.url(:thumbnail)), project_path(project))
+  = project.related_item_image
   %header
     %h2= link_to project.title, project_path(project), itemprop: "relatedLink"
     %p 

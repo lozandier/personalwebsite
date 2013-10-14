@@ -4,4 +4,5 @@
     %span.influencer_label= influencer.name
     - if admin_signed_in? 
       = link_to "Edit", edit_project_persona_influencer_path(influencer.persona.project, influencer.persona, influencer)
+      = link_to "Delete", project_persona_influencer_path(influencer.persona.project, influencer.persona, influencer), method: :delete, data: {confirm: "Are you sure?"}
 

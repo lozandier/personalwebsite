@@ -27,7 +27,7 @@ class Persona < ActiveRecord::Base
   validates_with CreativeCommonsValidator
 
   #associations
-  belongs_to :project, counter_cache: true 
+  belongs_to :project, counter_cache: true, touch: true  
   has_many :influencers 
   has_many :interests 
   has_many :goals, as: :goalable

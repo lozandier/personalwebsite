@@ -11,7 +11,7 @@
     
     %div.row
       .avatar{itemscope: true, itemtype: "http://schema.org/Photograph"}
-        %img{src: "#{@persona.avatar.url}", itemProp: " primaryImageOfPage image url"}
+        = @persona.spotlight_image 
         = @persona.copyright_meta
   
 
@@ -37,7 +37,7 @@
   %ul.bc 
     %li 
       = link_to 'Projects', projects_path 
-      
+
     %li 
       = link_to @project.title, project_path(@project)  
 
@@ -45,7 +45,7 @@
       = link_to "Personas for #{@project.title}", project_personas_path(@project)   
 
     %li.current 
-      = link_to "#{@persona.full_name}", project_persona_path(@project, @persona)   
+      = link_to "#{@persona.full_name}", project_persona_path(@project, @persona), "data-no-turbolink" => true 
         
 %main 
   .row 
@@ -67,10 +67,17 @@
         %figure.data
           = @persona.display_associated_collection(@influencers)
 
+      
+
         %figure.legend
           %h3 Legend 
           .keys{class: "#{@persona.class_for_object_amount(@influencers)}"}
-
+      
+      - if admin_signed_in? 
+        %section.edit_influencers 
+          %h2 Edit Influencers 
+          = @persona.display_associated_collection(@influencers) 
+          
       %section.interests 
         %h2 Interests 
         %hr

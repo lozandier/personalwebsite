@@ -1,6 +1,6 @@
 %article.project
-  = link_to(image_tag(project.background_image.url(:showcased)), project_path(project))
+  = project.item_image
   %header
-    %h2= link_to project.title, project_path(project), itemprop: "relatedLink"
+    %h2= link_to project.title, project_path(project), itemprop: "relatedLink", "data-no-turbolink" => true 
     %p 
       = project.display_byline

@@ -9,7 +9,7 @@
     
     %div.row
       .avatar{itemscope: true, itemtype: "http://schema.org/Photograph"}
-        = image_tag 'profile_image.jpg', alt: "Yours truly, Kevin Lozandier.", itemprop: 'image url primaryImageOfPage'
+        = image_tag 'profile_image.jpg', alt: "Yours truly, Kevin Lozandier.", itemprop: 'image url primaryImageOfPage', data: {interchange: "[#{image_url('profile_image@2x.jpg')}, (retina)]"}
 
       %header
         %h1{itemprop: "name givenName"} Kevin Lozandier 

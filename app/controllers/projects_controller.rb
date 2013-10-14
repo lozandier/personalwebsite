@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   before_action :get_project, only: [:edit, :update, :destroy ]
   
   def index
-    @most_showcased_skills  = Technology.where('projects_count > ?', 0).order(projects_count: :desc)
+    @most_showcased_skills  = Technology.where('projects_count > ?', 0).order(projects_count: :desc).decorate
     @projects = Project.all.decorate
     respond_with @projects
   end
@@ -70,7 +70,7 @@ class ProjectsController < ApplicationController
   end
 
   def get_project
-    @project = Project.includes(:personas, :attachments, :goals, :photos, :technology_profiles).friendly.find(params[:id])
+    @project = Project.includes(:personas, :attachments, :goals, :photos, :technology_profiles, :technologies).friendly.find(params[:id])
   end
 
 end

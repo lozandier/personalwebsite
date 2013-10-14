@@ -2,7 +2,16 @@ class TechnologyDecorator < ApplicationDecorator
   decorates_finders 
   delegate_all
   decorates_associations :projects 
-  include Draper::LazyHelpers 
+  include Draper::LazyHelpers
+
+  def regular_image 
+    link_to image_tag(image.url(:thumbnail), alt: name, data: {interchange: "[#{technology.image.url(:thumbnail_retina_ready)}, (retina)]"}), technology_path(technology), itemprop: 'relatedLink'  
+  end 
+
+
+  def spotlight_image 
+    image_tag image.url(:thumbnail), alt: name, data: {interchange: "[#{technology.image.url(:thumbnail_retina_ready)}, (retina)]"}, itemProp: "primaryImageOfPage image url"
+  end
   
   def years_of_experience 
     "#{object.years_of_experience} years"

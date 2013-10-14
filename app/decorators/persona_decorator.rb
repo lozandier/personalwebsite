@@ -33,10 +33,11 @@ class PersonaDecorator < ApplicationDecorator
   end
 
   def image  
-    image_tag avatar.url(:thumbnail), alt: full_name, data: {interchange: "['#{avatar.url(:thumbnail_retina_ready)}', (only screen and (max-width: 500px))],['#{avatar.url(:thumbnail_retina_ready)}', (only screen and (max-width: 640px))]"}  
+    link_to image_tag(avatar.url(:thumbnail), alt: full_name, data: {interchange: "[#{avatar.url(:thumbnail_retina_ready)}, (retina)]"}), project_persona_path(persona.project, persona), itemprop: 'relatedLink', "data-no-turbolink" => true 
   end
 
-  def image_avatar 
+  def spotlight_image
+    image_tag avatar.url(:thumbnail), alt: full_name, data: {interchange: "[#{avatar.url(:thumbnail_retina_ready)}, (retina)]"}, itemprop: 'primaryImageOfPage image url'
   end
 
   def description

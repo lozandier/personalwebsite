@@ -29,7 +29,6 @@
   %nav.top-bar
     %ul.title-area 
       %li.name
-        = image_tag 'http://placehold.it/64x64&text=Kevin', style: "float: left" 
         %h1
           = link_to "Kevin Lozandier", root_path  
       %li.toggle-topbar.menu-icon 
@@ -38,7 +37,7 @@
     %section.top-bar-section
       %ul.left
         %li
-          = link_to 'Home', root_path
+          = link_to 'Home', root_path, 'data-no-turbolink' => true 
         %li 
           = link_to 'About Me', page_path('about_me')
         
