@@ -1,8 +1,8 @@
 .technology_showcased
   %figure 
-    = image_tag technology.image.url(:thumbnail), class: 'technology_logo'
+    = link_to image_tag(technology.image.url(:thumbnail)), technology_path(technology), itemprop: "relatedLink"
   %header  
-    %h3= link_to technology.name, technology_path(technology)
+    %h3= link_to technology.name, technology_path(technology), itemprop: "relatedLink"
     %p= technology.byline
 
 

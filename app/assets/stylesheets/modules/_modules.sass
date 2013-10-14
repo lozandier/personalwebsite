@@ -425,14 +425,15 @@ $benefits: 'benefits'
     +crumbs 
 
 // Social Icons 
-$sources: treehouse codeschool github behance twitter linkedin 
+$sources: treehouse rgb(127, 162, 76),  codeschool rgb(198, 128, 68), github rgb(65, 131, 196), behance rgb(23, 105, 255)  twitter rgb(0, 172, 237), linkedin rgb(0, 127, 177) 
 $social_icons: 'social_icons'
 +sprite-map-generator($social_icons, 'retina')
 
 @each $source in $sources 
-  .#{$source}
-    +retina-background($social_icons, $source, $with-dimensions: true ) 
-
+  .#{nth($source, 1)}
+    +retina-background($social_icons, nth($source, 1), $with-dimensions: true ) 
+    .top-bar li:hover &, &:hover  
+      background-color: nth($source, 2)
 .top-bar 
   overflow: hidden 
  

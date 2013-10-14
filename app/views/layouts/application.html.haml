@@ -49,22 +49,27 @@
           = link_to 'Projects', projects_path  
 
       %ul.right
+        
+        %li
+          %a{href: "https://github.com/lozandier"}
+            %div.github
         %li
           %a{href: "http://twitter.com/kevinlozandier"}
-            %div.twitter 
-          }
+            %div.twitter
+
         %li 
           %a{href: "http://www.behance.com/kevinl"}
             %div.behance  
-          }
+        
+
         %li 
           %a{href: "http://teamtreehouse.com/kevinl"}
             %div.treehouse 
-          }
+          
         %li
           %a{href: "http://www.codeschool.com/users/167821"}
             %div.codeschool
-          }
+          
 
         - if admin_signed_in? 
           %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
@@ -81,7 +86,7 @@
               %li  
                 = link_to 'Add Project', new_project_path 
         - else 
-          %li= link_to 'Sign in', new_admin_session_path
+          %li= mail_to 'lozandier@gmail.com', "Contact Me", subject: %(Hello Kevin, thought I'd email you after viewing your website)   #link_to 'Sign in', new_admin_session_path
   
   - if flash.any?
     %p.notice= notice 
