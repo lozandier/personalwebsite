@@ -1,3 +1,3 @@
 #= require jquery.typer 
-$(document).on 'page:load', -> 
-  $('[data-typer-targets]', '.headliner').typer() 
+$ ->  
+  $('[data-typer-targets]', '.technologies .headliner').typer()?   

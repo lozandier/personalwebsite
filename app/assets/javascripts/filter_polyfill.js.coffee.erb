@@ -1,0 +1,10 @@
+@polyfilter_scriptpath = '/js/lib'
+s = "<%= asset_url('/js/lib/cssParser.js') %>" 
+s2 = "<%= asset_url('/js/lib/css-filters-polyfill.js') %>"
+Modernizr.load 
+  test: Modernizr.cssfilters
+  yep: console.log "This browser supports cssfilters"
+  nope: [s, s2] 
+###! Not working despite the test working and other Modernizer checks throughout website, will investigae with Version 1.0 of this site later this year ###
+
+console.log " cssFIlter Test Failed: First  Filter got called in as: #{s} and the second was called in as #{s2} "

@@ -15,15 +15,17 @@
   -# Set the viewport width to device width for mobile
   %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
-  %title= content_for?(:title) ? yield(:title) : "My name is Kevin Lozander. I'm a web designer and a web developer. Above anything else, I'm a modern problem solver. "
+  %title= content_for?(:title) ? "#{yield(:title)} - KevinLozandier.com" : ""
+
+  %meta{ name: "description", content: content_for?(:description) ? yield(:description): "My name is Kevin Lozander. I'm a web designer and a web developer. Above anything else, I'm a modern problem solver. " }
   %script{src:"http://typecast.com/project_css/kevin-lozandier/904004576bf99.js" } 
   = stylesheet_link_tag "application"
   = javascript_include_tag "vendor/custom.modernizr"
-  =# javascript_include_tag 'filter_polyfill'
+  = javascript_include_tag 'filter_polyfill'
 
   = csrf_meta_tag
 
-%body{itemscope: true,  itemtype: "http://schema.org/WebPage"}
+%body{itemscope: true,  itemtype: "http://schema.org/WebPage", class: page_class}
   %nav.top-bar
     %ul.title-area 
       %li.name
@@ -47,6 +49,23 @@
           = link_to 'Projects', projects_path  
 
       %ul.right
+        %li
+          %a{href: "http://twitter.com/kevinlozandier"}
+            %div.twitter 
+          }
+        %li 
+          %a{href: "http://www.behance.com/kevinl"}
+            %div.behance  
+          }
+        %li 
+          %a{href: "http://teamtreehouse.com/kevinl"}
+            %div.treehouse 
+          }
+        %li
+          %a{href: "http://www.codeschool.com/users/167821"}
+            %div.codeschool
+          }
+
         - if admin_signed_in? 
           %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
           %li.has-dropdown
@@ -71,7 +90,9 @@
   = javascript_include_tag 'jquery'
   = javascript_include_tag 'jquery_ujs'
   = javascript_include_tag 'turbolinks'
+  = javascript_include_tag 'jquery.typer'
+  = javascript_include_tag "application"
   = javascript_include_tag params[:controller]
-  -# = javascript_include_tag "application"
+ 
   -# = javascript_include_tag "/js/lib/cssParser" 
   -# = javascript_include_tag "/js/lib/css-filters-polyfill"

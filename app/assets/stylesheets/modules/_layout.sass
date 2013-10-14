@@ -26,6 +26,8 @@ img
       +grid-column($columns: 8)
 
   .meta_information_panel, .meta_information_box 
+    .technologies.show 
+      +trailer(1)
 
   .meta_information, span.meta_information
     display: inline-block
@@ -185,13 +187,15 @@ $block-grid-point: emCalc(825px)
   img 
     @extend %usual_image_styling  
 
-  &.benefits .headline_item 
+  &.benefits .headline_item
+    +grid-column($columns: 12, $collapse: true ) 
     +from(2)
       +grid-column($columns: 4, $collapse: false)
-
+    img 
+      width: 100%
 
 // Technologies Page 
-.technologies
+.tech_skills
   +grid-row() 
 
   h2.subhead

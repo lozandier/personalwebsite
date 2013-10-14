@@ -6,16 +6,6 @@ GIT
       compass (>= 0.12.2, < 0.14)
 
 GIT
-  remote: git://github.com/chriseppstein/compass.git
-  revision: 66004fa94ba976ec88b7606e0f269d96582a7831
-  specs:
-    compass (0.13.alpha.7.66004fa)
-      chunky_png (~> 1.2)
-      json
-      listen (~> 1.1.0)
-      sass (~> 3.3.0.rc.1)
-
-GIT
   remote: git://github.com/drapergem/draper.git
   revision: d8e742c9f47490370624a91b5fc741b01bbffa08
   specs:
@@ -24,6 +14,14 @@ GIT
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
+
+GIT
+  remote: git://github.com/nex3/sass.git
+  revision: 05c6872a834bbf1ea92e8e7d7da05ee4222d24bd
+  tag: 3.3.0.rc.1
+  specs:
+    sass (3.3.0.rc.1)
+      listen (~> 1.1.0)
 
 GIT
   remote: git://github.com/norman/friendly_id.git
@@ -123,6 +121,11 @@ GEM
     color-schemer (0.2.7)
       compass (~> 0.12)
       compass-blend-modes (~> 0.0.2)
+    compass (0.13.alpha.7)
+      chunky_png (~> 1.2)
+      json
+      listen (~> 1.1.0)
+      sass (~> 3.3.0.rc.1)
     compass-blend-modes (0.0.2)
       compass
     debug_inspector (0.0.2)
@@ -137,8 +140,10 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (2.0.2)
+    ffi (1.9.0)
     ffi (1.9.0-x86-mingw32)
     guard (1.4.0)
       listen (>= 0.4.2)
@@ -151,6 +156,7 @@ GEM
       tilt
     high_voltage (2.0.0)
     hike (1.2.3)
+    http_parser.rb (0.5.3)
     http_parser.rb (0.5.3-x86-mingw32)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -182,6 +188,8 @@ GEM
       sass (>= 3.2.0)
       sassy-math (>= 1.5)
     multi_json (1.8.1)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nokogiri (1.6.0-x86-mingw32)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -239,8 +247,6 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    sass (3.3.0.rc.1)
-      listen (~> 1.1.0)
     sassy-math (1.5)
       compass (~> 0.11)
     sassy-strings (1.0.0)
@@ -313,7 +319,7 @@ DEPENDENCIES
   bullet
   capybara (= 2.1.0)
   coffee-rails (~> 4.0.0)
-  compass!
+  compass (~> 0.13.alpha.7)
   compass-rails!
   devise
   draper!
@@ -336,7 +342,7 @@ DEPENDENCIES
   rb-inotify
   redcarpet
   rspec-rails
-  sass
+  sass!
   sass-rails!
   sdoc
   shoulda

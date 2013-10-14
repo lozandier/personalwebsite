@@ -19,17 +19,9 @@ gem 'rails', '4.0.0'
 
 gem 'pg'
 
-platform :ruby do 
-  
-  
-
-
-end 
-
-
 # Use SCSS for stylesheets
 gem 'sass-rails', github: "rails/sass-rails"
-gem 'sass'
+gem 'sass', github: "nex3/sass", tag: '3.3.0.rc.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -73,7 +65,8 @@ gem 'state_machine'
 
 gem "draper",  github: "drapergem/draper"
 
-gem "compass", github: "chriseppstein/compass"
+gem "compass", "~> 0.13.alpha.7"
+#github: "chriseppstein/compass"
 
 gem "compass-rails", github: "Compass/compass-rails"
 

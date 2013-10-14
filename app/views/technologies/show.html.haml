@@ -4,8 +4,7 @@
 
 %section.project_spotlight_box
 
-  .background_image{style: "background: rgba(201, 0, 109)"} 
-    =#%img{src: "http://lorempixel.com/1000/500/abstract"}
+  .background_image
   .mask 
 
   
@@ -28,8 +27,8 @@
   %ul.bc 
     %li 
       = link_to 'Skills', technologies_path 
-    %li
-      = link_to @technology.name, technologies_path(@technology), class: 'current'
+    %li.current 
+      = link_to @technology.name, technologies_path(@technology)
 
 %main
   .row 
@@ -44,18 +43,4 @@
         %h2 Related Projects 
         %hr
         = render partial: 'projects/related_project', collection: @related_projects, as: :project
-        %article.related_project
-          %img{src:"http://placehold.it/500/500&text=Persona1"}
-          %header.persona_header
-            %h2 
-              %a 
-                Project 1 
-            %p  A designer moving on the next big thing, one day at a time. She means business. For real
-
-        %article.persona
-          %img{src:"http://placehold.it/500/500&text=Persona1"}
-          %header.persona_header
-            %h2 
-              %a 
-                Projects 
-            %p  A designer moving on the next big thing, one day at a time. She means business. For real
+        

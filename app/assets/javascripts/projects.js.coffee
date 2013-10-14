@@ -12,7 +12,7 @@ $ ->
   $masonryActive = false 
 
   manageProjectMasonryState = -> 
-    $container = $('.list_of_projects_wrapper')
+    $container = $('.list_of_projects_wrapper', '.projects.index')
     $mm = window.matchMedia('(min-width: 67.375em)').matches 
     if $mm
       console.log "Initiate/Reinitialize Masonry: 67.375 matchMedia requirment met. "
@@ -128,6 +128,6 @@ $ ->
         individual_keys = d3.selectAll('.key')
         individual_keys.append('span')
           .text (d)->
-            "#{d.name} (#{d.percentage_of_project})" 
+            "#{d.name} (#{d.percentage_of_project}%)" 
 
         $('.legend').fadeIn('400')

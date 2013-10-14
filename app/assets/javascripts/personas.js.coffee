@@ -10,7 +10,7 @@
 $masonryActive = false 
 
 # managePersonaMasonryState = -> 
-#   $container = $('.list_of_personas_wrapper')
+#   $container = $('.list_of_personas_wrapper', '.personas.index')
 #   $mm = window.matchMedia('(min-width: 67.375em)').matches 
 #   if $mm
 #     console.log "Initiate/Reinitialize Masonry: 67.375 matchMedia requirment met. "
@@ -32,7 +32,7 @@ $masonryActive = false
 GraphInfluencersPromiser = 
   getData : ->
     promise = $.Deferred() 
-    $.ajax $('.influencers').data('personaMetaData'), 
+    $.ajax $('.influencers', '.personas.show').data('personaMetaData'), 
       dataType: 'json'
       contentType: 'json'
       success: (response)->

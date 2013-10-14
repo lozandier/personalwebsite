@@ -1,3 +1,4 @@
 #= require jquery.typer
+#= require about_me 
 $ ->
-  $('[data-typer-targets]', '.headliner').typer() 
+  $('[data-typer-targets]', '.pages.show .headliner').typer() 
