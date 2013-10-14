@@ -9,14 +9,13 @@
 #
 # Read Sprockets README (https:#github.com/sstephenson/sprockets#sprockets-directives) for details
 # about supported directives.
-#= require  modernizr 
 #= require imagesloaded
 #= require foundation
 #= require foundation.interchange
 #= require nprogress
 # $(document).foundation()
 
-@polyfilter_scriptpath = '/js/lib' 
+#@polyfilter_scriptpath = '/js/lib' 
 
 $(document).on('page:fetch', -> NProgress.start() )
 $(document).on('page:change', ->  NProgress.done() )

@@ -29,6 +29,7 @@
   %nav.top-bar
     %ul.title-area 
       %li.name
+        = image_tag 'http://placehold.it/64x64&text=Kevin', style: "float: left" 
         %h1
           = link_to "Kevin Lozandier", root_path  
       %li.toggle-topbar.menu-icon 
@@ -36,7 +37,6 @@
           %span Menu
     %section.top-bar-section
       %ul.left
-        %li.divider
         %li
           = link_to 'Home', root_path
         %li 
@@ -69,7 +69,7 @@
         %li
           %a{href: "http://www.codeschool.com/users/167821"}
             %div.codeschool
-          
+      
 
         - if admin_signed_in? 
           %li= link_to 'Sign out', destroy_admin_session_path, method: :delete
@@ -96,8 +96,8 @@
   = javascript_include_tag 'jquery_ujs'
   = javascript_include_tag 'turbolinks'
   = javascript_include_tag 'jquery.typer'
-  = javascript_include_tag "application"
-  = javascript_include_tag params[:controller]
  
+  = javascript_include_tag params[:controller]
+  = javascript_include_tag "application"
   -# = javascript_include_tag "/js/lib/cssParser" 
   -# = javascript_include_tag "/js/lib/css-filters-polyfill"

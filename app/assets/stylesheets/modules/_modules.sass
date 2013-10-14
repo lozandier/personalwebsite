@@ -431,13 +431,13 @@ $social_icons: 'social_icons'
 
 @each $source in $sources 
   .#{nth($source, 1)}
-    +retina-background($social_icons, nth($source, 1), $with-dimensions: true ) 
+    +retina-background($social_icons, nth($source, 1), $with-dimensions: true )
+    transition: background-color .5s ease-in 
     .top-bar li:hover &, &:hover  
       background-color: nth($source, 2)
-.top-bar 
+.top-bar, .top-bar *
   overflow: hidden 
- 
-    
+  
 
-
-
+.top-bar li
+  transition: 1s ease-in-out 3s
