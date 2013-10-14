@@ -33,7 +33,7 @@ class PersonaDecorator < ApplicationDecorator
   end
 
   def image  
-    image_tag avatar.url(:thumbnail), alt: full_name, data: {interchange: "[#{avatar.url(:thumbnail_retina_ready)}, (only screen and (max-width: 500px))],[#{avatar.url(:thumbnail_retina_ready)}, (only screen and (max-width: 640px))]"}  
+    image_tag avatar.url(:thumbnail), alt: full_name, data: {interchange: "['#{avatar.url(:thumbnail_retina_ready)}', (only screen and (max-width: 500px))],['#{avatar.url(:thumbnail_retina_ready)}', (only screen and (max-width: 640px))]"}  
   end
 
   def image_avatar 
@@ -124,6 +124,8 @@ class PersonaDecorator < ApplicationDecorator
       concat link_to 'Delete Persona', project_persona_path(persona.project, persona), method: :delete, data: { confirm: "Are you sure "}
     end
   end
+
+
 
 
 end

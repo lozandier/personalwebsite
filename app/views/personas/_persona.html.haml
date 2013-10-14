@@ -1,5 +1,6 @@
 %article.persona
-  = link_to(image_tag(persona.avatar.url(:thumbnail)), project_persona_path(persona.project, persona))
+  = persona.image 
+  = #link_to(image_tag(persona.avatar.url(:thumbnail)), project_persona_path(persona.project, persona))
   %header 
     %h2= link_to persona.full_name, project_persona_path(persona.project, persona), itemprop: "relatedLink"
     %p= persona.byline 

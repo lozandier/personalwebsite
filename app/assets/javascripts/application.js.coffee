@@ -13,7 +13,7 @@
 #= require foundation
 #= require foundation.interchange
 #= require nprogress
-# $(document).foundation()
+$(document).foundation()
 
 #@polyfilter_scriptpath = '/js/lib' 
 
