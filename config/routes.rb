@@ -7,7 +7,7 @@ Personal::Application.routes.draw do
   concern :goalable do
     resources :goals, only: [:new, :create, :edit, :update]
   end
-
+  resources :skills, controller: :technologies
   resources :technologies#, only: [:index, :update, :edit, :create, :new, :destroy]
 
   root 'high_voltage/pages#show', id: 'home'

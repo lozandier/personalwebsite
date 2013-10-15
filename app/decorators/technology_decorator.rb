@@ -5,7 +5,7 @@ class TechnologyDecorator < ApplicationDecorator
   include Draper::LazyHelpers
 
   def regular_image 
-    link_to image_tag(image.url(:thumbnail), alt: name, data: {interchange: "[#{technology.image.url(:thumbnail_retina_ready)}, (retina)]"}), technology_path(technology), itemprop: 'relatedLink'  
+    link_to image_tag(image.url(:thumbnail), alt: name, data: {interchange: "[#{technology.image.url(:thumbnail_retina_ready)}, (retina)]"}), skill_path(technology), itemprop: 'relatedLink'  
   end 
 
 
@@ -24,8 +24,8 @@ class TechnologyDecorator < ApplicationDecorator
   def admin_links 
     #Odd bug: Needed h variable here despite including Draper::LazyHelpers 
     h.content_tag(:p, class: 'admin_links') do 
-      concat link_to 'Edit Technology', edit_technology_path(technology)  
-      concat link_to 'Destroy Technology', technology_path(technology), method: :delete, data: { confirm: "Are you sure?"} 
+      concat link_to 'Edit Technology', edit_skill_path(technology)  
+      concat link_to 'Destroy Technology', skill_path(technology), method: :delete, data: { confirm: "Are you sure?"} 
     end 
   end
 

@@ -1,3 +1,6 @@
+= title "#{@persona.project.title}'s Personas: #{@persona.full_name}. ".html_safe
+= description @persona.byline 
+
 %meta{itemProp: "isPartOf", content:"Personas"}
 %div{ itemscope: true, itemType:"http://schema.org/CreativeWork"}
   %meta{itemProp: "audience", content: "UX Enthuasiasts"}
@@ -24,11 +27,11 @@
         - #TODO Refactor to decorator for V1.1 
         %div.meta_information_panel
           %span.meta_information
-            %strong Age 
+            %strong Age: 
             = @persona.age 
           // 
           %span.meta_information
-            %strong Occupation 
+            %strong Occupation: 
             = @persona.occupation
         = @persona.display_attribution
         = @persona.admin_links

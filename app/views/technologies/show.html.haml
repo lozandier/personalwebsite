@@ -26,9 +26,9 @@
 %nav
   %ul.bc 
     %li 
-      = link_to 'Skills', technologies_path 
+      = link_to 'Skills', skills_path 
     %li.current 
-      = link_to @technology.name, technologies_path(@technology)
+      = link_to @technology.name, skill_path(@technology)
 
 %main
   .row 
