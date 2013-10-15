@@ -42,8 +42,7 @@ class Project < ActiveRecord::Base
   # Associations 
   has_many :photos, dependent: :destroy 
   has_many :personas, counter_cache: true
-  has_many :identity_guidelines
-  has_many :stages
+  #has_many :stages
   has_many :goals, as: :goalable
   has_many :attachments, dependent: :destroy 
   #has_many :testimonials
