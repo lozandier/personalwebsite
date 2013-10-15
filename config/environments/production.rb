@@ -88,4 +88,16 @@ Personal::Application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     } 
   }
+
+  ActionMailer::Base.smtp_settings = {
+
+    :address        => 'smtp.gmail.com',
+    :domain         => 'mail.google.com',
+    :port           => 587,
+    :user_name      => 'lozandier@gmail.com',
+    :password       => 'Naomi@%8046',
+    :authentication => :plain,
+    :enable_starttls_auto => true
+    
+  }
 end
