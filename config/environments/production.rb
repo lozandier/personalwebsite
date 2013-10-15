@@ -20,7 +20,7 @@ Personal::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true 
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -81,10 +81,11 @@ Personal::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :bucket => ENV['AWS_BUCKET_NAME'],
+    :url => ":s3_domain_url", 
     :s3_credentials => {
       :bucket => ENV['AWS_BUCKET_NAME'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
+    } 
   }
 end

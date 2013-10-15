@@ -12,7 +12,7 @@ test:
   database: personal_test
   pool: 5
   username: kevinlozandier 
-  password: Naomi@%8046
+  password: Naomi@%8045
 
 production:
   adapter: postgresql
