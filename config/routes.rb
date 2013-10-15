@@ -1,6 +1,6 @@
 Personal::Application.routes.draw do
 
-  devise_for :admins, skip: :registrations # All done inside an entirely different thing.
+  devise_for :admins# All done inside an entirely different thing.
 
  
 

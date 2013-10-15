@@ -51,7 +51,7 @@ group :doc do
 end
 
 gem 'bcrypt-ruby'#, '~> 3.0.0'
-gem 'devise'
+gem 'devise', '~> 3.1.1'
 
 #gem 'bcrypt-ruby', :require=> 'bcrypt'
 
