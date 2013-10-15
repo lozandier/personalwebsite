@@ -9,7 +9,7 @@
 
         .large-6.columns 
           = f.label :percentage_of_project
-          = f.number_field :percentage_of_project, max: 100, min: 0 
+          = f.number_field :percentage_of_project, max: 100.0 - @project.technology_profiles.sum(:percentage_of_project), min: 0 
       .row 
         .large-12.columns
           = content_tag(:b, "Note: There is #{ 100.0 - @project.technology_profiles.sum(:percentage_of_project)}% left to use for new skills to be added to this project." )

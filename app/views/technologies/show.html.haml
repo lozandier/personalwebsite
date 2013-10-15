@@ -35,7 +35,7 @@
     %section.primary_information 
       %h2= "About my experiences with #{@technology.name}"
       %hr
-      %p= @technology.history 
+      = markdown.render(@technology.history) 
           
     %aside.complimentary_information 
 
