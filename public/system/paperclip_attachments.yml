@@ -1,0 +1,27 @@
+---
+:Persona:
+  :background_image:
+  - :as_a_background
+  - :as_a_background_retina_ready
+  - :showcased
+  - :showcased_retina_ready
+  :avatar:
+  - :thumbnail
+  - :thumbnail_retina_ready
+:Project:
+  :background_image:
+  - :as_a_background
+  - :as_a_background_retina_ready
+  - :showcased
+  - :showcased_retina_ready
+  :main_image:
+  - :thumbnail
+  - :thumbnail_retina_ready
+:Photo:
+  :image:
+  - :thumbnail
+  - :thumbnail_retina_ready
+:Technology:
+  :image:
+  - :thumbnail
+  - :thumbnail_retina_ready
