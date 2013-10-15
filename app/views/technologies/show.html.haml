@@ -21,8 +21,8 @@
         %span.meta_information
           %strong{style: "color: #{@technology.color}"} Years of Experience:   
           = @technology.years_of_experience   
-
-      = @technology.admin_links
+      - if admin_signed_in?
+        = @technology.admin_links
 %nav
   %ul.bc 
     %li 
