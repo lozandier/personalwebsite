@@ -2,10 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-#= require jquery 
-#= require d3.v3.min
-#= require imagesloaded 
-#= require masonry
+#= depend_on jquery 
+#= depend_on d3.v3.min
+#= depend_on imagesloaded 
+#= depend_on masonry
 
 $masonryActive = false 
 

@@ -1,4 +1,4 @@
-#= require jquery.typer
+#= depend_on jquery.typer
 $(document).on 'page:load',  ->
   $('[data-typer-targets]', '.pages.show .headliner').typer()?
 

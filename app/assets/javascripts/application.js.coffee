@@ -9,9 +9,3 @@
 #= require d3.v3.min
 #= require_directory ./high_voltage 
 #= require about_me
-#= require personas 
-#= require projects
-#= require technologies
-
-$(document).foundation()
-

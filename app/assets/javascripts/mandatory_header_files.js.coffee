@@ -4,7 +4,7 @@
 #= require turbolinks 
 #= require nprogress
 #= require_self 
-#= require modernizer 
+#= require modernizr 
 #= require filter_polyfill
 #= require reenable_turbolinks 
 #= require jquery.typer

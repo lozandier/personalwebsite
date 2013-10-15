@@ -1,5 +1,6 @@
-#= require d3.v3.min 
-$(document, '.personal_influencers').ready -> 
+#= depend_on d3.v3.min 
+# $(document, '.personal_influencers').ready -> 
+$ -> 
   $pie_chart_height = 250
   $bar_chart_height =400
   #it's shared, so it's makes sense to not make a distinguish 

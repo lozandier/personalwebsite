@@ -90,11 +90,9 @@
   - if flash.any?
     %p.notice= notice 
     %p.alert= alert 
-  = yield
-
-  = javascript_include_tag 'jquery.typer'
- 
-  = javascript_include_tag params[:controller]
+  = yield 
   = javascript_include_tag "application", "data-turbolinks-track" => true
+  = javascript_include_tag params[:controller], "data-turbolinks-track" => true
+
   -# = javascript_include_tag "/js/lib/cssParser" 
   -# = javascript_include_tag "/js/lib/css-filters-polyfill"
