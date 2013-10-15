@@ -1,8 +1,8 @@
 #=require jquery
 @polyfilter_scriptpath = '/js/lib'
-s = "<%= asset_url('/js/lib/cssParser.js') %>" 
-s2 = "<%= asset_url('/js/lib/css-filters-polyfill.js') %>"
-d = "<%= javascript_url('reenable_turbolinks.js') %>"
+s = "<%= asset_path('cssParser.js') %>" 
+s2 = "<%= asset_path('css-filters-polyfill.js') %>"
+d = "<%= asset_path('reenable_turbolinks.js') %>"
 
 Modernizr.load 
   test: Modernizr.cssfilters

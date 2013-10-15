@@ -20,9 +20,9 @@
   %meta{ name: "description", content: content_for?(:description) ? yield(:description): "My name is Kevin Lozander. I'm a web designer and a web developer. Above anything else, I'm a modern problem solver. " }
   %script{src:"http://typecast.com/project_css/kevin-lozandier/904004576bf99.js" } 
   = stylesheet_link_tag "application"
-  = javascript_include_tag "vendor/custom.modernizr"
-  = javascript_include_tag 'filter_polyfill'
 
+  = javascript_include_tag 'mandatory_header_files', "data-turbolinks-track" => true 
+  
   = csrf_meta_tag
 
 %body{itemscope: true,  itemtype: "http://schema.org/WebPage", class: page_class}
@@ -91,12 +91,10 @@
     %p.notice= notice 
     %p.alert= alert 
   = yield
-  = javascript_include_tag 'jquery'
-  = javascript_include_tag 'jquery_ujs'
-  = javascript_include_tag 'turbolinks'
+
   = javascript_include_tag 'jquery.typer'
  
   = javascript_include_tag params[:controller]
-  = javascript_include_tag "application"
+  = javascript_include_tag "application", "data-turbolinks-track" => true
   -# = javascript_include_tag "/js/lib/cssParser" 
   -# = javascript_include_tag "/js/lib/css-filters-polyfill"

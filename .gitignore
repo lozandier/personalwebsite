@@ -17,3 +17,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+
+*.psd 
+
+
+/spec/placeholder_images
