@@ -14,7 +14,7 @@ class TechnologyDecorator < ApplicationDecorator
   end
   
   def years_of_experience 
-    "#{object.years_of_experience} years"
+    "#{pluralize(object.years_of_experience, 'year')}"
   end
 
   def byline
