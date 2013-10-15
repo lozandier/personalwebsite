@@ -43,6 +43,16 @@ Personal::Application.configure do
     
   }
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :bucket => ENV['AWS_BUCKET_NAME'],
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    } 
+  }
+
   #config.middleware.use Rack::LiveReload
 =begin 
   console do 

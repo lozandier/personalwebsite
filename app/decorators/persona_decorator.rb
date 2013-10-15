@@ -61,7 +61,6 @@ class PersonaDecorator < ApplicationDecorator
         content_tag(:p, empty_message)
         "#{empty_message}"
       end
-
   end
 
   def display_goals(goal_collection)
