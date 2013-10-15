@@ -68,12 +68,12 @@
   @each $background_set in $background_banners
     
     &.#{nth($background_set, 1) }
-      background-image: image-url("background_banners/#{nth($background_set, 2)}.jpg") 
+      background-image: asset-url("background_banners/#{nth($background_set, 2)}.jpg") 
       background-size: cover  
       min-height: 318px
       
       +breakpoint($hidpi)
-        background-image: image-url("background_banners/#{nth($background_set, 2)}@2x.jpg")
+        background-image: asset-url("background_banners/#{nth($background_set, 2)}@2x.jpg")
   
   // $background_banners_map: (
   //   home_page: home_page_banner 

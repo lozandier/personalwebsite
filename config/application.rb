@@ -26,9 +26,10 @@ module Personal
     # config.i18n.default_locale = :de
 
     config.sass.preferred_syntax = :sass
+    config.assets.css_compressor = :csso
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.paths << "#{Rails.root}/app/assets/stylesheets/fonts"
-    config.assets.precompile += %w( mandatory_header_files.js contentloaded.js css-filters-polyfill.js cssParser.js   )
+    config.assets.precompile += %w( mandatory_header_files.js contentloaded.js css-filters-polyfill.js cssParser.js personal.css application.css )
 
 
     # config.assets.precompile += %w( .svg .eot .woff .ttf )

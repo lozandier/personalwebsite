@@ -18,11 +18,13 @@ gem 'rails', '4.0.0'
 # end
 
 gem 'pg'
-
-# Use SCSS for stylesheets
+gem 'sprockets'
+# Use SASS for stylesheets
 gem 'sass-rails', github: "rails/sass-rails"
 gem 'sass', github: "nex3/sass", tag: '3.3.0.rc.1'
+gem "sass_rails_patch", "~> 0.0.1"
 
+gem 'csso-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
