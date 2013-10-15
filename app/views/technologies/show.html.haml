@@ -1,5 +1,5 @@
 = title "#{@technology.name}: #{@technology.byline}" 
-= description @technology.byline
+= description markdown.render(@technology.byline).html_safe
 
 
 %section.project_spotlight_box
