@@ -7,7 +7,7 @@
 
       .large-3.columns
         = f.label :years_of_experience
-        = f.number_field :years_of_experience
+        = f.number_field :years_of_experience, min: 0
 
       .large-6.columns 
         = f.label :name 

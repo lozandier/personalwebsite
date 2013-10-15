@@ -17,6 +17,10 @@ class TechnologyDecorator < ApplicationDecorator
     "#{object.years_of_experience} years"
   end
 
+  def byline
+    markdown.render(technology.byline).html_safe
+  end
+
   def history
     markdown.render(personal_history).html_safe
   end

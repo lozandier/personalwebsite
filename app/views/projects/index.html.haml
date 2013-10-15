@@ -15,11 +15,11 @@
           **Note: I'm temporarily displaced; will update this project with more work I can publically disclose after I have time to aquire them.** 
 
       .list_of_projects_wrapper.masonry-container
-        = render @projects 
+        = render @projects || content_tag(:p, markdown.render("Have no projects publically visible at the moment or there's a server problem I'll address shortly.") )
 
     %aside.complimentary_information 
 
       %section.related_skills  
         %h2 Skills Most Showcased  
         %hr
-        = render partial: 'technologies/technology_showcased', collection: @most_showcased_skills, as: :technology 
+        = render partial: 'technologies/technology_showcased', collection: @most_showcased_skills, as: :technology || content_tag(:p, markdown.render("There seems to be no clear way to sort out the skills most utilized at the moment, there's no projects publically available for this to be relevant, or I have some algorithms changing to do...") )

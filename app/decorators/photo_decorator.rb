@@ -13,6 +13,10 @@ class PhotoDecorator < ApplicationDecorator
       data: {"fresco-group" => photo.project.title, "fresco-options" => "ui: 'inside', fit: 'height'" }, class: 'fresco')
   end
 
+  def caption
+    markdown.render(photo.caption).html_safe
+  end
+
 
   # Define presentation-specific methods here. Helpers are accessed through
   # `helpers` (aka `h`). You can override attributes, for example:
