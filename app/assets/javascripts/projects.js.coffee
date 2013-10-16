@@ -9,27 +9,30 @@
 console.log("Why you no  work?!!! #{d3}")
 $ -> 
 
-  $masonryActive = false 
+  project = $('.project')
+  if project
 
-  manageProjectMasonryState = -> 
-    $container = $('.list_of_projects_wrapper', '.projects.index')
-    $mm = window.matchMedia('(min-width: 67.375em)').matches 
-    if $mm
-      console.log "Initiate/Reinitialize Masonry: 67.375 matchMedia requirment met. "
-      $container.imagesLoaded ->
-        $container.masonry
-          itemSelector: '.project'
-          containerWidth: $('.project').width()
-        $container.masonry('bindResize')
+    $masonryActive = false 
 
-      $masonryActive = true 
-    else 
-      console.log '67.375em matchMedia requirement not met. Closing Masonry'
-      $container.masonry('destroy') if $masonryActive
+    manageProjectMasonryState = -> 
+      $container = $('.list_of_projects_wrapper', '.projects.index')
+      $mm = window.matchMedia('(min-width: 67.375em)').matches 
+      if $mm
+        console.log "Initiate/Reinitialize Masonry: 67.375 matchMedia requirment met. "
+        $container.imagesLoaded ->
+          $container.masonry
+            itemSelector: '.project'
+            containerWidth: $('.project').width()
+          $container.masonry('bindResize')
 
-  manageProjectMasonryState()
+        $masonryActive = true 
+      else 
+        console.log '67.375em matchMedia requirement not met. Closing Masonry'
+        $container.masonry('destroy') if $masonryActive
 
-  $(window).on('resize', manageProjectMasonryState)
+    manageProjectMasonryState()
+
+    $(window).on('resize', manageProjectMasonryState)
 
   $.ajax $('.complimentary_information').data('technologyProfileMetaData'), 
     dataType: 'json'
