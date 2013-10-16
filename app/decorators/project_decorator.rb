@@ -87,6 +87,10 @@ class ProjectDecorator < ApplicationDecorator
     byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline)  
   end
 
+  def byline 
+    project.byline.presence || markdwn.render(byline) 
+  end
+
   # Needed to be dry, with the above collections most likely to have special code, I've seperated fom the function below 
 
   def display_associated_collection(collection)
