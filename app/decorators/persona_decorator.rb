@@ -40,13 +40,14 @@ class PersonaDecorator < ApplicationDecorator
     image_tag avatar.url(:thumbnail), alt: full_name, data: {interchange: "[#{avatar.url(:thumbnail_retina_ready)}, (retina)]"}, itemprop: 'primaryImageOfPage image url'
   end
 
-  def byline
-    markdown.render(persona.byline).html_safe
+  def byline 
+    markdown.render(object.byline)
   end
+
 
   def description
     # Feels so good to have proper typography here 
-    markdown.render(persona.description).html_safe
+    markdown.render(object.description).html_safe
   end
 
   #TODO: Will abstract this for future, inevitable attributes to keep me DRY

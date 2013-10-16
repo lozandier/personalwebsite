@@ -38,7 +38,7 @@
     %li 
       = link_to 'Projects', projects_path 
     %li.current 
-      = link_to @project.title, project_path(@project)
+      = link_to @project.title, project_path(@project), "data-no-turbolink" => true 
         
 %main 
   .row 
@@ -46,12 +46,11 @@
       %meta{ itemprop: "mainContentOfPage", content: "true"} 
       %h2 About Project 
       %hr 
-      :markdown
-        #{@project.description}
+      @project.description
 
       %h2 Goals 
       %hr
-        = @project.display_goals
+      = @project.display_goals
 
 
     %aside.complimentary_information{data: {"project-meta-data" => "#{project_path(@project.project)}"}} 

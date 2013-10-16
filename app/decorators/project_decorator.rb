@@ -64,11 +64,13 @@ class ProjectDecorator < ApplicationDecorator
   end
 
 
+
+
   def display_personas
     if personas.any?
       render personas
     elsif experiment 
-      "This project being an experiment, personas weren't neceessarily applicable"
+      content_tag :p, "This project being an experiment, personas weren't neceessarily applicable"
     else
       content_tag :p, "This project currently doesn't have personas associated with it.", class: "empty_content"
     end
@@ -107,9 +109,7 @@ class ProjectDecorator < ApplicationDecorator
       if collection.any?
         return render collection 
       else
-        #fail
-        content_tag(:p, empty_message)
-        "#{empty_message}"
+        return content_tag(:p, empty_message)
       end
 
   end

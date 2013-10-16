@@ -6,6 +6,7 @@ class Persona < ActiveRecord::Base
 
   #special configuration, properties, and actions 
   CREATIVE_COMMONS_ATTRIBUTION_LICENSES = %w(None Attribution Attribution-ShareAlike Attribution-NoDerivs Attribution-NonCommercial Attribution-NonCommercial-ShareAlike Attribution-NonCommercial-NoDerivs)
+  
   has_attached_file :avatar, styles: {
     thumbnail: "279x279#",
     thumbnail_retina_ready: "558x558#"

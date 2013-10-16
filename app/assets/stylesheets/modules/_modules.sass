@@ -396,8 +396,12 @@ $benefits: 'benefits'
   border-radius: 2px
   background-color: #fcfcfc
   +breakpoint($technology_format_breakpoint)
-    header h3
+    header
+      text-align: center 
+      h3
       +adjust-font-size-to(ms(3, 16px 1000px, golden() ) )
+       
+
 
   .technology_logo
     border-radius: 4px
