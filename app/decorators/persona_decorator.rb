@@ -63,9 +63,7 @@ class PersonaDecorator < ApplicationDecorator
       if collection.any?
         return render collection 
       else
-        #fail
         content_tag(:p, empty_message)
-        "#{empty_message}"
       end
   end
 
@@ -73,7 +71,7 @@ class PersonaDecorator < ApplicationDecorator
     if goal_collection.any?
       render goal_collection #partial: 'shared/list_goals', collection: object.goals, as: :goal
     else
-      "This persona had no goals or it wasn't applicable or this particular persona. "
+      content_tag :p, "This persona had no goals or it wasn't applicable or this particular persona. "
     end
   end
 
