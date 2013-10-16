@@ -1,8 +1,3 @@
 == README
-
-My personal site showcasing my work powered by Rails 4. 
-
-**Current Status**: Asset-related issued are being resolved at the moment. 
-
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
