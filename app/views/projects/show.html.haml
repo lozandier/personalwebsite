@@ -18,7 +18,7 @@
       %header
         %h1{itemprop: "name headline about"}= @project.title
         %hr
-        %p{itemprop: "alternativeHeadline description"}= @project.byline   
+        = @project.display_byline_as_subheader   
 
         %div.meta_information_panel
           %span.meta_information

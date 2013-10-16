@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
 
   #special parameter
   respond_to :json, :html 
@@ -66,7 +67,7 @@ class ProjectsController < ApplicationController
   private 
 
   def project_params
-    params.require(:project).permit(:title, :medium, :state, :main_image, :background_image, :description, :url, :missing_url_reason, :experiment, :released_on, :approve_project, :unapprove_project, :lock_version) 
+    params.require(:project).permit(:title, :byline, :medium, :state, :main_image, :background_image, :description, :url, :missing_url_reason, :experiment, :released_on, :approve_project, :unapprove_project, :lock_version) 
   end
 
   def get_project

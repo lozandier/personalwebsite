@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
+
   before_action :get_project
   before_action :get_existing_photo, only: [:edit, :update, :destroy]
 

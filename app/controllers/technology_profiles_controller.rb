@@ -1,4 +1,6 @@
 class TechnologyProfilesController < ApplicationController
+  before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
+
   respond_to :json, :html 
   
   before_action :set_project, only: [:new, :create, :edit, :update, :destroy]

@@ -84,7 +84,11 @@ class ProjectDecorator < ApplicationDecorator
   end
 
   def display_byline
-    byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline)  
+    byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline, itemprop: "alternativeHeadline description") 
+  end
+
+  def display_byline_as_subheader 
+    byline.blank? ? content_tag(:p, medium) : content_tag(:p, byline, itemprop: "alternativeHeadline description" )
   end
 
   
