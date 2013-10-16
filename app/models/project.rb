@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :history]
 
   # Special initializers 
-  has_attached_file :main_image, styles: {
+  has_attached_file :main_image, default_url: '/images/missing.png', styles: {
     thumbnail: "279x279#",
     thumbnail_retina_ready: "558x558#"
   }
@@ -44,7 +44,7 @@ class Project < ActiveRecord::Base
   has_many :personas, counter_cache: true, dependent: :destroy
   #has_many :stages
   has_many :goals, as: :goalable, dependent: :destroy
-  has_many :attachments, dependent: :destroy 
+  has_many :attachments, dependent: :destroy
   #has_many :testimonials
   has_many :technologies, through: :technology_profiles, counter_cache: :projects_count
   has_many :technology_profiles, dependent: :destroy 

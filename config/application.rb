@@ -29,7 +29,7 @@ module Personal
     config.assets.css_compressor = :csso
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.paths << "#{Rails.root}/app/assets/stylesheets/fonts"
-    config.assets.precompile += %w( mandatory_header_files.js cssfilterspolyfill/contentloaded.js cssfilterspolyfill/css-filters-polyfill.js cssfilterspolyfill/cssParser.js personal.css application.css )
+    config.assets.precompile += %w( mandatory_header_files.js cssfilterspolyfill/contentloaded.js cssfilterspolyfill/css-filters-polyfill.js cssfilterspolyfill/cssParser.js personal.css)
 
 
     # config.assets.precompile += %w( .svg .eot .woff .ttf )

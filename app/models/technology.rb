@@ -1,7 +1,7 @@
 class Technology < ActiveRecord::Base
   
   #Special Initialization 
-  has_attached_file :image, styles: {
+  has_attached_file :image, default_url: '/images/missing.png', styles: {
     thumbnail: "279x279#",
     thumbnail_retina_ready: "558x558#"
   }
