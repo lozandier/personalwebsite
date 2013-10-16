@@ -1,6 +1,6 @@
 #= depend_on d3.v3.min 
 # $(document, '.personal_influencers').ready -> 
-$ -> 
+$  -> 
   $pie_chart_height = 250
   $bar_chart_height =400
   #it's shared, so it's makes sense to not make a distinguish 
@@ -24,7 +24,7 @@ $ ->
 
   #initialize svg
 
-  svg = d3.select(".personal_influencers .data").append("svg")
+  svg = d3.select(".personal_influencers .data", ".pages").append("svg")
 
   # attr svg 
   svg.attr

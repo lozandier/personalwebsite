@@ -7,7 +7,7 @@ class PersonasController < ApplicationController
 
   def index
     @personas = @project.personas.decorate
-    @persona_packed_projects = Project.where('personas_count > ?', 1).order(personas_count: :desc)
+    @persona_packed_projects = Project.where('personas_count > ?', 1).order(personas_count: :desc).decorate
   end
 
   def show

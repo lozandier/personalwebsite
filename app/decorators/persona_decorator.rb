@@ -2,6 +2,7 @@ class PersonaDecorator < ApplicationDecorator
   include Draper::LazyHelpers 
   decorates_finders
   delegate_all
+  decorates_association :project
 
   ## 9/30/13 Transitioned to Draper 
 
@@ -41,7 +42,7 @@ class PersonaDecorator < ApplicationDecorator
   end
 
   def byline 
-    markdown.render(object.byline)
+    markdown.render(object.byline).html_safe
   end
 
 

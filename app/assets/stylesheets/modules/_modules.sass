@@ -57,6 +57,24 @@
 .persona_spotlight_box, .project_spotlight_box, .client_spotlight_box, .personal_spotlight_box, .technology_spotlight_box, .headline_box, .personal_spotlight_box
   @extend %spotlight_box 
 
+.technology_spotlight_box  
+  background: linear-gradient(to bottom, #111, #444)
+
+  // Trial and Error Grid Effects
+  // img 
+  //   z-index: 0
+
+  // .mask, .spotlight_mask
+  //   background: radial-gradient(circle at top, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 46%), radial-gradient(circle at top, rgba(0,0,0,0) 45%, rgba(0,0,0,0.4) 46%)
+  //   background-size: 4px 4px, 4px 4px 
+  //   background-position: 0px 0px, 2px 2px
+  //   background-color: none 
+  //   box-shadow: none 
+  //   z-index: 2 
+  //   filter: none  
+  // .no-cssgradients &  
+  //   background: #111 
+
 .headline_box 
   padding: 0 
   
@@ -443,6 +461,10 @@ $benefits: 'benefits'
         transition-delay: .5s 
         color: $primary-color
         text-shadow: 0px 2px 4px rgba(#111, .7)
+
+        .no-cssanimations.no-cssfilters & , .no-cssanimations &  
+          display: none 
+          opacity: 0 
     
     
 // //University logos 
@@ -486,3 +508,6 @@ li.has_social_icon
   display: none 
   +from(2)
     display: block
+
+.legend h3 
+  display: none 

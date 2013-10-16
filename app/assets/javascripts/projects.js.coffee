@@ -6,7 +6,7 @@
 #= require imagesloaded 
 #= require masonry
 #= require fresco
-console.log("Why you no  work?!!! #{d3}")
+console.log("Script for Projects/Project Initialized")
 $ -> 
 
   project = $('.project')

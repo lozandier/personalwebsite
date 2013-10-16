@@ -2,7 +2,7 @@
 = description markdown.render(@technology.byline).html_safe
 
 
-%section.project_spotlight_box
+%section.technology_spotlight_box
 
   .background_image
   .mask 
@@ -20,7 +20,7 @@
       %div.meta_information_panel
         %span.meta_information
           %strong{style: "color: #{@technology.color}"} Years of Experience:   
-        = @technology.years_of_experience   
+          = @technology.years_of_experience   
       - if admin_signed_in?
         = @technology.admin_links
 %nav

@@ -22,4 +22,4 @@
       %section.related_skills  
         %h2 Skills Most Showcased  
         %hr
-        = render partial: 'technologies/technology_showcased', collection: @most_showcased_skills, as: :technology || content_tag(:p, markdown.render("There seems to be no clear way to sort out the skills most utilized at the moment, there's no projects publically available for this to be relevant, or I have some algorithms changing to do...") )
+        = content_tag(:p, markdown.render("There seems to be no clear way to sort out the skills most utilized at the moment, there's no projects publically available for this to be relevant, or I have some algorithms changing to do...").html_safe ) unless render partial: 'technologies/technology_showcased', collection: @most_showcased_skills, as: :technology

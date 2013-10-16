@@ -41,9 +41,9 @@ class Project < ActiveRecord::Base
   
   # Associations 
   has_many :photos, dependent: :destroy 
-  has_many :personas, counter_cache: true
+  has_many :personas, counter_cache: true, dependent: :destroy
   #has_many :stages
-  has_many :goals, as: :goalable
+  has_many :goals, as: :goalable, dependent: :destroy
   has_many :attachments, dependent: :destroy 
   #has_many :testimonials
   has_many :technologies, through: :technology_profiles, counter_cache: :projects_count

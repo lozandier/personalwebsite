@@ -29,9 +29,9 @@ class Persona < ActiveRecord::Base
 
   #associations
   belongs_to :project, counter_cache: true, touch: true  
-  has_many :influencers 
-  has_many :interests 
-  has_many :goals, as: :goalable
+  has_many :influencers, dependent: :destroy 
+  has_many :interests, dependent: :destroy 
+  has_many :goals, as: :goalable, dependent: :destroy 
 
   # state_machine 
   state_machine :state, initial: :pending do 
