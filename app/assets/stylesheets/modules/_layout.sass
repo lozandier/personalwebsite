@@ -216,10 +216,13 @@ $block-grid-point: emCalc(825px)
   .technology_logo
     +grid-column($columns: 4)
     overflow: hidden
+    +breakpoint($technology_format_breakpoint)
+      +grid-column($columns: 12, $collapse: true )
 
   section, header 
     +grid-column($columns: 7) // TODO: Oddbug with 8; Investigate after launch (V 1.0)
-  
+    +breakpoint($technology_format_breakpoint)
+      +grid-column($columns: 12)
     h2 > a, h3 > a
       color: inherit 
      

@@ -54,7 +54,7 @@
 // +sprite-map-generator($banners, 'retina')
 
 
-.persona_spotlight_box, .project_spotlight_box, .client_spotlight_box, .personal_spotlight_box, .technology_spotlight_box, .headline_box
+.persona_spotlight_box, .project_spotlight_box, .client_spotlight_box, .personal_spotlight_box, .technology_spotlight_box, .headline_box, .personal_spotlight_box
   @extend %spotlight_box 
 
 .headline_box 
@@ -395,21 +395,27 @@ $benefits: 'benefits'
 .technology
   border-radius: 2px
   background-color: #fcfcfc
+  +breakpoint($technology_format_breakpoint)
+    header h3
+      +adjust-font-size-to(ms(3, 16px 1000px, golden() ) )
 
   .technology_logo
     border-radius: 4px
 
 .benefits
   position: relative 
-  .headline_item
+  .headline_item 
     position: relative 
     transition: all .3s ease-in-out
-    filter: drop-shadow(0px 2px 5px rgba(#000, .4)) blur(0px) grayscale(0)
     overflow: hidden
+
     
     img 
-      border-radius: 2px // consider putitng in a variable
+      border-radius: 2px // consider putting in a variable
+      filter: drop-shadow(0px 2px 5px rgba(#000, .4)) blur(0px) grayscale(0)
     
+    
+      
     figcaption
       position: absolute 
       top: 25% 
@@ -417,7 +423,7 @@ $benefits: 'benefits'
       right: 0 
       text-align: center
       font-family: NimbusSansNovusW01-Regu
-      +adjust-font-size-to( ms(4, 16px 1000px, golden() ) )
+      +adjust-font-size-to( ms(5, 16px 1000px, golden() ) )
       transform: scale(10) translateX(-40px)
       transition: .4s ease-in-out
       opacity: 0 
@@ -461,11 +467,18 @@ $social_icons: 'social_icons'
   .#{nth($source, 1)}
     +retina-background($social_icons, nth($source, 1), $with-dimensions: true )
     transition: background-color .5s ease-in 
+    
     .top-bar li:hover &, &:hover  
       background-color: nth($source, 2)
+
 .top-bar, .top-bar *
   overflow: hidden 
   
 
 .top-bar li
   transition: 1s ease-in-out 3s
+
+li.has_social_icon 
+  display: none 
+  +from(2)
+    display: block
