@@ -42,6 +42,10 @@ class ProjectDecorator < ApplicationDecorator
   # end
 
 
+  def description
+    markdown.render(object.description).html_safe
+  end
+
   def item_image  
     link_to( image_tag(background_image.url(:showcased), data: {interchange: "[#{background_image.url(:showcased_retina_ready)}, (retina)]"}), project_path(project), itemprop: 'relatedLink', "data-no-turbolink" => true )
   end
