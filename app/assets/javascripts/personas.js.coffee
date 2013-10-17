@@ -27,7 +27,7 @@ $masonryActive = false
 
 # managePersonaMasonryState()
 
-
+$(document).on 'page:load', 'body.personas', -> 
 
 GraphInfluencersPromiser = 
   getData : ->
