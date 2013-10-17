@@ -11712,7 +11712,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 (function() {
   var d, p, s, s2;
 
-  this.polyfilter_scriptpath = "/assets/cssfilterspolyfill/lib";
+  this.polyfilter_scriptpath = "/assets/cssfilterspolyfill/lib/";
 
   p = "/assets/reenable_turbolinks.js";
 
@@ -12453,12 +12453,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 
 }).call(this);
 (function() {
-  if ($('.cssfilters').length > 1 || $('.no-cssfilters').length < 1) {
-    $("a, .personas.index a, .personas.show a, .projects.index a, .projects.show a, .top-bar a[data-no-turbolink], [data-no-turbolink]").removeData('noTurbolink').removeAttr('data-no-turbolink').attr('data-reenabled-turbolinks', 'true');
-  }
-
-  /*!  Forghot what was the :not version for*/
-
+  $("a, .personas.index a, .personas.show a, .projects.index a, .projects.show a, .top-bar a[data-no-turbolink], [data-no-turbolink]").removeData('noTurbolink').removeAttr('data-no-turbolink').attr('data-reenabled-turbolinks', 'true');
 
 }).call(this);
 String.prototype.rightChars = function(n){

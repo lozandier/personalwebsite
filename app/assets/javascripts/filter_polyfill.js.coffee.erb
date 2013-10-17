@@ -1,5 +1,6 @@
-#=require jquery
-@polyfilter_scriptpath = "/assets/cssfilterspolyfill/lib" #'/js/lib'
+#=depend_on jquery
+#=depend_on modernizr
+@polyfilter_scriptpath = "/assets/cssfilterspolyfill/lib/" #'/js/lib'
 p = "<%= javascript_path('reenable_turbolinks') %>" 
 s = "<%= javascript_path('cssfilterspolyfill/lib/cssParser') %>" 
 s2 = "<%= javascript_path('cssfilterspolyfill/lib/css-filters-polyfill') %>" # /assets/cssfilterspolyfill/lib/css-filters-polyfill.js

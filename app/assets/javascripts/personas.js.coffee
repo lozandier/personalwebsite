@@ -27,7 +27,7 @@ $masonryActive = false
 
 # managePersonaMasonryState()
 
-$(document).on 'page:load', 'body.personas', -> 
+$(document).ready
 
 GraphInfluencersPromiser = 
   getData : ->
@@ -44,7 +44,7 @@ GraphInfluencersPromiser =
   drawSVGGraph: (response)-> 
     promise = $.Defferred()
     # Append things to the .data and then tell this function to show itselv 
-    if respone.length > 0 
+    if response.length > 0 
       promise.resolve() 
       console.log 'graphInfluencers successfully called as done '
         
@@ -62,7 +62,7 @@ GraphInfluencersPromiser =
     else 
       promise.reject() 
     end
-  drawLegend: (respone)->
+  drawLegend: (response)->
     # Reveal legend after appending keys 
 
 beginGraphing = ()-> 
