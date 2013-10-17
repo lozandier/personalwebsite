@@ -68,6 +68,7 @@ class PersonasController < ApplicationController
     #   @persona = Persona.friendly.find(params[:persona][:id])
     #   @project = Project.friendly.find(@persona.project.id) 
     end
+    @project
   end
 
   def get_existing_persona 
@@ -77,6 +78,7 @@ class PersonasController < ApplicationController
     else 
       @persona = Persona.includes(:influencers, :interests, :goals).friendly.find(params[:id]).decorate
     end
+    @persona
   end
 
   def persona_params

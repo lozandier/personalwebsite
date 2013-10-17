@@ -70,4 +70,8 @@ class Project < ActiveRecord::Base
     self.state = 'approved' if approve_project == '1' 
     self.state = 'pending' if unapprove_project == '1'
   end
+
+  def experiment?
+    experiment 
+  end
 end

@@ -1,7 +1,7 @@
 %div.influencer
   .datum.progress
     %span.meter{style: "background-color: ##{SecureRandom.hex(3)}; width: #{number_to_percentage(influencer.percentage)}"}
-    %span.influencer_label= influencer.name
+    %span.influencer_label= "#{influencer.name} (#{number_to_percentage(influencer.percentage)})"
     - if admin_signed_in? 
       = link_to "Edit", edit_project_persona_influencer_path(influencer.persona.project, influencer.persona, influencer)
       = link_to "Delete", project_persona_influencer_path(influencer.persona.project, influencer.persona, influencer), method: :delete, data: {confirm: "Are you sure?"}

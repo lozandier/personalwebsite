@@ -87,9 +87,14 @@
         - else 
           %li= mail_to 'lozandier@gmail.com', "Contact Me", subject: %(Hello Kevin, thought I'd email you after viewing your website)   #link_to 'Sign in', new_admin_session_path
   
-  - if flash.any?
-    %p.notice= notice 
-    %p.alert= alert 
+  
+
+  - if flash
+    - flash.each do | type, message| 
+      .tn-box{ class: " #{ flash_class(type)} tn-box-active" } 
+        = markdown.render(message).html_safe
+        .tn-progress
+
   = yield 
   = javascript_include_tag "application", "data-turbolinks-track" => true
   = javascript_include_tag params[:controller], "data-turbolinks-track" => true

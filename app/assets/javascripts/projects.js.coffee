@@ -2,14 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-#= require d3.v3.min
-#= require imagesloaded 
-#= require masonry
-#= require fresco
+#= depend_on d3.v3.min
+#= depend_on imagesloaded 
+#= depend_on masonry
+#= depend_on fresco
+
+# TODO: Remember to refactor to a promise for v 1.0 
 console.log("Script for Projects/Project Initialized")
 $ -> 
 
-  project = $('.project')
+  project = $('.project', '.projects.index')
   if project
 
     $masonryActive = false 
@@ -66,10 +68,26 @@ $ ->
 
       console.log "Width is #{$width}"
       $outerRadius = $width/2
+      
       $innerRadius = $width/ 3.14 
-      # TODO: V1.5 Compartment all responses to promise objects to use when() and then(). 
+      # TODO: V1.0 Compartment all responses to promise objects to use when() and then(). 
       dataset = response.technology_profiles  
       console.log "The data set is #{dataset}"
+
+      # keys of svg 
+      key = (d)->
+        return d.id 
+
+      maximumValue = d3.max dataset, (d)->
+        d.percentage_of_project
+
+      sum = d3.sum dataset, (d)->
+        d.percentage_of_project
+
+      # Since I know this shouldn't ever go above 100%, I need to scale values to avoid unnnecessary data maniuplation
+      # everytime I graph visually. Scaling based on the sum of the array with the range between 0% and 100%
+      xScale = d3.scale.linear().domain([0, sum]).rangeRound([0.0, 100.0])
+
 
       #initialize svg
     
@@ -83,18 +101,15 @@ $ ->
       
       # I must specificy the value due to the fact this is an OBJECT
       pie = d3.layout.pie().value (d)->
-        d.percentage_of_project
+        xScale(d.percentage_of_project)
 
       console.log(dataset)
 
-      # keys of svg 
-      key = (d)->
-        return d.id 
-
+      
       arc = d3.svg.arc().innerRadius($innerRadius).outerRadius($outerRadius)
 
       arcs = svg.selectAll("g.arc")
-        .data(pie(dataset))
+        .data(pie(dataset, key))
         .enter()
         .append("g")
         .attr 
@@ -131,6 +146,6 @@ $ ->
         individual_keys = d3.selectAll('.key')
         individual_keys.append('span')
           .text (d)->
-            "#{d.name} (#{d.percentage_of_project}%)" 
+            "#{d.name} (#{xScale(d.percentage_of_project)}%)" 
 
         $('.legend').fadeIn('400')
