@@ -85,3 +85,6 @@ class PersonasController < ApplicationController
     params.require(:persona).permit(:avatar, :background_image, :first_name, :last_name, :age, :occupation, :byline, :description, :state, :approve_persona, :unapprove_persona, :creative_commons_attribution, :creative_commons_attribution_link, :creative_commons_license, :persona_id)
   end
 end
+
+
+

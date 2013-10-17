@@ -74,4 +74,9 @@ class Project < ActiveRecord::Base
   def experiment?
     experiment 
   end
+
+
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank? 
+  end
 end

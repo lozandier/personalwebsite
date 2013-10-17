@@ -9,7 +9,7 @@
 
 # TODO: Remember to refactor to a promise for v 1.0 
 console.log("Script for Projects/Project Initialized")
-$ -> 
+$(document).on 'page:load', -> 
 
   project = $('.project', '.projects.index')
   if project

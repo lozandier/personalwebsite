@@ -1,15 +1,16 @@
 #=require jquery
 @polyfilter_scriptpath = "/assets/cssfilterspolyfill/lib" #'/js/lib'
+p = "<%= javascript_path('reenable_turbolinks') %>" 
 s = "<%= javascript_path('cssfilterspolyfill/lib/cssParser') %>" 
 s2 = "<%= javascript_path('cssfilterspolyfill/lib/css-filters-polyfill') %>" # /assets/cssfilterspolyfill/lib/css-filters-polyfill.js
 d = "<%= asset_path('reenable_turbolinks.js') %>"
-
 Modernizr.load 
   test: Modernizr.cssfilters
   nope: [s, s2] 
+  yep: [p]
 ###! Not working despite the test working and other Modernizer checks throughout website, will investigae with Version 1.0 of this site later this year ###
 
 console.log "#{d}"
-console.log "CSS Filter test completed; The following would be called in if it failed and will disable the turbolinking feature of the site for most pages: #{s} and the second was called in as #{s2} "
+console.log "CSS Filter test completed; The following would be called in if it failed and will disable the turbolinking feature of the site for most pages: #{s} and the second was called in as #{s2}. If the test passed, turbolinks for filter-heavy pages would be enabled via #{p}"
 
 

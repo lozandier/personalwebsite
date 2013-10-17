@@ -16,4 +16,9 @@ class Technology < ActiveRecord::Base
   #association
   has_many :projects, through: :technology_profiles, counter_cache: true
   has_many :technology_profiles, dependent: :destroy 
+
+
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank? 
+  end
 end
