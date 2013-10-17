@@ -1,9 +1,8 @@
 class InfluencersController < ApplicationController 
   before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
-
   before_action :get_project
   before_action :get_persona 
-  #before_action :get_existing_influencer, only: [:edit, :update, :destroy]
+  before_action :get_existing_influencer, only: [:edit, :update, :destroy]
 
   def new
     @influencer = @persona.influencers.new 
@@ -30,7 +29,7 @@ class InfluencersController < ApplicationController
   end
 
   def destroy
-    if @project.destroy
+    if @influencer.destroy
       redirect_to project_persona_path(@project, @persona), notice: "Influence properly  deleted."
     else 
       redirect_to project_persona_path(@project, @persona), notice: "Influence could not be deleted."
