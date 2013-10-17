@@ -86,6 +86,16 @@ beginGraphing = ()->
       dataset = response 
       console.log "The data set is #{dataset}"
 
+      key = (d)->
+        return d.id 
+
+      sum = d3.sum dataset, (d)->
+        d.percentage 
+
+      # LIke projects, scaling to automatically adjust values without ugly database hacking.
+      # RangeRound used again to avoid aliasing and nast looking numbers 
+      xScale = d3.scale.linear().domain([0, sum]).rangeRound([0, 100])
+
 
 
       #initialize svg
@@ -107,8 +117,7 @@ beginGraphing = ()->
       console.log(dataset)
 
       # keys of svg 
-      key = (d)->
-        return d.id 
+      
 
       
       
@@ -149,12 +158,12 @@ beginGraphing = ()->
         individual_keys = d3.selectAll('.key')
         individual_keys.append('span')
           .text (d)->
-            "#{d.name} (#{d.percentage}%)"
+            "#{d.name} (#{xScale(d.percentage)}%)"
 
         $('.legend').fadeIn('400')
 
     else
-      $('.influencers > hr').html("<p> There's no influencer data available </p>")
+      $('.influencers > hr p').text("There's no influencer data available.")
       $('influencers').css 
         "text-align": "left"
         color: "red"

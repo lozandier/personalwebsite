@@ -12446,7 +12446,7 @@ Modernizr.addTest('createelement-attrs', function() {
 
   console.log("" + d);
 
-  console.log("CSS Filter test failed; The following got called in as: " + s + " and the second was called in as " + s2 + " ");
+  console.log("CSS Filter test completed; The following would be called in if it failed and will disable the turbolinking feature of the site for most pages: " + s + " and the second was called in as " + s2 + " ");
 
 }).call(this);
 (function() {

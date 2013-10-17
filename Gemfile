@@ -22,7 +22,7 @@ gem 'sprockets'
 # Use SASS for stylesheets
 gem 'sass-rails', github: "rails/sass-rails"
 gem 'sass', github: "nex3/sass", tag: '3.3.0.rc.1'
-gem "sass_rails_patch", "~> 0.0.1"
+#gem "sass_rails_patch", "~> 0.0.1"
 
 gem 'csso-rails'
 # Use Uglifier as compressor for JavaScript assets

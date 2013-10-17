@@ -29,8 +29,12 @@ class PersonaDecorator < ApplicationDecorator
   #   persona.send(method, *args, &block)
   # end
 
+  def full_name 
+    "#{persona.full_name.titleize}"  
+  end
+
   def age 
-     "#{persona.age} years old"
+     "#{pluralize(persona.age, 'year')} old"
   end
 
   def image  

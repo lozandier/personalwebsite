@@ -13,7 +13,7 @@
     
     %div.row
       .avatar
-        %img{ itemprop: "primaryImageOfPage", src: "#{@project.main_image.url}"}
+        = @project.spotlight_image
 
       %header
         %h1{itemprop: "name headline about"}= @project.title

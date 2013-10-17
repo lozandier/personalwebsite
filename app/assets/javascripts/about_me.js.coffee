@@ -16,7 +16,7 @@ $  ->
     { id: 4, name: "Opportunities to learn new skills", percentage: 15 }
     { id: 5, name: "Opportunities to justify work with clients directly", percentage: 10}
     { id: 6, name: "Cross-functional teamwork between developers and designers", percentage: 20 }
-    { id: 7, name: "A workflow that emphasizes mobile-first develment", percentage: 10}
+    { id: 7, name: "A workflow that emphasizes mobile-first development", percentage: 10}
   ]
 
   console.log "The data set is #{dataset}"

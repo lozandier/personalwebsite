@@ -6198,7 +6198,7 @@ this.__chart__=k,x.append("line"),x.append("text");var N=x.select("line"),q=_.se
         percentage: 20
       }, {
         id: 7,
-        name: "A workflow that emphasizes mobile-first develment",
+        name: "A workflow that emphasizes mobile-first development",
         percentage: 10
       }
     ];

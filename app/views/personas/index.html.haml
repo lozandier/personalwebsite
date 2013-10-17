@@ -16,11 +16,9 @@
     %li 
       = link_to @project.title, project_path(@project)  
 
-    %li
+    %li.current
       = link_to "Personas for #{@project.title}", project_personas_path(@project)   
-
-    %li.current 
-      = link_to "#{@persona.full_name}", project_persona_path(@project, @persona), "data-no-turbolink" => true    
+  
 
 %main
   .row 
