@@ -1,13 +1,13 @@
 Personal::Application.routes.draw do
 
-  devise_for :admins# Bug: skip: registration isn't allowing me to log in; investigate with version 1.0 of this site. All done inside an entirely different thing.
+  devise_for :admins # Bug: skip: registration isn't allowing me to log in; investigate with version 1.0 of this site. All done inside an entirely different thing.
 
  
 
   concern :goalable do
     resources :goals, only: [:new, :create, :edit, :update]
   end
-  
+
   resources :skills, controller: :technologies
   resources :technologies#, only: [:index, :update, :edit, :create, :new, :destroy]
 

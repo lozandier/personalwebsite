@@ -101,6 +101,7 @@ gem 'awesome_print'
 gem 'figaro'
 
 #gem 'eventmachine', '1.0.1' WINDOWS ISSUE >I
+gem 'rack-cors', :require => 'rack/cors'
 
 
 
