@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+#= depend_on jquery 
 #= depend_on d3.v3.min
 #= depend_on imagesloaded 
 #= depend_on masonry
@@ -9,30 +10,10 @@
 
 # TODO: Remember to refactor to a promise for v 1.0 
 console.log("Script for Projects/Project Initialized")
-$(document).on 'page:load', -> 
 
-  project = $('.project', '.projects.index')
-  if project
+$ -> 
 
-    $masonryActive = false 
-
-    manageProjectMasonryState = -> 
-      $container = $('.list_of_projects_wrapper', '.projects.index')
-      $mm = window.matchMedia('(min-width: 67.375em)').matches 
-      if $mm
-        console.log "Initiate/Reinitialize Masonry: 67.375 matchMedia requirment met. "
-        $container.imagesLoaded ->
-          $container.masonry
-            itemSelector: '.project'
-            containerWidth: $('.project').width()
-          $container.masonry('bindResize')
-
-        $masonryActive = true 
-      else 
-        console.log '67.375em matchMedia requirement not met. Closing Masonry'
-        $container.masonry('destroy') if $masonryActive
-
-    manageProjectMasonryState()
+  
 
     $(window).on('resize', manageProjectMasonryState)
 
@@ -119,7 +100,7 @@ $(document).on 'page:load', ->
       arcs.append("path").attr 
         fill: (d,i)->
           #Since the context of a d3.layout puts the data in an attribute called data, I have to call d.data.color
-          console.log "The color being passed in is #{d.color} and the integer is #{i}"
+          console.log "The color being passed in is #{d.data.color} and the integer is #{i}"
           return d.data.color
 
         d: arc
@@ -149,3 +130,27 @@ $(document).on 'page:load', ->
             "#{d.name} (#{xScale(d.percentage_of_project)}%)" 
 
         $('.legend').fadeIn('400')
+
+  # Project Index Page
+  project = $('.project', '.projects.index')
+  if project
+
+    $masonryActive = false 
+
+    manageProjectMasonryState = -> 
+      $container = $('.list_of_projects_wrapper', '.projects.index')
+      $mm = window.matchMedia('(min-width: 67.375em)').matches 
+      if $mm
+        console.log "Initiate/Reinitialize Masonry: 67.375 matchMedia requirment met. "
+        $container.imagesLoaded ->
+          $container.masonry
+            itemSelector: '.project'
+            containerWidth: $('.project').width()
+          $container.masonry('bindResize')
+
+        $masonryActive = true 
+      else 
+        console.log '67.375em matchMedia requirement not met. Closing Masonry'
+        $container.masonry('destroy') if $masonryActive
+
+    manageProjectMasonryState()
