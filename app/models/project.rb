@@ -75,6 +75,10 @@ class Project < ActiveRecord::Base
     experiment 
   end
 
+  def comming_soon?
+    state == "comming_soon"
+  end
+
 
   def should_generate_new_friendly_id?
     new_record? || slug.blank? 

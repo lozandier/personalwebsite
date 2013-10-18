@@ -1,6 +1,6 @@
-%article.project
+%article.project{ class: "#{'comming_soon' if project.comming_soon?}" }
   = project.item_image
   %header
-    %h2= link_to project.title, project_path(project), itemprop: "relatedLink", "data-no-turbolink" => true 
+    %h2= project.coming_soon? ? project.title : link_to(project.title, project_path(project), itemprop: "relatedLink", "data-no-turbolink" => true) 
     %p 
       = project.display_byline

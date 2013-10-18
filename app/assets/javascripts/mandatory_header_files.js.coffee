@@ -8,6 +8,10 @@
 #= require_self 
 #= require reenable_turbolinks 
 #= require jquery.typer
+#= require imagesloaded
+#= require masonry 
+
+
 
 
 $(document).on('page:fetch', -> NProgress.start() )
