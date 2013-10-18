@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011074101) do
+ActiveRecord::Schema.define(version: 20131018090013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,25 @@ ActiveRecord::Schema.define(version: 20131011074101) do
     t.integer  "goalable_id"
     t.string   "goalable_type"
   end
+
+  create_table "identity_guidelines", force: true do |t|
+    t.string   "brand_image_file_name"
+    t.string   "brand_image_content_type"
+    t.integer  "brand_image_file_size"
+    t.datetime "brand_image_updated_at"
+    t.string   "background_image_file_name"
+    t.string   "background_image_content_type"
+    t.integer  "background_image_file_size"
+    t.datetime "background_image_updated_at"
+    t.string   "brand_name"
+    t.text     "overview"
+    t.text     "description"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identity_guidelines", ["project_id"], name: "index_identity_guidelines_on_project_id", using: :btree
 
   create_table "influencers", force: true do |t|
     t.string   "name"
@@ -159,7 +178,7 @@ ActiveRecord::Schema.define(version: 20131011074101) do
     t.boolean  "experiment"
     t.date     "released_on"
     t.string   "url"
-    t.string   "missing_url_reason"
+    t.text     "missing_url_reason"
     t.string   "main_image_file_name"
     t.string   "main_image_content_type"
     t.integer  "main_image_file_size"

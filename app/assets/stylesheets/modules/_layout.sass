@@ -124,8 +124,10 @@ $block-grid-point: emCalc(825px)
 
 .block_of_photos 
   +block-grid($per-row: 3, $spacing: $block-grid-default-spacing, $base-style: true )
+  
   &.even-out // if # of photos % 3 != 0 
     +block-grid($per-row: 2, $spacing: $block-grid-default-spacing, $base-style: true )
+  
   &.edge-case
     +block-grid($per-row: 1, $spacing: $block-grid-default-spacing, $base-style: true )
     text-align: center
@@ -181,9 +183,11 @@ $block-grid-point: emCalc(825px)
     +grid-column($columns: 12)
     +trailer(2)
     //$a: emCalc(876px)
-    //+breakpoint( ) 
+    //+breakpoint($a)
+
     +from(2)
       +grid-column($columns: 4) 
+  
   img 
     @extend %usual_image_styling  
 
