@@ -272,14 +272,17 @@ $block-grid-point: emCalc(825px)
       //width: 100%
       display: block
       +grid-column($columns: 12, $collapse: true)
+      +trailer(1)
+
       +breakpoint($switch_project_view_breakpoint)
         +grid-column($columns: 4)
-
+      
 
     +from(2) // edge case 
       +grid-column($columns: 4, $collapse: false)
       padding-left: 0em !important
       display: block
+     
   
     // // #Edge case, not worth changing entire mediaquery
     
@@ -317,3 +320,4 @@ $block-grid-point: emCalc(825px)
 .goals_list 
   li 
     +trailer(.5)
+    hanging-punctuation: first 

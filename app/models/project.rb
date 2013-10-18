@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
   validates :medium, inclusion: { in: MEDIUM_TYPES }
   validates :experiment, inclusion: { in: [true, false] }
   validates :url, url: true, if: 'missing_url_reason.blank?'
-  validates :byline, length: {maximum: 90}
+  validates :byline, length: {maximum: 140}
   validates_attachment :main_image, content_type: { content_type: ["image/jpeg", "image/png", "image/webp"] }
   validates_attachment_presence :main_image 
   validates_with SourceValidator #Since it's critical to protect my rearend, I'll always keep it on without an if clause or unless clause :) 
