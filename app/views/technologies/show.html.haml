@@ -1,4 +1,4 @@
-= title "#{@technology.name}: #{@technology.byline}" 
+= title "#{ strip_tags(@technology.name)}: #{ strip_tags @technology.byline}" 
 = description markdown.render(@technology.byline).html_safe
 
 
