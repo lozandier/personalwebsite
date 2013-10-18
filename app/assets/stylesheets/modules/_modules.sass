@@ -206,7 +206,7 @@ $file_icons: 'file_icons'
   a
     @each $file-format in $file-formats 
       
-      &[href$= ".#{$file-format}"]
+      &[href*=".#{$file-format}?"]
         +grid-column($columns: 12, $collapse: true )
         
         &::before 
