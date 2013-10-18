@@ -72,7 +72,7 @@
         %h2 
           Photos
         %hr
-        %ul.block_of_photos
+        %ul.block_of_photos{ class: @project.photo_edge_case_classes }
           =@project.display_associated_collection(@photos)
 
       %section.personas

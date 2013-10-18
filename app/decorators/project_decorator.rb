@@ -155,6 +155,17 @@ class ProjectDecorator < ApplicationDecorator
   end
 
 
+  def photo_edge_case_classes
+    if photos.any? 
+      if photos.size == 1
+        "edge-case"
+      elsif photos.size.even? && photos.size % 3 != 0 
+        "even-out"
+      end
+    end
+  end
+
+
 
 
 end

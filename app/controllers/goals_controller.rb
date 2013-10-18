@@ -32,7 +32,6 @@ class GoalsController < ApplicationController
   def get_goals 
     
   end
-
   def goal_params 
     params.require(:goal).permit(:copy)
   end
