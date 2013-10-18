@@ -35,7 +35,7 @@ $(document).ready ->
 
     $(window).on('resize', manageProjectMasonryState)
 
-  photos = $('.photo', '.projects.show')
+  photos = $('li', '.block_of_photos')
 
   if photos.length > 0 
     $photoContainer = $('.block_of_photos')

@@ -139,7 +139,7 @@ class ProjectDecorator < ApplicationDecorator
 
 
   def released_since
-    "#{time_ago_in_words(released_on)} ago"
+    "#{time_ago_in_words(released_on)} ago".titleize
   end
 
   def display_experiment_badge  
