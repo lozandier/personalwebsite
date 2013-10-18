@@ -1,8 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-#= depend_on jquery 
+# Bug: Have to force jQuery being active because Foundation forces Zeptos to be loaded instead
+#= require jquery 
 #= depend_on d3.v3.min
 #= depend_on imagesloaded 
 #= depend_on masonry
@@ -27,150 +24,150 @@ $masonryActive = false
 
 # managePersonaMasonryState()
 
-$(document).ready
+$(document).ready ->
 
-GraphInfluencersPromiser = 
-  getData : ->
-    promise = $.Deferred() 
-    $.ajax $('.influencers', '.personas.show').data('personaMetaData'), 
-      dataType: 'json'
-      contentType: 'json'
-      success: (response)->
-        console.log("Inside success call")
-        promise.resolve(response.influencers)
-        console.log("Promise is #{promise}")
-    return promise 
+  GraphInfluencersPromiser = 
+    getData : ->
+      promise = $.Deferred() 
+      $.ajax $('.influencers', '.personas.show').data('personaMetaData'), 
+        dataType: 'json'
+        contentType: 'json'
+        success: (response)->
+          console.log("Inside success call")
+          promise.resolve(response.influencers)
+          console.log("Promise is #{promise}")
+      return promise 
 
-  drawSVGGraph: (response)-> 
-    promise = $.Defferred()
-    # Append things to the .data and then tell this function to show itselv 
-    if response.length > 0 
-      promise.resolve() 
-      console.log 'graphInfluencers successfully called as done '
+    drawSVGGraph: (response)-> 
+      promise = $.Defferred()
+      # Append things to the .data and then tell this function to show itselv 
+      if response.length > 0 
+        promise.resolve() 
+        console.log 'graphInfluencers successfully called as done '
+          
+        $pie_chart_height = 250
+        $bart_shart_height =400
+        #it's shared, so it's makes sense to not make a distinguish 
+        $width = 250
+
+        console.log "Width is #{$width}"
+        $outerRadius = $width/2
+        $innerRadius = $width/ 3.14 
+        dataset = response 
+        console.log "The data set is #{dataset}"
+          # TODO: Finish Promise later 
+      else 
+        promise.reject() 
+      end
+    drawLegend: (response)->
+      # Reveal legend after appending keys 
+
+  beginGraphing = -> 
+
+    setUpD3Graph = GraphInfluencersPromiser.getData()
+
+    setUpD3Graph.done (response)->
+      console.log("Inside setUpD3graph.done now; what remains is #{response}")
+      if response.length > 0 
+        console.log 'graphInfluencers successfully called as done; Finish this refactoring process of using 3 Promises instead w/ V1.0 '
         
-      $pie_chart_height = 250
-      $bart_shart_height =400
-      #it's shared, so it's makes sense to not make a distinguish 
-      $width = 250
+        $pie_chart_height = 250
+        $bart_shart_height =400
+        #it's shared, so it's makes sense to not make a distinguish 
+        $width = 250
 
-      console.log "Width is #{$width}"
-      $outerRadius = $width/2
-      $innerRadius = $width/ 3.14 
-      dataset = response 
-      console.log "The data set is #{dataset}"
-        # TODO: Finish Promise later 
-    else 
-      promise.reject() 
-    end
-  drawLegend: (response)->
-    # Reveal legend after appending keys 
+        console.log "Width is #{$width}"
+        $outerRadius = $width/2
+        $innerRadius = $width/ 3.14 
 
-beginGraphing = ()-> 
+        dataset = response 
+        console.log "The data set is #{dataset}"
 
-  setUpD3Graph = GraphInfluencersPromiser.getData()
+        key = (d)->
+          return d.id 
 
-  setUpD3Graph.done (response)->
-    console.log("Inside setUpD3graph.done now; what remains is #{response}")
-    if response.length > 0 
-      console.log 'graphInfluencers successfully called as done; Finish this refactoring process of using 3 Promises instead w/ V1.0 '
-      
-      $pie_chart_height = 250
-      $bart_shart_height =400
-      #it's shared, so it's makes sense to not make a distinguish 
-      $width = 250
+        sum = d3.sum dataset, (d)->
+          d.percentage 
 
-      console.log "Width is #{$width}"
-      $outerRadius = $width/2
-      $innerRadius = $width/ 3.14 
-
-      dataset = response 
-      console.log "The data set is #{dataset}"
-
-      key = (d)->
-        return d.id 
-
-      sum = d3.sum dataset, (d)->
-        d.percentage 
-
-      # LIke projects, scaling to automatically adjust values without ugly database hacking.
-      # RangeRound used again to avoid aliasing and nast looking numbers 
-      xScale = d3.scale.linear().domain([0, sum]).rangeRound([0, 100])
+        # LIke projects, scaling to automatically adjust values without ugly database hacking.
+        # RangeRound used again to avoid aliasing and nast looking numbers 
+        xScale = d3.scale.linear().domain([0, sum]).rangeRound([0, 100])
 
 
 
-      #initialize svg
-      $('.influencers .data').html('')
-      # $('.influencers .data').fadeOut(2000)
-      svg = d3.select(".influencers .data").append("svg")
+        #initialize svg
+        $('.influencers .data').html('')
+        # $('.influencers .data').fadeOut(2000)
+        svg = d3.select(".influencers .data").append("svg")
 
-      # attr svg 
-      svg.attr
-        class: 'pie_chart' 
-        width: $width 
-        height: $pie_chart_height  
-      
-      # Since color has no special relationship to each model, I'm going to randomly generate it. Use my color theory knowledge this late (into September)?  I ain't got no time for that.
-      color = d3.scale.category20() 
-      pie = d3.layout.pie().value (d)->
-        d.percentage
+        # attr svg 
+        svg.attr
+          class: 'pie_chart' 
+          width: $width 
+          height: $pie_chart_height  
+        
+        # Since color has no special relationship to each model, I'm going to randomly generate it. Use my color theory knowledge this late (into September)?  I ain't got no time for that.
+        color = d3.scale.category20() 
+        pie = d3.layout.pie().value (d)->
+          d.percentage
 
-      console.log(dataset)
+        console.log(dataset)
 
-      # keys of svg 
-      
-
-      
-      
-      arc = d3.svg.arc().innerRadius($innerRadius).outerRadius($outerRadius)
-
-      arcs = svg.selectAll("g.arc")
-        .data(pie(dataset, key))
-        .enter()
-        .append("g")
-        .attr 
-          class: "arc"
-          transform: "translate(#{$outerRadius}, #{$outerRadius})"
-
-      arcs.append("path").attr 
-        fill: (d, i)->
-          color(i)
-        d: arc
-
-      $('.influencers .data').fadeIn(2000)
-
-
-      legend_keys_container = d3.select('.influencers .legend .keys')
-
-      # Colorize each individual model 
-      legend_keys = legend_keys_container.selectAll("div.key")
-        .data(dataset, key)
-        .enter()
-        .append('div')
-        .attr
-          class: 'key'
-        .append('div')
-        .attr
-          class: 'colorblock'
-          style: (d, i)->
-            "background-color: #{ color(i) }"
+        # keys of svg 
         
 
-        individual_keys = d3.selectAll('.key')
-        individual_keys.append('span')
-          .text (d)->
-            "#{d.name} (#{xScale(d.percentage)}%)"
+        
+        
+        arc = d3.svg.arc().innerRadius($innerRadius).outerRadius($outerRadius)
 
-        $('.legend').fadeIn('400')
+        arcs = svg.selectAll("g.arc")
+          .data(pie(dataset, key))
+          .enter()
+          .append("g")
+          .attr 
+            class: "arc"
+            transform: "translate(#{$outerRadius}, #{$outerRadius})"
 
-    else
-      $('.influencers > hr p').text("There's no influencer data available.")
-      $('influencers').css 
-        "text-align": "left"
-        color: "red"
+        arcs.append("path").attr 
+          fill: (d, i)->
+            color(i)
+          d: arc
 
-Modernizr.load 
-  test: Modernizr.svg 
-  yep: beginGraphing()
+        $('.influencers .data').fadeIn(2000)
+
+
+        legend_keys_container = d3.select('.influencers .legend .keys')
+
+        # Colorize each individual model 
+        legend_keys = legend_keys_container.selectAll("div.key")
+          .data(dataset, key)
+          .enter()
+          .append('div')
+          .attr
+            class: 'key'
+          .append('div')
+          .attr
+            class: 'colorblock'
+            style: (d, i)->
+              "background-color: #{ color(i) }"
+          
+
+          individual_keys = d3.selectAll('.key')
+          individual_keys.append('span')
+            .text (d)->
+              "#{d.name} (#{xScale(d.percentage)}%)"
+
+          $('.legend').fadeIn('400')
+
+      else
+        $('.influencers > hr p').text("There's no influencer data available.")
+        $('influencers').css 
+          "text-align": "left"
+          color: "red"
+
+  Modernizr.load 
+    test: Modernizr.svg 
+    yep: beginGraphing()
 
 # $.ajax $('.influencers').data('personaMetaData'), 
 #   dataType: 'json'

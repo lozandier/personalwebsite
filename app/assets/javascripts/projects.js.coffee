@@ -1,11 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-#= depend_on jquery 
+# Bug: I need jQuery not Zeptos here due to my my Promises not working w/ Zepto being loaded by Foundation with no way to force Zepto being removed 
+#= require jquery
 #= depend_on d3.v3.min
-#= depend_on imagesloaded 
-#= depend_on masonry
+#= require imagesloaded 
+#= require masonry
 #= depend_on fresco
 
 # TODO: Remember to refactor to a promise for v 1.0 
@@ -14,7 +11,7 @@ console.log("Script for Projects/Project Initialized")
 $(document).ready ->
 
   project = $('.project', '.projects.index')
-  if project
+  if project.length > 0 
 
     $masonryActive = false 
 
@@ -37,6 +34,16 @@ $(document).ready ->
     manageProjectMasonryState()
 
     $(window).on('resize', manageProjectMasonryState)
+
+  photos = $('.photo', '.projects.show')
+
+  if photos.length > 0 
+    $photoContainer = $('.block_of_photos')
+    console.log "Initialize Masonry for block_of_photos"
+    $photoContainer.imagesLoaded ->
+        $photoContainer.masonry
+          itemSelector: 'li'
+          columnWidth: $('li').width() 
 
   $.ajax $('.complimentary_information').data('technologyProfileMetaData'), 
     dataType: 'json'

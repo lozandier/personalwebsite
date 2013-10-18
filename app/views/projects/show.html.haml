@@ -67,11 +67,12 @@
         %section.edit_technology_profiles 
           %h2 Edit Technology Profiles
           = @project.display_associated_collection(@technology_profiles)
+
       %section.photos 
         %h2 
           Photos
         %hr
-        %ul.large-block-grid-3.project_photos
+        %ul.block_of_photos
           =@project.display_associated_collection(@photos)
 
       %section.personas
@@ -79,10 +80,13 @@
           Personas
         %hr
           = @project.display_personas
+
       %section.attachments
         %h2 Attachments 
         %hr
         = @project.display_attachments
+
+        
       %section.link_to_project 
         %h2 
           Link to Project

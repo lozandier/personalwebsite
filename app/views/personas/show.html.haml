@@ -61,7 +61,7 @@
 
       %h2 Goals 
       %hr
-      %ul.goals_list
+      %ul.goals_list.ensure_padding
         = @persona.display_goals(@goals)
       
     %aside.complimentary_information.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}

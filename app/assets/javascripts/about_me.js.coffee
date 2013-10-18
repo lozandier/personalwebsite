@@ -2,7 +2,7 @@
 # $(document, '.personal_influencers').ready -> 
 $  -> 
   $pie_chart_height = 250
-  $bar_chart_height =400
+  $bar_chart_height = 400
   #it's shared, so it's makes sense to not make a distinguish 
   $width = 250
 
