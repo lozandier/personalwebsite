@@ -10,7 +10,7 @@ class PhotoDecorator < ApplicationDecorator
       data: {"image-caption" => "#{caption.presence || %(Photo is part of #{project.title})}", 
       interchange: "[#{image.url(:thumbnail_retina_ready)}, (retina)]"}), 
       asset_url(image.url), itemprop: 'relatedLink image', 
-      data: {"fresco-group" => photo.project.title, "fresco-options" => "ui: 'inside', fit: 'height'" }, class: 'fresco')
+      data: {"fresco-group" => photo.project.title, "fresco-options" => "ui: 'inside', fit: 'both'", 'fresco-caption' => "#{caption.presence || %(Photo is part of #{project.title})}" }, class: 'fresco')
   end
 
   def caption

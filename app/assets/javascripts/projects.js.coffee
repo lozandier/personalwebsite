@@ -43,7 +43,7 @@ $(document).ready ->
     $photoContainer.imagesLoaded ->
         $photoContainer.masonry
           itemSelector: 'li'
-          columnWidth: $('li').width() 
+         
 
   $.ajax $('.complimentary_information').data('technologyProfileMetaData'), 
     dataType: 'json'

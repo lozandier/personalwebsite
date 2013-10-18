@@ -187,6 +187,8 @@ $file_icons: 'file_icons'
   h2
     text-align: center
     text-align: left
+    +from(2)
+      padding: 0
 
     .svg & 
       line-height: 128px
@@ -215,6 +217,7 @@ $file_icons: 'file_icons'
           display: inline-block
           background-size: 100% 100%
           +grid-column($columns: 12)
+
           .svg &
             height: 128px
             +grid-column($columns: 2, $collapse: true )

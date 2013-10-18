@@ -61,7 +61,7 @@ class ProjectDecorator < ApplicationDecorator
 
   def display_goals
     if goals.any?  
-      render 'shared/goal_list', object: goals
+      render goals
     else 
       content_tag(:p, "This Project doesn't have goals, or it wasn't applicable for this particular project to have goals.", class: 'empty_content')
     end
