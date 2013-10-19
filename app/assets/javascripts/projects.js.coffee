@@ -128,7 +128,7 @@ $(document).ready ->
       arcs.append("path").attr 
         fill: (d,i)->
           #Since the context of a d3.layout puts the data in an attribute called data, I have to call d.data.color
-          console.log "The color being passed in is #{d.color} and the integer is #{i}"
+          console.log "The color being passed in is #{d.data.color} and the integer is #{i}"
           return d.data.color
 
         d: arc
