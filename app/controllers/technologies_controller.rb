@@ -1,6 +1,7 @@
 class TechnologiesController < ApplicationController
   before_action :get_technology, only: [:edit, :update, :show, :destroy]
-  
+  before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
+
   def index 
     @technologies = Technology.all.decorate
   end

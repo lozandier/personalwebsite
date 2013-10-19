@@ -1,4 +1,6 @@
-class GoalsController < ApplicationController 
+class GoalsController < ApplicationController
+  before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
+ 
   #before_action :get_project
   def new
     @goalable = get_goalable 
