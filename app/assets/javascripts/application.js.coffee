@@ -1,4 +1,5 @@
 #= require imagesloaded
+#= require masonry
 #= require fresco
 #= require foundation
 #= require foundation.interchange
