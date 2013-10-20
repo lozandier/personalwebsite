@@ -1,5 +1,7 @@
 class InfluencersController < ApplicationController 
   before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
+  respond_to :json, :html 
+
   before_action :get_project
   before_action :get_persona 
   before_action :get_existing_influencer, only: [:edit, :update, :destroy]

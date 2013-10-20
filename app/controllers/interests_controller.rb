@@ -1,5 +1,6 @@
 class InterestsController < ApplicationController
   before_filter :authenticate_admin!, only: [:new, :edit, :destroy, :update]
+  respond_to :json, :html 
 
   before_action :get_project
   before_action :get_persona 

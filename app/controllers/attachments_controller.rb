@@ -1,6 +1,7 @@
 class AttachmentsController  < ApplicationController 
   before_action :get_project 
   before_action :get_existing_attachment, only: [:edit, :update, :delete]
+  respond_to :json, :html 
 
   def new  
     @attachment = @project.attachments.new 

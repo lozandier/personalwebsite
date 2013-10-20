@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   # While it's refreshing to be dealing with instance variables the way you have for this app, the cons 
   # are showing FAST :/ 
   protect_from_forgery with: :exception
+  
 end

@@ -33,6 +33,7 @@ $(document).ready ->
         contentType: 'json'
         success: (response)->
           console.log("Inside success call")
+          console.log("The response inside success call is #{response}")
           promise.resolve(response.influencers)
           console.log("Promise is #{promise}")
       return promise 

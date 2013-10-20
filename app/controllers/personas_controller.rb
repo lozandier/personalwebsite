@@ -8,13 +8,14 @@ class PersonasController < ApplicationController
   def index
     @personas = @project.personas.decorate
     @persona_packed_projects = Project.where('personas_count > ?', 1).order(personas_count: :desc).decorate
+    respond_with @personas
   end
 
   def show
     @interests = @persona.interests 
     @influencers = @persona.influencers 
     @goals = @persona.goals 
-    respond_with @persona
+    respond_with @persona, serializer: PersonaSerializer #I'm having issues w/ this serializer running in production so I'm forcing Rails to use it
   end
 
   def new 
