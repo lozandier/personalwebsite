@@ -8,7 +8,7 @@
   
   %section.persona_spotlight_box
 
-    .background_image{style: "background-image: url('#{@persona.background_image.url}')"} 
+    .background_image{style: "background-image: url('#{@persona.background_image.url(:as_a_background)}')"} 
       =#%img{src: "http://lorempixel.com/1000/500/abstract"}
     .mask 
   

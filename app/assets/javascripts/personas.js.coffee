@@ -1,8 +1,8 @@
 # Bug: Have to force jQuery being active because Foundation forces Zeptos to be loaded instead
 #= require jquery 
-#= depend_on d3.v3.min
-#= depend_on imagesloaded 
-#= depend_on masonry
+#= require d3.v3.min
+#= require imagesloaded 
+#= require masonry
 
 $masonryActive = false 
 
@@ -14,7 +14,6 @@ $masonryActive = false
 #     $container.imagesLoaded ->
 #       $container.masonry
 #         itemSelector: '.persona'
-#         containerWidth: $('.persona').width()
 #       $container.masonry('bindResize')
 
 #     $masonryActive = true 
