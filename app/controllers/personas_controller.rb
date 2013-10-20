@@ -15,7 +15,7 @@ class PersonasController < ApplicationController
     @interests = @persona.interests 
     @influencers = @persona.influencers 
     @goals = @persona.goals 
-    respond_with @persona, serializer: PersonaSerializer #I'm having issues w/ this serializer running in production so I'm forcing Rails to use it
+    respond_with @persona
   end
 
   def new 

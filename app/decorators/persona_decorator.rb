@@ -2,7 +2,7 @@ class PersonaDecorator < ApplicationDecorator
   include Draper::LazyHelpers 
   decorates_finders
   delegate_all
-  decorates_association :project
+  decorates_associations :project
 
   ## 9/30/13 Transitioned to Draper 
 

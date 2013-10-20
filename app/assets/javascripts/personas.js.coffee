@@ -72,7 +72,7 @@ $(document).ready ->
         console.log 'graphInfluencers successfully called as done; Finish this refactoring process of using 3 Promises instead w/ V1.0 '
         
         $pie_chart_height = 250
-        $bart_shart_height =400
+        $bart_shart_height = 400
         #it's shared, so it's makes sense to not make a distinguish 
         $width = 250
 

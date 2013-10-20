@@ -2,6 +2,7 @@
 #= require modernizr 
 #= require jquery
 #= require jquery_ujs
+#= require jquery.typer
 #= require filter_polyfill
 #= require turbolinks 
 #= require nprogress
