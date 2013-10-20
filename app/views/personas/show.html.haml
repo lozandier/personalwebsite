@@ -64,8 +64,7 @@
       %ul.goals_list.ensure_padding
         = @persona.display_goals(@goals)
       
-    %aside.complimentary_information.persona_meta_data
-      - #{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
+    %aside.complimentary_information.persona_meta_data{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
       %section.influencers{data: {"persona-meta-data" => "#{project_persona_path(@project, @persona)}"}}
         %h2 Influencers
         %hr
