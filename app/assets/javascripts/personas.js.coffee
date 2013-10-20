@@ -28,7 +28,7 @@ $(document).ready ->
   GraphInfluencersPromiser = 
     getData : ->
       promise = $.Deferred() 
-      $.ajax $('.influencers', '.personas.show').data('personaMetaData'), 
+      $.ajax $('.influencers').data('personaMetaData'), 
         dataType: 'json'
         contentType: 'json'
         success: (response)->
@@ -37,29 +37,29 @@ $(document).ready ->
           console.log("Promise is #{promise}")
       return promise 
 
-    drawSVGGraph: (response)-> 
-      promise = $.Defferred()
-      # Append things to the .data and then tell this function to show itselv 
-      if response.length > 0 
-        promise.resolve() 
-        console.log 'graphInfluencers successfully called as done '
+    # drawSVGGraph: (response)-> 
+    #   promise = $.Defferred()
+    #   # Append things to the .data and then tell this function to show itselv 
+    #   if response.length > 0 
+    #     promise.resolve() 
+    #     console.log 'graphInfluencers successfully called as done '
           
-        $pie_chart_height = 250
-        $bart_shart_height =400
-        #it's shared, so it's makes sense to not make a distinguish 
-        $width = 250
+    #     $pie_chart_height = 250
+    #     $bart_shart_height =400
+    #     #it's shared, so it's makes sense to not make a distinguish 
+    #     $width = 250
 
-        console.log "Width is #{$width}"
-        $outerRadius = $width/2
-        $innerRadius = $width/ 3.14 
-        dataset = response 
-        console.log "The data set is #{dataset}"
-          # TODO: Finish Promise later 
-      else 
-        promise.reject() 
-      end
-    drawLegend: (response)->
-      # Reveal legend after appending keys 
+    #     console.log "Width is #{$width}"
+    #     $outerRadius = $width/2
+    #     $innerRadius = $width/ 3.14 
+    #     dataset = response 
+    #     console.log "The data set is #{dataset}"
+    #       # TODO: Finish Promise later 
+    #   else 
+    #     promise.reject() 
+    #   end
+    # drawLegend: (response)->
+    #   # Reveal legend after appending keys 
 
   beginGraphing = -> 
 
