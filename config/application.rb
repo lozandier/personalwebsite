@@ -30,7 +30,7 @@ module Personal
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.assets.paths << "#{Rails.root}/app/assets/stylesheets/fonts"
     config.assets.precompile += %w( mandatory_header_files.js cssfilterspolyfill/lib/contentloaded.js cssfilterspolyfill/lib/css-filters-polyfill.js cssfilterspolyfill/lib/cssParser.js reenable_turbolinks.js personal.css application.css )
-
+    config.assets.initialize_on_precompile = false
 
     config.assets.precompile += %w( .svg .eot .woff .ttf .htc )
 

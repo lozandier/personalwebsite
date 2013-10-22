@@ -3,21 +3,15 @@ development:
   encoding: unicode
   database: personal_development
   pool: 5
-  username: kevinlozandier
-  password: Naomi@%8046
 
 test:
   adapter: postgresql
   encoding: unicode
   database: personal_test
   pool: 5
-  username: kevinlozandier 
-  password: Naomi@%8045
 
 production:
   adapter: postgresql
   encoding: unicode
   database: personal_production #not going to be created; going straigh to Heroku 
   pool: 5
-  username: kevinlozandier 
-  password: Naomi@%8046

@@ -65,7 +65,7 @@ gem 'puma'
 
 gem 'state_machine'
 
-gem "draper",  github: "drapergem/draper"
+gem "draper"
 
 gem "compass", "~> 0.13.alpha.7"
 #github: "chriseppstein/compass"

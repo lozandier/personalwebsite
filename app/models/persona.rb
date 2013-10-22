@@ -1,6 +1,8 @@
 class Persona < ActiveRecord::Base
   include BackgroundImageable 
-  default_scope includes(:interests, :influencers).order(:first_name)
+  default_scope do
+    includes(:interests, :influencers).order(:first_name)
+  end
   #virtual attributes 
   attr_accessor :approve_persona, :unapprove_persona, :full_name
 
