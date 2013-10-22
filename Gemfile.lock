@@ -6,16 +6,6 @@ GIT
       compass (>= 0.12.2, < 0.14)
 
 GIT
-  remote: git://github.com/drapergem/draper.git
-  revision: d8e742c9f47490370624a91b5fc741b01bbffa08
-  specs:
-    draper (1.2.1)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0.3)
-
-GIT
   remote: git://github.com/nex3/sass.git
   revision: 05c6872a834bbf1ea92e8e7d7da05ee4222d24bd
   tag: 3.3.0.rc.1
@@ -139,6 +129,10 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
+    draper (1.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -339,7 +333,7 @@ DEPENDENCIES
   compass-rails!
   csso-rails
   devise (~> 3.1.1)
-  draper!
+  draper
   figaro
   friendly_id!
   guard
